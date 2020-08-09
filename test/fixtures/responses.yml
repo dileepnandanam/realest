@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  to_user_id: 1
+  from_user_id: 1
+  accepted: false
+  answer_1: MyText
+  answer_2: MyText
+  answer_3: MyText
+
+two:
+  to_user_id: 1
+  from_user_id: 1
+  accepted: false
+  answer_1: MyText
+  answer_2: MyText
+  answer_3: MyText

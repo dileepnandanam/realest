@@ -1,0 +1,40 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
+    %meta{ :name=>"google-site-verification", :content=> "XhJr0yXwxe3yq30iK76UGiyKm8gaAcP7keiYhVeJnV4" }
+    %meta{ :name=>"Description", :content=> "Find a match from by asking question and propsing. free Liberal matrimoney site without horoscope and cast."}
+
+    %title
+      List your property
+    
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    = audio_tag 'inflicted.mp3', class: 'response-notif'
+    .page
+      .nav
+        - if current_user          
+          = link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'pull-right nav-item block'
+
+          = link_to 'Account', edit_user_registration_path(current_user), class: 'pull-right nav-item block'
+          
+          = link_to 'Home', properties_path, class: 'pull-right nav-item block'
+        - else
+          = link_to 'Home', properties_path, class: 'pull-right nav-item block'
+          = link_to "Sign In", new_user_session_path, class: 'pull-right nav-item block', rel: :nofollow
+        
+        .clearfix
+      - if flash[:notice].present?
+        .flash
+          = flash[:notice]
+      = yield
+      
+      - if Rails.env.development?
+        .acc-switcher
+          - User.all.each do |u|
+            = link_to u.name, switch_user_path(u), class: "nav-item block user-switch pull-left #{(current_user== u ? 'black' : '')}"
+          .clearfix

@@ -1,0 +1,58 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require jquery-ui
+ *= require 'masonry/basic'
+ *= require 'masonry/centered'
+ *= require 'masonry/fluid'
+ *= require 'masonry/gutters'
+ *= require 'masonry/infinitescroll'
+ *= require 'masonry/right-to-left'
+ *= require 'masonry/transitions'
+ */
+@import "bootstrap";
+@import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700,900&display=swap');
+
+body {
+  font-size: 24px;
+  overflow: hidden;
+}
+.page {
+  width: 100%;
+  min-height: 1200px;
+  background-image: url('bg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+.pagination {
+  margin: auto;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.nav {
+  display: block;
+  background-color: #979da0;
+  padding: 12px;
+  box-shadow: 1px 2px 2px #979da0, 1px 1px 1px #dddfe1;
+}
+.nav-item {
+  font-size: 20px;
+}
+.flash {
+  width: 100%;
+  background: chartreuse;
+  padding: 12px;
+  font-weight: bold;
+}

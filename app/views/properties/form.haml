@@ -1,0 +1,10 @@
+.property-form-container
+  = simple_form_for(@property) do |f|
+    = f.input :acre
+    = f.input :cent
+    = f.input :expected_price
+    = f.input :landmark
+    = f.input :img1, label: "photo 1", required: true
+    = f.input :img2, label: "photo 2"
+    = f.input :img3, label: "photo 3"
+    = f.submit 'Submit'

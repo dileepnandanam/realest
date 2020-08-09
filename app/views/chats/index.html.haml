@@ -1,0 +1,11 @@
+.chat-container
+  = "chat with #{current_user.spouse.handle}"
+  .chat-thread
+    - @chats.each do |chat|
+      .chat{class: chat.user_id == current_user.id ? 'pull-right' : 'pull-left'}
+        = chat.text
+  = simple_form_for Chat.new, html: {class: 'chat-box', remote: true} do |f|
+    = f.input :text, label: false
+    = f.submit 'send', class: 'pull-left'
+  = link_to 'escape', escape_response_path(current_user), method: :put, class: 'search-gender pull-right'
+  .clearfix

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  lat: 1.5
+  lngt: 1.5
+  state: MyString
+  expected_price: 1
+  acre: 1
+  cent: 1
+
+two:
+  user_id: 1
+  lat: 1.5
+  lngt: 1.5
+  state: MyString
+  expected_price: 1
+  acre: 1
+  cent: 1

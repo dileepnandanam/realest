@@ -1,0 +1,111 @@
+.simple_form.user {
+  border: none;
+}
+.new_response {
+  margin-top: 16px;
+}
+.block, input[type='submit'] {
+  border: none;
+  border-radius: 5px;
+  color: black;
+}
+.block:hover, .search-gender:hover {
+  color: black !important;
+  background-color: white;
+  text-decoration: none;
+}
+input[type='submit']:hover {
+  background-color: green;
+  box-shadow: 1px 1px 5px #8a2f03, 1px 1px 5px #7e0804;
+}
+textarea {
+  border: 1px solid blue !important;
+}
+.user {
+  padding: 12px;
+  padding-bottom: 12px;
+}
+.user-thumb {
+  background-color: #ffffff;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 1px 1px 11px #8a2f03, 1px 1px 11px #7e0804;
+}
+.image {
+  padding: 12px;
+}
+.placeholder {
+  width: 80%;
+  margin: auto;
+}
+.image img {
+  width: 100%;
+}
+.nav-item {
+  display: inline-block;
+}
+.nav-item:hover {
+  text-decoration: none;
+}
+.nav {
+  background-color: #dfe0e3;
+  padding: 12px;
+  box-shadow: 1px 2px 2px #dddfe1, 1px 1px 1px #dddfe1;
+}
+.nav-item {
+  padding: 4px 12px;
+  margin-left: 12px;
+}
+.nav-item:hover {
+  color: yellow;
+}
+.scrap-portal {
+  padding: 12px;
+  margin:12px;
+  background-color: #f0f2f5;
+}
+.map-ico {
+  width: 100px;
+}
+input[type='submit'] {
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  font-size: 24px;
+}
+.sign-container {
+  padding: 12px;
+  width: 100%;
+  max-width: 400px;
+  justify-content: center;
+  margin: auto;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background-color: white;
+  box-shadow: 1px 2px 2px #a0260f, 1px 1px 1px #7e2508;
+}
+.question {
+  background-color: pink;
+}
+.answer {
+  background-color: #eff7fa;
+}
+.question, .answer {
+  padding: 4px 12px;
+}
+.response-content {
+  margin-bottom: 12px;
+}
+.search {
+  padding: 8px;
+  margin: 12px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 300px;
+}
+.search-gender {
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin: 8px;
+  color: black;
+  display: inline-block;
+}
