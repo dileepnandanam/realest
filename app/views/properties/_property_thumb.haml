@@ -8,4 +8,4 @@
       - if property.cent.present?
         .property-detail
           = "#{property.cent} cent"
-  
+    = render partial: 'property_action', locals: {property: property}

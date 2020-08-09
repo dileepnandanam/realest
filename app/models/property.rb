@@ -4,6 +4,8 @@ class Property < ApplicationRecord
   has_one_attached :img3
   has_one_attached :img4
 
+  belongs_to :user
+
   #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
   validates_each(:acre, :cent, :expected_price, :landmark) do |record, attr, value|
     if value.blank?

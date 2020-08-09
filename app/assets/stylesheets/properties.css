@@ -19,6 +19,7 @@
   padding: 12px !important;
 }
 .property {
+  border: 1px solid white;
   background: azure;
   border-radius: 12px;
   overflow: hidden;
@@ -31,4 +32,23 @@
   display: inline-block;
   float: left;
   padding: 0px 4px;
+}
+.filter-container {
+  margin: 12px;
+  padding: 12px;
+  background-color: white;
+}
+.filter {
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+}
+.filter-field {
+  width: 44%;
+  max-width: 200px;
+  border-radius: 4px;
+  border: 1px solid #919195;
+}
+.property-action-link {
+  padding-left: 6px;
 }

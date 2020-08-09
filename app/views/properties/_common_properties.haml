@@ -1,5 +1,6 @@
 = link_to 'Add Property', new_property_path, class: 'action-button new-property'
 .clearfix
+= render partial: 'properties/filter'
 .properties
-  - @properties.each do |p|
-    = render partial: 'properties/property_thumb', locals: {property: p}
+  = render partial: 'properties', locals: {properties: @properties}
+.clearfix

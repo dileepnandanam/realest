@@ -1,0 +1,21 @@
+.filter-container
+  .filter
+    = form_with(url: '/index', method: 'get', class: 'filter-form') do
+      = label_tag 'price range'
+      .clearfix
+      = text_field_tag 'price1', nil, class: 'filter-field'
+      to
+      = text_field_tag 'price2', nil, class: 'filter-field'
+      .clearfix
+      = label_tag 'acres'
+      .clearfix
+      = text_field_tag 'acre1', nil, class: 'filter-field'
+      to
+      = text_field_tag 'acre2', nil, class: 'filter-field'
+      .clearfix
+      = label_tag 'cents'
+      .clearfix
+      = text_field_tag 'cent1', nil, class: 'filter-field'
+      to
+      = text_field_tag 'cent2', nil, class: 'filter-field'
+      = hidden_field_tag 'filtering', 'true'

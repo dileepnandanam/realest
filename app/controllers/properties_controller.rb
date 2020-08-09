@@ -1,10 +1,22 @@
 class PropertiesController < ApplicationController
   def index
     if current_user.admin?
-      @properties = Property.search(params[:query], price_range, acre_range, cent_range).where(state: params[:state]).paginate(per_page: 12, page: params[:page])
+      @properties = Property.search(params[:query], price_range, acre_range, cent_range).paginate(per_page: 12, page: params[:page])
     else
       @properties = Property.search(params[:query], price_range, acre_range, cent_range).where(state: 'approved').paginate(per_page: 12, page: params[:page])
     end
+
+    if params[:filtering]
+      render partial: 'properties/properties', locals: {properties: @properties}, layout: false
+    else
+      render 'index'
+    end
+  end
+
+  def set_state
+    @property = Property.find(params[:id])
+    @property.update state: params.permit(:state)[:state]
+    render partial: 'property_action', locals: {property: @property}, layout: false
   end
 
   def new
@@ -29,6 +41,21 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def edit
+    @property = Property.find(params[:id])
+    render 'form'
+  end
+
+  def update
+    @property = Property.find(params[:id])
+    @property.update(property_params)
+    if @property.valid?
+      redirect_to properties_path
+    else
+      render 'form'
+    end
+  end
+
   protected
 
   def property_params
@@ -36,20 +63,27 @@ class PropertiesController < ApplicationController
   end
 
   def price_range
-    start = params[:price1].present? ? params[:price1] : 0
-    ending = params[:price2].present? ? params[:price2] : 99999999999999
+    start = params[:price1].present? ? params[:price1].to_i : 0
+    ending = params[:price2].present? ? params[:price2].to_i : 99999999999999
     (start..ending)
   end
 
   def acre_range
-    start = params[:acre1].present? ? params[:acre1] : 0
-    ending = params[:acre2].present? ? params[:acre2] : 999999
+    start = params[:acre1].present? ? params[:acre1].to_i : 0
+    ending = params[:acre2].present? ? params[:acre2].to_i : 999999
     (start..ending)
   end
 
   def cent_range
-    start = params[:cent1].present? ? params[:cent1] : 0
-    ending = params[:cent2].present? ? params[:cent2] : 999999
+    start = params[:cent1].present? ? params[:cent1].to_i : 0
+    ending = params[:cent2].present? ? params[:cent2].to_i : 999999
     (start..ending)
   end
+
+  STATE_MAP = {
+    'sold' => 'sold',
+    'arcived' => 'archived',
+    'new' => 'new',
+    'approved' => 'approved'
+  }
 end

@@ -6,5 +6,7 @@ Rails.application.routes.draw do
     get :switch, on: :member
   end
 
-  resources :properties
+  resources :properties do
+    put :set_state, on: :member
+  end
 end
