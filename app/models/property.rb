@@ -13,24 +13,15 @@ class Property < ApplicationRecord
     end
   end
 
-  def self.search(query, price_range, acre_range, cent_range)
+  def self.search(query, price_range, acre_range)
     sql = Property
-    if query.present?
-      sql = sql.where("landmark like '%#{query}%'")
-    end
+    sql = sql.where("landmark like '%#{query}%'")
+    sql = sql.where(expected_price: price_range)
+    sql = sql.where(land_mass: acre_range)
+  end
 
-    if price_range.present?
-      sql = sql.where(expected_price: price_range)
-    end
-
-    if acre_range.present?
-      sql = sql.where(acre: acre_range)
-    else
-      sql = sql.where(acre: [0, nil])
-    end
-
-    if cent_range.present?
-      sql = sql.where(cent: cent_range)
-    end 
+  before_save :calculate_land_mass
+  def calculate_land_mass
+    self.land_mass = "#{acre}.#{cent}".to_f
   end
 end

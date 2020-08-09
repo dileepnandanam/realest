@@ -1,9 +1,13 @@
 class PropertiesController < ApplicationController
   def index
     if current_user.admin?
-      @properties = Property.search(params[:query], price_range, acre_range, cent_range).paginate(per_page: 12, page: params[:page])
+      if [params[:price1], params[:price2], params[:acre1], params[:acre2], params[:cent1], params[:cent2]].any?(&:present?)
+        @properties = Property.search(params[:query], price_range, acre_range).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+      else
+        @properties = Property.order('created_at DESC').paginate(per_page: 12, page: params[:page])
+      end
     else
-      @properties = Property.search(params[:query], price_range, acre_range, cent_range).where(state: 'approved').paginate(per_page: 12, page: params[:page])
+      @properties = Property.search(params[:query], price_range, acre_range).where(state: 'approved').order('created_at ASC').paginate(per_page: 12, page: params[:page])
     end
 
     if params[:filtering]
@@ -15,6 +19,10 @@ class PropertiesController < ApplicationController
 
   def set_state
     @property = Property.find(params[:id])
+    if !current_user.admin? && !@property.user == current_user
+      render plain: 'unauthorized'
+    end
+
     @property.update state: params.permit(:state)[:state]
     render partial: 'property_action', locals: {property: @property}, layout: false
   end
@@ -48,6 +56,9 @@ class PropertiesController < ApplicationController
 
   def update
     @property = Property.find(params[:id])
+    if !current_user.admin? && !@property.user == current_user
+      render plain: 'unauthorized'
+    end
     @property.update(property_params)
     if @property.valid?
       redirect_to properties_path
@@ -69,15 +80,15 @@ class PropertiesController < ApplicationController
   end
 
   def acre_range
-    start = params[:acre1].present? ? params[:acre1].to_i : 0
-    ending = params[:acre2].present? ? params[:acre2].to_i : 999999
-    (start..ending)
-  end
-
-  def cent_range
-    start = params[:cent1].present? ? params[:cent1].to_i : 0
-    ending = params[:cent2].present? ? params[:cent2].to_i : 999999
-    (start..ending)
+    acre1 = params[:acre1].blank? ? 0 : params[:acre1].to_i
+    acre2 = params[:acre2].blank? ? 0 : params[:acre2].to_i
+    cent1 = params[:cent1].blank? ? 0 : params[:cent1].to_i
+    cent2 = params[:cent2].blank? ? 0 : params[:cent2].to_i
+    if [acre1, acre2, cent1, cent2].any?{|n| n> 0}
+      ("#{acre1}.#{cent1}".to_f.."#{acre2}.#{cent2}".to_f)
+    else
+      (0.0..99999999.0)
+    end
   end
 
   STATE_MAP = {
