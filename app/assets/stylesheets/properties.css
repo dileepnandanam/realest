@@ -49,6 +49,9 @@
   max-width: 300px;
   margin: auto;
 }
+.budget-filter {
+  margin-bottom: 12px;
+}
 .budget-filter .filter-field {
   width: 44%;
   max-width: 200px;
@@ -62,7 +65,7 @@
 }
 .land-mass-filter label, .land-mass-filter input {
   display: block;
-  width: 100%;
+  width: 90%;
 }
 .land-mass-filter {
   display: inline-block;

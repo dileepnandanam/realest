@@ -17,7 +17,7 @@ class PropertiesController < ApplicationController
         @properties = Property.where(state: params[:state]).order('created_at DESC').paginate(per_page: 12, page: params[:page])
       end
     else
-      @properties = Property.search('approved', price_range, acre_range).where(state: 'approved').order('created_at ASC').paginate(per_page: 12, page: params[:page])
+      @properties = Property.search('approved', price_range, acre_range).order('created_at ASC').paginate(per_page: 12, page: params[:page])
     end
 
     if params[:filtering]
