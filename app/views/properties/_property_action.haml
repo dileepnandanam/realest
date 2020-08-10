@@ -6,7 +6,7 @@
         = link_to 'ignore', set_state_property_path(property, state: 'archived'), method: :put, remote: true, class: 'property-action-link'
       - if property.state == 'approved'
         = link_to 'sold', set_state_property_path(property, state: 'sold'), method: :put, remote: true, class: 'property-action-link'
-        = link_to 'unapprove', set_state_property_path(property, state: 'new'), method: :put, remote: true, class: 'property-action-link'
+        = link_to 'disapprove', set_state_property_path(property, state: 'new'), method: :put, remote: true, class: 'property-action-link'
       - if property.state == 'sold'
         = link_to 'archive', set_state_property_path(property, state: 'archived'), method: :put, remote: true, class: 'property-action-link'
         = link_to 'renew', set_state_property_path(property, state: 'approved'), method: :put, remote: true, class: 'property-action-link'

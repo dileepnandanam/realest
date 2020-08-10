@@ -1,19 +1,28 @@
 .filter-container
   .filter
     = form_with(url: '/index', method: 'get', class: 'filter-form') do
-      = label_tag 'Budget'
-      .clearfix
-      = text_field_tag 'price1', nil, class: 'filter-field'
-      to
-      = text_field_tag 'price2', nil, class: 'filter-field'
-      .clearfix
-      = text_field_tag 'acre1', nil, class: 'filter-field', placeholder: 'acres'
-      = text_field_tag 'cent1', nil, class: 'filter-field', placeholder: 'cents'
-      .clearfic
-      to
-      .clearfix
-      = text_field_tag 'acre2', nil, class: 'filter-field', placeholder: 'acres'
-      = text_field_tag 'cent2', nil, class: 'filter-field', placeholder: 'cents'
+      .budget-filter
+        = label_tag 'Budget'
+        .clearfix
+        = text_field_tag 'price1', nil, class: 'filter-field'
+        to
+        = text_field_tag 'price2', nil, class: 'filter-field'
+        .clearfix
+      .land-mass-filter
+        = label_tag 'acres'
+        = text_field_tag 'acre1', nil, class: 'filter-field', placeholder: 'acres'
+      .land-mass-filter
+        = label_tag 'cents'
+        = text_field_tag 'cent1', nil, class: 'filter-field', placeholder: 'cents'
+      .to
+        to
+      .land-mass-filter
+        = label_tag 'acres'
+        = text_field_tag 'acre2', nil, class: 'filter-field', placeholder: 'acres'
+      
+      .land-mass-filter
+        = label_tag 'cents'
+        = text_field_tag 'cent2', nil, class: 'filter-field', placeholder: 'cents'
       
       
       

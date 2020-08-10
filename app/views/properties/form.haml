@@ -7,4 +7,6 @@
     = f.input :img1, label: "photo 1", required: true
     = f.input :img2, label: "photo 2"
     = f.input :img3, label: "photo 3"
+    - if current_user.admin?
+      = f.input :visible_caption
     = f.submit 'Submit'

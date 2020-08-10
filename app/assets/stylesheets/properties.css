@@ -36,19 +36,32 @@
 .filter-container {
   margin: 12px;
   padding: 12px;
-  background-color: #ffffff59;
+  background-color: #ffffff87;
 }
 .filter {
   width: 100%;
   max-width: 300px;
   margin: auto;
 }
-.filter-field {
+.budget-filter .filter-field {
   width: 44%;
   max-width: 200px;
+}
+.filter-field {
   border-radius: 4px;
   border: 1px solid #919195;
 }
 .property-action-link {
   padding-left: 6px;
+}
+.land-mass-filter label, .land-mass-filter input {
+  display: block;
+  width: 100%;
+}
+.land-mass-filter {
+  display: inline-block;
+  width: 49%;
+}
+.to {
+  text-align: center;
 }
