@@ -1,6 +1,8 @@
 .property-thumb.col-lg-4.col-sm-4.col-xs-6.col-12.pull-left
   .property
     .image-holder{style: "background-image: url('#{property.img1.attachment.present? ? url_for(property.img1) : asset_url('missing.png')}')"}
+      .visible-caption
+        = property.visible_caption
     .property-details
       - if property.acre.present?
         .property-detail

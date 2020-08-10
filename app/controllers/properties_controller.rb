@@ -70,7 +70,7 @@ class PropertiesController < ApplicationController
   protected
 
   def property_params
-    params.require(:property).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark)
+    params.require(:property).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption)
   end
 
   def price_range

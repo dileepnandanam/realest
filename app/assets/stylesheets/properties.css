@@ -11,6 +11,7 @@
   padding: 12px;
 }
 .image-holder {
+  position: relative;
   width: 100%;
   padding-top: 60%;
   background-size: cover;
@@ -63,5 +64,13 @@
   width: 49%;
 }
 .to {
+  text-align: center;
+}
+.visible-caption {
+  background: #000000a3;
+  color: white;
+  position: absolute;
+  top: 50%;
+  width: 100%;
   text-align: center;
 }
