@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :properties do
     put :set_state, on: :member
+    post :interest, on: :member
   end
 end

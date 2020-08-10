@@ -1,6 +1,16 @@
 = link_to 'Add Property', new_property_path, class: 'action-button new-property'
 .clearfix
 = render partial: 'properties/filter'
+.states.col-lg-12
+  .state.col-sm-3.pull-left
+    = link_to 'New', properties_path(state: 'new')
+  .state.col-sm-3.pull-left
+    = link_to 'Approved', properties_path(state: 'approved')
+  .state.col-sm-3.pull-left
+    = link_to 'Sold', properties_path(state: 'sold')
+  .state.col-sm-3.pull-left
+    = link_to 'Archived', properties_path(state: 'archived')
+  .clearfix
 .properties
   = render partial: 'properties', locals: {properties: @properties}
 .clearfix

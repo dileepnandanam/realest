@@ -4,6 +4,11 @@
   padding: 12px;
   margin: 12px;
   border-radius: 6px;
+  text-decoration: none;
+}
+.action-button:hover {
+  box-shadow: 1px 1px 10px red;
+  text-decoration: none;
 }
 .property-form-container {
   margin: 12px;
@@ -70,7 +75,46 @@
   background: #000000a3;
   color: white;
   position: absolute;
-  top: 50%;
+  top: 15%;
   width: 100%;
   text-align: center;
+}
+.property-expand {
+  background-color: #ffffffad;
+  width:100%;
+  overflow: auto;
+}
+.property-expand h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+.property-show {
+  width: 100%;
+  padding: 12px;
+}
+.photos img {
+  width: 80%;
+  margin: auto;
+  display: block;
+  margin-bottom: 20px;
+}
+.photos {
+  width: 100%;
+  overflow: auto;
+}
+.interest-button {
+  margin: auto;
+  width: 185px;
+  margin-bottom: 20px;
+  margin-bottom: 20px;
+}
+.interest-button-container {
+  width: 100%;
+  display: grid;
+}
+.pagination-container {
+  margin-left: 12px;
+}
+.states {
+  background-color: #ffffffaa;
 }

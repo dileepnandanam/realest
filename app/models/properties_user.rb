@@ -1,0 +1,2 @@
+class PropertiesUser < ApplicationRecord
+end

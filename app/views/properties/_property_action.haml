@@ -15,3 +15,4 @@
   - if current_user && current_user.admin? || current_user == property.user
     .property-detail
       = link_to 'edit', edit_property_path(property)
+  = link_to 'View', property_path(property), class: 'property-action-link'

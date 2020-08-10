@@ -1,13 +1,23 @@
 class PropertiesController < ApplicationController
+  def show
+    @property = Property.find(params[:id])
+  end
+
+  def interest
+    Property.find(params[:id]).users << current_user
+    flash[:notice] = 'query placed, we will get back to you soon'
+    redirect_to root_path
+  end
+
   def index
-    if current_user.admin?
+    if current_user.try :admin?
       if [params[:price1], params[:price2], params[:acre1], params[:acre2], params[:cent1], params[:cent2]].any?(&:present?)
-        @properties = Property.search(params[:query], price_range, acre_range).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+        @properties = Property.search(params[:state], price_range, acre_range).order('created_at ASC').paginate(per_page: 12, page: params[:page])
       else
-        @properties = Property.order('created_at DESC').paginate(per_page: 12, page: params[:page])
+        @properties = Property.where(state: params[:state]).order('created_at DESC').paginate(per_page: 12, page: params[:page])
       end
     else
-      @properties = Property.search(params[:query], price_range, acre_range).where(state: 'approved').order('created_at ASC').paginate(per_page: 12, page: params[:page])
+      @properties = Property.search('approved', price_range, acre_range).where(state: 'approved').order('created_at ASC').paginate(per_page: 12, page: params[:page])
     end
 
     if params[:filtering]

@@ -1,0 +1,15 @@
+.property-show
+  .property-expand
+    %h1
+      - if @property.visible_caption.present?
+        = @property.visible_caption
+      - else
+        - acre = @property.acre.to_i > 0 ? "#{@property.acre} acre" : nil
+        - cent = @property.cent.to_i > 0 ? "#{@property.cent} cent" : nil
+        = "#{acre} #{cent}"
+    .interest-button-container
+      = link_to 'I am interested', interest_property_path(@property), class: 'action-button interest-button', method: :post
+    .photos
+      - [1,2,3].each do |i|
+        - if @property.send("img#{i}".to_sym).attachment.present?
+          = image_tag(@property.send("img#{i}".to_sym))

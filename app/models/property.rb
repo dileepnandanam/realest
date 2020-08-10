@@ -5,6 +5,7 @@ class Property < ApplicationRecord
   has_one_attached :img4
 
   belongs_to :user
+  has_and_belongs_to_many :users
 
   #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
   validates_each(:acre, :cent, :expected_price, :landmark) do |record, attr, value|
@@ -13,9 +14,9 @@ class Property < ApplicationRecord
     end
   end
 
-  def self.search(query, price_range, acre_range)
+  def self.search(state, price_range, acre_range)
     sql = Property
-    sql = sql.where("landmark like '%#{query}%'")
+    sql = sql.where(state: state)
     sql = sql.where(expected_price: price_range)
     sql = sql.where(land_mass: acre_range)
   end
