@@ -23,6 +23,8 @@
           = link_to 'Account', edit_user_registration_path(current_user), class: 'pull-right nav-item block'
           
           = link_to 'Home', properties_path, class: 'pull-right nav-item block'
+          - if current_user.admin?
+            = link_to 'interests', properties_users_path, class: 'pull-right nav-item block'
         - else
           = link_to 'Home', properties_path, class: 'pull-right nav-item block'
           = link_to "Sign In", new_user_session_path, class: 'pull-right nav-item block', rel: :nofollow

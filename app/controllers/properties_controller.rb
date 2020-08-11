@@ -4,13 +4,18 @@ class PropertiesController < ApplicationController
   end
 
   def interest
-    Property.find(params[:id]).users << current_user
+    @property = Property.find(params[:id])
+    unless @property.users.include?(current_user)
+      @property.users << current_user
+      PropertiesUser.where(property_id: @property.id, user_id: current_user.id).last.update seen: false
+    end
     flash[:notice] = 'query placed, we will get back to you soon'
     redirect_to root_path
   end
 
   def index
     if current_user.try :admin?
+      @new_properties = NotifGenerator.new_properties
       if [params[:price1], params[:price2], params[:acre1], params[:acre2], params[:cent1], params[:cent2]].any?(&:present?)
         @properties = Property.search(params[:state], price_range, acre_range).order('created_at ASC').paginate(per_page: 12, page: params[:page])
       else

@@ -10,4 +10,14 @@
       - if property.cent.present?
         .property-detail
           = "#{property.cent} cent"
-    = render partial: 'property_action', locals: {property: property}
+    
+    - if defined?(user)
+      .property-details
+        = user.name
+      .property-details
+        .property-detail
+          = link_to user.contact_number, "tel:#{user.contact_number}"
+        .property-detail
+          = link_to 'View', property_path(property), class: 'property-action-link'
+    - else
+      = render partial: 'properties/property_action', locals: {property: property}

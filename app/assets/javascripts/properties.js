@@ -15,4 +15,8 @@ $(document).on('turbolinks:load', function() {
   $(document).on('ajax:success', '.property-action-link', function(e) {
     $(this).closest('.property-action').replaceWith(e.detail[2].responseText)
   })
+
+  $(document).on('ajax:success', '.more-interests-link', function(e) {
+    $('.more-interests-link').replaceWith(e.detail[2].responseText)
+  })
 })

@@ -121,3 +121,12 @@
 .states {
   background-color: #ffffffaa;
 }
+.highlight a {
+  color: yellow !important;
+}
+.interests-container {
+  padding: 12px;
+}
+.interest {
+  display: list-item;
+}
