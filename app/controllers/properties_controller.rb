@@ -85,6 +85,14 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def suggest
+    render json: {
+      suggestions: Property::PLACES.select{ |place|
+        place.starts_with?(params[:query].camelize)
+      }
+    }
+  end
+
   protected
 
   def set_place

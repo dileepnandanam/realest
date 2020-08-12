@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :properties do
     put :set_state, on: :member
     post :interest, on: :member
+    get :suggest, on: :collection 
   end
 
   resources :properties_users

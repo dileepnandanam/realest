@@ -135,3 +135,19 @@
   border: 1px;
   width: 99%;
 }
+.suggestions {
+  min-width: 240px;
+  position: absolute;
+  background: white;
+  padding: 13px 0px;
+  border: 1px solid blue;
+  margin-left: 12px;
+  margin-top: 12px;
+  border-radius: 8px;
+  z-index: 999999;
+}
+.suggestion {
+  padding: 3px 8px;
+  width: 100%;
+  display: block;
+}

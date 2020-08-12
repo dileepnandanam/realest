@@ -4,7 +4,8 @@
       .place-filter
         = label_tag 'nearby place'
         .clearfix
-        = text_field_tag 'place', nil, class: 'place-filter-field'
+        = text_field_tag 'place', session[:place], class: 'place-filter-field'
+        .suggestions.d-none
       .budget-filter
         = label_tag 'Budget'
         .clearfix
