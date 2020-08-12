@@ -14,10 +14,11 @@ class PropertiesController < ApplicationController
   end
 
   def index
+    set_place if params[:place].present?
     if current_user.try :admin?
       @new_properties = NotifGenerator.new_properties
-      if [params[:price1], params[:price2], params[:acre1], params[:acre2], params[:cent1], params[:cent2]].any?(&:present?)
-        @properties = Property.search(params[:state], price_range, acre_range).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+      if [params[:price1], params[:price2], params[:acre1], params[:acre2], params[:cent1], params[:cent2], params[:place]].any?(&:present?)
+        @properties = Property.search(params[:state], price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
       else
         @properties = Property.where(state: params[:state]).order('created_at DESC').paginate(per_page: 12, page: params[:page])
       end
@@ -41,6 +42,8 @@ class PropertiesController < ApplicationController
     @property.update state: params.permit(:state)[:state]
     render partial: 'property_action', locals: {property: @property}, layout: false
   end
+
+
 
   def new
     unless current_user
@@ -84,8 +87,20 @@ class PropertiesController < ApplicationController
 
   protected
 
+  def set_place
+    if params[:place] == session[:place]
+      return
+    end
+    place = params[:place]
+    session[:place] = place
+    result = Geocoder.search(place)
+    if result.first && result.first.coordinates
+      session[:coordinates] = result.first.coordinates
+    end
+  end
+
   def property_params
-    params.require(:property).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption)
+    params.require(:property).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place)
   end
 
   def price_range

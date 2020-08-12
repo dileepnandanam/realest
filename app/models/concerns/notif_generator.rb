@@ -1,6 +1,6 @@
 class NotifGenerator
   def self.new_properties
-    Property.where(seen: false).count
+    Property.where(state: 'new').count
   end
 
   def self.new_interests

@@ -1,4 +1,12 @@
+class PlaceValidator < ActiveModel::Validator
+  def validate(record)
+    if record.lat.blank?
+      record.errors[:place] << 'unrecognized'
+    end
+  end
+end
 class Property < ApplicationRecord
+  attr_accessor :place
   has_one_attached :img1
   has_one_attached :img2
   has_one_attached :img3
@@ -14,11 +22,28 @@ class Property < ApplicationRecord
     end
   end
 
-  def self.search(state, price_range, acre_range)
+
+  reverse_geocoded_by :lat, :lngt
+  before_validation :set_coordinates
+  def set_coordinates
+    result = Geocoder.search(self.place)
+    if result.first.present?
+      coordinates = result.first.coordinates
+      self.lat = coordinates[0]
+      self.lngt = coordinates[1]
+    end
+  end
+
+  validates_with PlaceValidator
+
+  def self.search(state, price_range, acre_range, coordinates)
     sql = Property
     sql = sql.where(state: state)
     sql = sql.where(expected_price: price_range)
     sql = sql.where(land_mass: acre_range)
+    if coordinates.present?
+      sql = sql.near(coordinates, 50)
+    end
   end
 
   before_save :calculate_land_mass

@@ -81,4 +81,3 @@ gem 'geocoder', '~> 1.6', '>= 1.6.2'
 gem "html_truncator", "~>0.2"
 gem 'will_paginate-bootstrap4'
 gem 'active_storage_validations'
-

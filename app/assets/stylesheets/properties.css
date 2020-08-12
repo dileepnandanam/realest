@@ -130,3 +130,8 @@
 .interest {
   display: list-item;
 }
+.place-filter-field {
+  border-radius: 6px;
+  border: 1px;
+  width: 99%;
+}

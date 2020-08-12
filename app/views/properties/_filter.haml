@@ -1,6 +1,10 @@
 .filter-container
   .filter
     = form_with(url: '/index', method: 'get', class: 'filter-form') do
+      .place-filter
+        = label_tag 'nearby place'
+        .clearfix
+        = text_field_tag 'place', nil, class: 'place-filter-field'
       .budget-filter
         = label_tag 'Budget'
         .clearfix
@@ -22,9 +26,7 @@
       
       .land-mass-filter.pull-right
         = label_tag 'cents', nil, class: 'pull-right'
-        = text_field_tag 'cent2', nil, class: 'filter-field pull-right', placeholder: 'cents'
-      
-      
+        = text_field_tag 'cent2', nil, class: 'filter-field pull-right', placeholder: 'cents'      
       
       = hidden_field_tag 'filtering', 'true'
       = hidden_field_tag  'state', params[:state]

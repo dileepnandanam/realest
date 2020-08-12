@@ -10,7 +10,7 @@ $(document).on('turbolinks:load', function() {
   }
 
   $('.filter-field').on('keyup', search)
-
+  $('.place-filter-field').on('keyup', $.debounce(1000, search))
 
   $(document).on('ajax:success', '.property-action-link', function(e) {
     $(this).closest('.property-action').replaceWith(e.detail[2].responseText)
