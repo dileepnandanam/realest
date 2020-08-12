@@ -44,6 +44,7 @@ class Property < ApplicationRecord
     if coordinates.present?
       sql = sql.near(coordinates, 50)
     end
+    sql
   end
 
   before_save :calculate_land_mass

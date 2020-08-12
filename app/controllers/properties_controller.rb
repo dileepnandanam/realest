@@ -23,7 +23,7 @@ class PropertiesController < ApplicationController
         @properties = Property.where(state: params[:state]).order('created_at DESC').paginate(per_page: 12, page: params[:page])
       end
     else
-      @properties = Property.search('approved', price_range, acre_range).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+      @properties = Property.search('approved', price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
     end
 
     if params[:filtering]
@@ -88,14 +88,17 @@ class PropertiesController < ApplicationController
   protected
 
   def set_place
-    if params[:place] == session[:place]
+    if session[:place] == params[:place]
       return
+    else
+      session[:place] = params[:place]
     end
-    place = params[:place]
-    session[:place] = place
-    result = Geocoder.search(place)
-    if result.first && result.first.coordinates
+
+    result = Geocoder.search(params[:place])
+    if result.first.present?
       session[:coordinates] = result.first.coordinates
+    else
+      session[:coordinates] = [0.0, 0.0]
     end
   end
 
