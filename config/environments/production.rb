@@ -82,7 +82,7 @@ Rails.application.configure do
     :port                 => 465,
     :domain               => 'realestatemkd.herokuapp.com',               
     :user_name            => 'restmkd@gmail.com',
-    :password             => Rails.application.credentials.gmail[:password],         
+    :password             => ENV['GMAIL_PASSWORD'],         
     :authentication       => 'plain',
     :ssl                  => true,
     :tls                  => true,
