@@ -1,9 +1,17 @@
 class PropertiesController < ApplicationController
   def show
+    unless current_user.present?
+      flash[:notice] = 'Please Sign In or Sign Up to list a property for sale'
+      redirect_to root_path
+    end
     @property = Property.find(params[:id])
   end
 
   def interest
+    unless current_user.present?
+      flash[:notice] = 'Please Sign In or Sign Up show interest on this property'
+      redirect_to root_path and return
+    end
     @property = Property.find(params[:id])
     unless @property.users.include?(current_user)
       @property.users << current_user
@@ -102,7 +110,7 @@ class PropertiesController < ApplicationController
       session[:place] = params[:place]
     end
 
-    result = Geocoder.search(params[:place])
+    result = Geocoder.search(params[:place].gsub('-', ' '))
     if result.first.present?
       session[:coordinates] = result.first.coordinates
     else
