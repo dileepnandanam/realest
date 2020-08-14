@@ -1,9 +1,5 @@
 class PropertiesController < ApplicationController
   def show
-    unless current_user.present?
-      flash[:notice] = 'Please Sign In or Sign Up to list a property for sale'
-      redirect_to root_path
-    end
     @property = Property.find(params[:id])
   end
 
@@ -18,6 +14,7 @@ class PropertiesController < ApplicationController
       PropertiesUser.where(property_id: @property.id, user_id: current_user.id).last.update seen: false
     end
     flash[:notice] = 'query placed, we will get back to you soon'
+    InterestMailer.with(user: current_user, property: @property).interest_placed.deliver_later
     redirect_to root_path
   end
 
