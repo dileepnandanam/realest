@@ -2,7 +2,7 @@
   .filter
     = form_with(url: '/index', method: 'get', class: 'filter-form') do
       .place-filter
-        = label_tag 'Panchayath'
+        = label_tag 'Place'
         .clearfix
         = text_field_tag 'place', session[:place], class: 'place-filter-field'
         .suggestions.d-none
