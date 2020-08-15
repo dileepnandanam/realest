@@ -131,9 +131,9 @@ class PropertiesController < ApplicationController
     cent1 = params[:cent1].blank? ? 0 : params[:cent1].to_i
     cent2 = params[:cent2].blank? ? 0 : params[:cent2].to_i
     if [acre1, acre2, cent1, cent2].any?{|n| n> 0}
-      ("#{acre1}.#{cent1}".to_f.."#{acre2}.#{cent2}".to_f)
+      ((acre1 * 100 + cent1)..(acre2 * 100 + cent2))
     else
-      (0.0..99999999.0)
+      (0..99999999)
     end
   end
 

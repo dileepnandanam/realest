@@ -40,16 +40,16 @@ class Property < ApplicationRecord
     sql = Property
     sql = sql.where(state: state)
     sql = sql.where(expected_price: price_range)
-    sql = sql.where(land_mass: acre_range)
+    sql = sql.where(total_cents: acre_range)
     if coordinates.present?
       sql = sql.near(coordinates, 50)
     end
     sql
   end
 
-  before_save :calculate_land_mass
-  def calculate_land_mass
-    self.land_mass = "#{acre}.#{cent}".to_f
+  before_save :calculate_total_cents
+  def calculate_total_cents
+    self.total_cents = acre * 100 + cent
   end
 
   PLACES = File.open('places.txt', 'r').read.split("\n")
