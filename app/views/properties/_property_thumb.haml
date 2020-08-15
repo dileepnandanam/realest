@@ -13,7 +13,8 @@
     
     - if defined?(user)
       .property-details
-        = user.name
+        .property-detail
+          = user.name
       .property-details
         .property-detail
           = link_to user.contact_number, "tel:#{user.contact_number}"

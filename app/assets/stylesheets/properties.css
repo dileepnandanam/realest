@@ -25,13 +25,13 @@
   padding: 12px !important;
 }
 .property {
-  border: 1px solid white;
-  background: azure;
+  background: #e3e7e7;
   border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0px 0px 7px #afafb7;
 }
 .property-details {
-  padding: 12px;
+  padding: 3px 12px;
   overflow: auto;
 }
 .property-detail {
@@ -42,7 +42,8 @@
 .filter-container {
   margin: 12px;
   padding: 12px;
-  background-color: #ffffff87;
+  background-color: #e9aaaa87;
+  box-shadow: 0px 0px 5px #909195;
 }
 .filter {
   width: 100%;
@@ -83,11 +84,12 @@
   text-align: center;
 }
 .property-expand {
-  background-color: #ffffffad;
-  width:100%;
+  background-color: #c7babaad;
+  width: 100%;
   overflow: auto;
+  box-shadow: 0px 0px 5px #b3b3dd;
 }
-.property-expand h1 {
+.property-expand h1, .property-expand h2, .property-expand h4 {
   text-align: center;
   margin-top: 20px;
 }
@@ -122,7 +124,7 @@
   background-color: #ffffffaa;
 }
 .highlight a {
-  color: yellow !important;
+  color: red !important;
 }
 .interests-container {
   padding: 12px;
@@ -132,7 +134,7 @@
 }
 .place-filter-field {
   border-radius: 6px;
-  border: 1px;
+  border: 1px solid #919195;
   width: 99%;
 }
 .suggestions {

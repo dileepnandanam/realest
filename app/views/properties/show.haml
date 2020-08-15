@@ -3,10 +3,10 @@
     %h1
       - if @property.visible_caption.present?
         = @property.visible_caption
-      - else
-        - acre = @property.acre.to_i > 0 ? "#{@property.acre} acre" : nil
-        - cent = @property.cent.to_i > 0 ? "#{@property.cent} cent" : nil
-        = "#{acre} #{cent}"
+    %h2
+      - acre = @property.acre.to_i > 0 ? "#{@property.acre} acre" : nil
+      - cent = @property.cent.to_i > 0 ? "#{@property.cent} cent" : nil
+      = "#{acre} #{cent}"
     - unless current_user.try :admin?
       .interest-button-container
         = link_to 'I am interested', interest_property_path(@property), class: 'action-button interest-button', method: :post
@@ -16,10 +16,10 @@
           = image_tag(@property.send("img#{i}".to_sym))
     - if current_user.try :admin?
       .interests-container
-        %h4
-          Posted by
         .interests
           .interest
+            .property-detail
+              Posted by
             .property-detail
               = @property.user.name
             .property-detail
@@ -29,7 +29,7 @@
           Interested People
 
         .interests
-          - @property.users.each do |u|
+          - @property.users.order('properties_users.created_at DESC').each do |u|
             .interest
               .property-detail
                 = u.name
