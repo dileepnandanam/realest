@@ -7,6 +7,8 @@
       - acre = @property.acre.to_i > 0 ? "#{@property.acre} acre" : nil
       - cent = @property.cent.to_i > 0 ? "#{@property.cent} cent" : nil
       = "#{acre} #{cent}"
+    %h4
+      = @property.place
     - unless current_user.try :admin?
       .interest-button-container
         = link_to 'I am interested', interest_property_path(@property), class: 'action-button interest-button', method: :post
@@ -26,7 +28,7 @@
               = link_to @property.user.contact_number, "tel:#{@property.user.contact_number}"
       .interests-container
         %h2
-          Interested People
+          = "Interested People (#{@property.users.count})"
 
         .interests
           - @property.users.order('properties_users.created_at DESC').each do |u|

@@ -6,7 +6,6 @@ class PlaceValidator < ActiveModel::Validator
   end
 end
 class Property < ApplicationRecord
-  attr_accessor :place
   has_one_attached :img1
   has_one_attached :img2
   has_one_attached :img3

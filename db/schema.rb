@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_15_055648) do
+ActiveRecord::Schema.define(version: 2020_08_15_063102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_055648) do
     t.string "visible_caption"
     t.boolean "seen", default: false
     t.bigint "total_cents"
+    t.string "place"
   end
 
   create_table "properties_users", force: :cascade do |t|
