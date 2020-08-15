@@ -36,6 +36,7 @@ $(document).on('turbolinks:load', function() {
   $('.filter-field').on('keyup', search)
   $('.place-filter-field').on('change', $.debounce(1000, search))
   $('.place-filter-field').on('keyup', $.debounce(100, suggestion))
+  $('.place-filter-field').on('keyup', $.debounce(1000, search))
 
 
   $(document).on('ajax:success', '.property-action-link', function(e) {

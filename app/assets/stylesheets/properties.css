@@ -153,3 +153,6 @@
   width: 100%;
   display: block;
 }
+.filter-container .h3 {
+  text-align: center;
+}
