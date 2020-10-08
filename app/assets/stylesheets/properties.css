@@ -132,10 +132,10 @@
 .interest {
   display: list-item;
 }
-.place-filter-field {
+.place-filter-field, .brand, .model {
   border-radius: 6px;
   border: 1px solid #919195;
-  width: 99%;
+  width: 99% !important;
 }
 .suggestions {
   min-width: 240px;

@@ -1,6 +1,6 @@
 .property-form-container
   = simple_form_for(@property) do |f|
-    = f.input :place, label: 'Place', input_html: {class: 'place-filter-field'}
+    = f.input :place, label: 'Place', input_html: {class: 'property-place-filter-field'}
     .suggestions.places.d-none
     = f.input :acre
     = f.input :cent

@@ -6,30 +6,30 @@
       .place-filter
         = label_tag 'Nearby Place'
         .clearfix
-        = text_field_tag 'place', session[:place], class: 'place-filter-field'
+        = text_field_tag 'place', session[:place], class: 'property-place-filter-field place-filter-field'
         .suggestions.places.d-none
       .budget-filter
         = label_tag 'Budget'
         .clearfix
-        = text_field_tag 'price1', nil, class: 'filter-field'
+        = text_field_tag 'price1', nil, class: 'filter-field property-filter-field'
         to
-        = text_field_tag 'price2', nil, class: 'filter-field pull-right'
+        = text_field_tag 'price2', nil, class: 'filter-field property-filter-field pull-right'
         .clearfix
       .land-mass-filter
         = label_tag 'acres'
-        = text_field_tag 'acre1', nil, class: 'filter-field', placeholder: 'acres'
+        = text_field_tag 'acre1', nil, class: 'filter-field property-filter-field', placeholder: 'acres'
       .land-mass-filter.pull-right
         = label_tag 'cents', nil, class: 'pull-right'
-        = text_field_tag 'cent1', nil, class: 'filter-field pull-right', placeholder: 'cents'
+        = text_field_tag 'cent1', nil, class: 'filter-field property-filter-field pull-right', placeholder: 'cents'
       .to
         to
       .land-mass-filter
         = label_tag 'acres'
-        = text_field_tag 'acre2', nil, class: 'filter-field', placeholder: 'acres'
+        = text_field_tag 'acre2', nil, class: 'filter-field property-filter-field', placeholder: 'acres'
       
       .land-mass-filter.pull-right
         = label_tag 'cents', nil, class: 'pull-right'
-        = text_field_tag 'cent2', nil, class: 'filter-field pull-right', placeholder: 'cents'      
+        = text_field_tag 'cent2', nil, class: 'filter-field property-filter-field pull-right', placeholder: 'cents'      
       
       = hidden_field_tag 'filtering', 'true'
       = hidden_field_tag  'state', params[:state]

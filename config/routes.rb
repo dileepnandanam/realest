@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   resources :cars do
     put :set_state, on: :member
     post :interest, on: :member
-    get :suggest, on: :collection
+    get :suggest_brand, on: :collection
+    get :suggest_model, on: :collection
     get :interests, on: :collection 
   end
 

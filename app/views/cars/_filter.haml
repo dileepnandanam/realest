@@ -1,13 +1,13 @@
 .filter-container
   .h3
-    Search properties for sale
+    Search Cars for sale
   .filter
     = form_with(url: '/index', method: 'get', class: 'filter-form') do
       .place-filter
         = label_tag 'Nearby Place'
         .clearfix
         = text_field_tag 'place', session[:place], class: 'place-filter-field'
-        .suggestions.d-none
+        .suggestions.places.d-none
       .budget-filter
         = label_tag 'Budget'
         .clearfix
@@ -15,21 +15,15 @@
         to
         = text_field_tag 'price2', nil, class: 'filter-field pull-right'
         .clearfix
-      .land-mass-filter
-        = label_tag 'acres'
-        = text_field_tag 'acre1', nil, class: 'filter-field', placeholder: 'acres'
-      .land-mass-filter.pull-right
-        = label_tag 'cents', nil, class: 'pull-right'
-        = text_field_tag 'cent1', nil, class: 'filter-field pull-right', placeholder: 'cents'
-      .to
-        to
-      .land-mass-filter
-        = label_tag 'acres'
-        = text_field_tag 'acre2', nil, class: 'filter-field', placeholder: 'acres'
-      
-      .land-mass-filter.pull-right
-        = label_tag 'cents', nil, class: 'pull-right'
-        = text_field_tag 'cent2', nil, class: 'filter-field pull-right', placeholder: 'cents'      
-      
+      .budget-filter
+        = label_tag 'brand'
+        .clearfix
+        = text_field_tag 'brand', nil, class: 'filter-field brand'
+        .suggestions.brands.d-none
+        .clearfix
+        = label_tag 'model'
+        .clearfix
+        = text_field_tag 'model', nil, class: 'filter-field model'
+        .suggestions.models.d-none
       = hidden_field_tag 'filtering', 'true'
       = hidden_field_tag  'state', params[:state]

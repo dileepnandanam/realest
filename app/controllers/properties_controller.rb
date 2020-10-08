@@ -135,15 +135,48 @@ class PropertiesController < ApplicationController
   end
 
   def acre_range
-    acre1 = params[:acre1].blank? ? 0 : params[:acre1].to_i
-    acre2 = params[:acre2].blank? ? 0 : params[:acre2].to_i
-    cent1 = params[:cent1].blank? ? 0 : params[:cent1].to_i
-    cent2 = params[:cent2].blank? ? 0 : params[:cent2].to_i
-    if [acre1, acre2, cent1, cent2].any?{|n| n> 0}
-      ((acre1 * 100 + cent1)..(acre2 * 100 + cent2))
+    acre1 = params[:acre1]
+    acre2 = params[:acre2]
+    cent1 = params[:cent1]
+    cent2 = params[:cent2]
+
+    if acre2.blank?
+      acre2 = 999999
     else
-      (0..99999999)
+      acre2 = acre2.to_i
     end
+
+    if cent2.blank?
+      cent2 = 0
+    else
+      cent2 = cent2.to_i
+    end
+
+
+
+    if acre1.blank?
+      acre1 = 0
+      if acre2.blank?
+        acre2 = 0
+      else
+        acre2 = acre2.to_i
+      end
+    else
+      acre1 = acre1.to_i
+    end
+
+    if cent1.blank?
+      cent1 = 0
+      if cent2.blank?
+        cent2 = 0
+      else
+        cent2 = cent2.to_i
+      end
+    else
+      cent1 = cent1.to_i
+    end
+
+    ((acre1*100+cent1)..(acre2*100+cent2))
   end
 
   STATE_MAP = {

@@ -98,6 +98,21 @@ class CarsController < PropertiesController
     }
   end
 
+  def suggest_brand
+    render json: {
+      suggestions: Car.select('distinct lower(brand)').all.map(&:brand).select{ |item_name|
+        item_name.starts_with?(params[:query].downcase)
+      }
+    }
+  end
+
+  def suggest_model
+    render json: {
+      suggestions: Car.select('distinct lower(model)').all.map(&:model).select{ |item_name|
+        item_name.starts_with?(params[:query].downcase)
+      }
+    }
+  end
 
   def interests
     @properties_users = PropertiesUser.order('created_at desc').paginate(page: params[:page], per_page: 12).includes(:property).includes(:user)
