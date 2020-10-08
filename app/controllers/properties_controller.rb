@@ -127,9 +127,9 @@ class PropertiesController < ApplicationController
 
   def acre_range
     acre1 = params[:acre1].blank? ? 0 : params[:acre1].to_i
-    acre2 = params[:acre2].blank? ? 0 : params[:acre2].to_i
+    acre2 = params[:acre2].blank? ? 999999999 : params[:acre2].to_i
     cent1 = params[:cent1].blank? ? 0 : params[:cent1].to_i
-    cent2 = params[:cent2].blank? ? 0 : params[:cent2].to_i
+    cent2 = params[:cent2].blank? ? 99 : params[:cent2].to_i
     if [acre1, acre2, cent1, cent2].any?{|n| n> 0}
       ((acre1 * 100 + cent1)..(acre2 * 100 + cent2))
     else
