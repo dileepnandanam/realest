@@ -5,7 +5,7 @@ class PlaceValidator < ActiveModel::Validator
     end
   end
 end
-class Servent < Property
+class House < Property
   has_one_attached :img1
   has_one_attached :img2
   has_one_attached :img3
@@ -15,7 +15,7 @@ class Servent < Property
   has_and_belongs_to_many :users
 
   #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
-  validates_each(:expected_price) do |record, attr, value|
+  validates_each(:expected_price, :landmark) do |record, attr, value|
     if value.blank?
       record.errors.add(attr, 'must be given')
     end
@@ -36,7 +36,7 @@ class Servent < Property
   validates_with PlaceValidator
 
   def self.search(state, price_range, coordinates)
-    sql = Servent
+    sql = Property
     sql = sql.where(state: state)
     sql = sql.where(expected_price: price_range)
     if coordinates.present?

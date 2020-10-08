@@ -5,7 +5,7 @@ class PlaceValidator < ActiveModel::Validator
     end
   end
 end
-class Servent < Property
+class Car < Property
   has_one_attached :img1
   has_one_attached :img2
   has_one_attached :img3
@@ -36,7 +36,7 @@ class Servent < Property
   validates_with PlaceValidator
 
   def self.search(state, price_range, coordinates)
-    sql = Servent
+    sql = Car
     sql = sql.where(state: state)
     sql = sql.where(expected_price: price_range)
     if coordinates.present?
