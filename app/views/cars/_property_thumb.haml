@@ -4,12 +4,10 @@
       .visible-caption
         = property.visible_caption
     .property-details
-      - if property.acre.present? && property.acre > 0
-        .property-detail
-          = "#{property.acre} acre"
-      - if property.cent.present?
-        .property-detail
-          = "#{property.cent} cent"
+      .property-detail
+        = property.brand
+      .property-detail
+        = property.model
     
     - if defined?(user)
       .property-details
@@ -19,6 +17,6 @@
         .property-detail
           = link_to user.contact_number, "tel:#{user.contact_number}"
         .property-detail
-          = link_to 'View', property_path(property), class: 'property-action-link'
+          = link_to 'View', car_path(property), class: 'property-action-link'
     - else
-      = render partial: 'properties/property_action', locals: {property: property}
+      = render partial: 'cars/property_action', locals: {property: property}

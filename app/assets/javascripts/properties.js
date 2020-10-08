@@ -22,12 +22,16 @@ $(document).on('turbolinks:load', function() {
       }
     })
   }
+  $('.place-filter-field').on('keyup', $.debounce(100, place_suggestion))
+
+
+
 
   $('.property-filter-field').on('keyup', search_properties)
   $('.property-place-filter-field').on('change', $.debounce(1000, search_properties))
-  $('.property-place-filter-field').on('keyup', $.debounce(100, place_suggestion))
   $('.property-place-filter-field').on('keyup', $.debounce(1000, search_properties))
 
+  
   
 
 
@@ -47,7 +51,7 @@ $(document).on('turbolinks:load', function() {
   brand_suggestion = function() {
     $.ajax({
       url: '/cars/suggest_brand',
-      data: {query: $('.place-filter-field').val()},
+      data: {query: $('.car-brand-filter-field').val()},
       success: function(data) {
         $('.suggestions.brands').removeClass('d-none')
         $('.suggestions.brands').html('')
@@ -74,6 +78,22 @@ $(document).on('turbolinks:load', function() {
 
   
 
+  $('.car-filter-field').on('keyup', search_cars)
+  $('.car-place-filter-field').on('change', $.debounce(1000, search_cars))
+  $('.car-place-filter-field').on('keyup', $.debounce(1000, search_cars))
+  $('.car-brand-filter-field').on('keyup', $.debounce(100, brand_suggestion))
+  $('.car-model-filter-field').on('keyup', $.debounce(100, model_suggestion))
+  
+  
+
+
+  $('.servent-filter-field').on('keyup', search_properties)
+  $('.servent-place-filter-field').on('change', $.debounce(1000, search_properties))
+  $('.servent-place-filter-field').on('keyup', $.debounce(1000, search_properties))
+
+  $('.house-filter-field').on('keyup', search_properties)
+  $('.house-place-filter-field').on('change', $.debounce(1000, search_properties))
+  $('.house-place-filter-field').on('keyup', $.debounce(1000, search_properties))
 
 
 
@@ -92,8 +112,11 @@ $(document).on('turbolinks:load', function() {
       $('.suggestions').addClass('d-none')
   })
   
-  $(document).on('click', '.suggestion', function(){
+  $(document).on('click', '.places .suggestion', function(){
     $('.place-filter-field').val(this.textContent)
+  })
+  $(document).on('click', '.brands .suggestion', function(){
+    $('.car-brand-filter-field').val(this.textContent)
   })
 
 

@@ -140,43 +140,42 @@ class PropertiesController < ApplicationController
     cent1 = params[:cent1]
     cent2 = params[:cent2]
 
-    if acre2.blank?
-      acre2 = 999999
-    else
-      acre2 = acre2.to_i
+
+    if acre1.blank? && acre2.blank? && cent1.blank? && cent2.blank?
+      (0..99999999)
+    elsif acre1.blank? && acre2.blank? && cent1.blank? && cent2.present?
+      (0..cent2.to_i)
+    elsif acre1.blank? && acre2.blank? && cent1.present? && cent2.blank?
+      (cent1.to_i..99999999)
+    elsif acre1.blank? && acre2.blank? && cent1.present? && cent2.present?
+      (cent1.to_i..cent2.to_i)
+    elsif acre1.blank? && acre2.present? && cent1.blank? && cent2.blank?
+      (0..acre2.to_i*100)
+    elsif acre1.blank? && acre2.present? && cent1.blank? && cent2.present?
+      (0..acre2.to_i*100*cent2.to_i)
+    elsif acre1.blank? && acre2.present? && cent1.present? && cent2.blank?
+      (cent1.to_i..acre2.to_i*100)
+    elsif acre1.blank? && acre2.present? && cent1.present? && cent2.present?
+      (cent1.to_i..acre2.to_i*100+cent2.to_i)
+    elsif acre1.present? && acre2.blank? && cent1.blank? && cent2.blank?
+      (acre1.to_i*100..99999999)
+    elsif acre1.present? && acre2.blank? && cent1.blank? && cent2.present?
+      (acre1.to_i*100..99999999)
+    elsif acre1.present? && acre2.blank? && cent1.present? && cent2.blank?
+      (acre1.to_i*100+cent1.to_i..99999999)
+    elsif acre1.present? && acre2.blank? && cent1.present? && cent2.present?
+      (acre1.to_i*100+cent1.to_i..99999999)
+    elsif acre1.present? && acre2.present? && cent1.blank? && cent2.blank?
+      (acre1.to_i*100..acre2.to_i*100)
+    elsif acre1.present? && acre2.present? && cent1.blank? && cent2.present?
+      (acre1.to_i*100..acre2.to_i*100+cent2.to_i)
+    elsif acre1.present? && acre2.present? && cent1.present? && cent2.blank?
+      (acre1.to_i*100+cent1.to_i..acre2.to_i*100)
+    else acre1.present? && acre2.present? && cent1.present? && cent2.present?
+      (acre1.to_i*100+cent1.to_i..acre2.to_i*100+cent2.to_i)
     end
 
-    if cent2.blank?
-      cent2 = 0
-    else
-      cent2 = cent2.to_i
-    end
-
-
-
-    if acre1.blank?
-      acre1 = 0
-      if acre2.blank?
-        acre2 = 0
-      else
-        acre2 = acre2.to_i
-      end
-    else
-      acre1 = acre1.to_i
-    end
-
-    if cent1.blank?
-      cent1 = 0
-      if cent2.blank?
-        cent2 = 0
-      else
-        cent2 = cent2.to_i
-      end
-    else
-      cent1 = cent1.to_i
-    end
-
-    ((acre1*100+cent1)..(acre2*100+cent2))
+    
   end
 
   STATE_MAP = {

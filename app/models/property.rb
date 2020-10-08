@@ -16,7 +16,7 @@ class Property < ApplicationRecord
 
   #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
   validates_each(:acre, :cent, :expected_price, :landmark) do |record, attr, value|
-    if value.blank?
+    if value.blank? && record.type == nil
       record.errors.add(attr, 'must be given')
     end
   end
@@ -48,7 +48,9 @@ class Property < ApplicationRecord
 
   before_save :calculate_total_cents
   def calculate_total_cents
-    self.total_cents = acre * 100 + cent
+    if type == nil
+      self.total_cents = acre * 100 + cent
+    end
   end
 
   PLACES = File.open('places.txt', 'r').read.split("\n")

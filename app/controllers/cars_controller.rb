@@ -100,7 +100,7 @@ class CarsController < PropertiesController
 
   def suggest_brand
     render json: {
-      suggestions: Car.select('distinct lower(brand)').all.map(&:brand).select{ |item_name|
+      suggestions: Car.select('distinct lower(brand) brand').all.map(&:brand).select{ |item_name|
         item_name.starts_with?(params[:query].downcase)
       }
     }
@@ -108,7 +108,7 @@ class CarsController < PropertiesController
 
   def suggest_model
     render json: {
-      suggestions: Car.select('distinct lower(model)').all.map(&:model).select{ |item_name|
+      suggestions: Car.select('distinct lower(model) model').all.map(&:model).select{ |item_name|
         item_name.starts_with?(params[:query].downcase)
       }
     }
@@ -140,7 +140,7 @@ class CarsController < PropertiesController
   end
 
   def property_params
-    params.require(:property).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place, :brand, :model)
+    params.require(:car).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place, :brand, :model)
   end
 
   def price_range
