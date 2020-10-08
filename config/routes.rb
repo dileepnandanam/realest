@@ -13,5 +13,26 @@ Rails.application.routes.draw do
     get :interests, on: :collection 
   end
 
+  resources :cars do
+    put :set_state, on: :member
+    post :interest, on: :member
+    get :suggest, on: :collection
+    get :interests, on: :collection 
+  end
+
+  resources :homes do
+    put :set_state, on: :member
+    post :interest, on: :member
+    get :suggest, on: :collection
+    get :interests, on: :collection 
+  end
+
+  resources :servents do
+    put :set_state, on: :member
+    post :interest, on: :member
+    get :suggest, on: :collection
+    get :interests, on: :collection 
+  end
+
   resources :properties_users
 end
