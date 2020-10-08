@@ -32,7 +32,7 @@ class HousesController < ApplicationController
     end
 
     if params[:filtering]
-      render partial: 'properties/properties', locals: {properties: @properties}, layout: false
+      render partial: 'lands/properties', locals: {properties: @properties}, layout: false
     else
       render 'index'
     end
@@ -66,7 +66,7 @@ class HousesController < ApplicationController
     )
     if @property.save
       flash[:notice] = 'Property Listed'
-      redirect_to properties_path
+      redirect_to lands_path
     else
       render 'form'
     end
@@ -84,7 +84,7 @@ class HousesController < ApplicationController
     end
     @property.update(property_params)
     if @property.valid?
-      redirect_to properties_path
+      redirect_to lands_path
     else
       render 'form'
     end

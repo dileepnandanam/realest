@@ -11,7 +11,7 @@
       = @property.place
     - unless current_user.try :admin?
       .interest-button-container
-        = link_to 'I am interested', interest_property_path(@property), class: 'action-button interest-button', method: :post
+        = link_to 'I am interested', interest_land_path(@property), class: 'action-button interest-button', method: :post
     .photos
       - [1,2,3].each do |i|
         - if @property.send("img#{i}".to_sym).attachment.present?

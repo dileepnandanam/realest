@@ -11,7 +11,7 @@ $(document).on('turbolinks:load', function() {
 
   place_suggestion = function() {
     $.ajax({
-      url: '/properties/suggest',
+      url: '/lands/suggest',
       data: {query: $('.place-filter-field').val()},
       success: function(data) {
         $('.suggestions.places').removeClass('d-none')
@@ -27,7 +27,7 @@ $(document).on('turbolinks:load', function() {
 
 
 
-  $('.property-filter-field').on('keyup', search_properties)
+  $('.property-filter-field').on('keyup', $.debounce(1000, search_properties))
   $('.property-place-filter-field').on('change', $.debounce(1000, search_properties))
   $('.property-place-filter-field').on('keyup', $.debounce(1000, search_properties))
 
@@ -78,7 +78,7 @@ $(document).on('turbolinks:load', function() {
 
   
 
-  $('.car-filter-field').on('keyup', search_cars)
+  $('.car-filter-field').on('keyup', $.debounce(100, search_cars))
   $('.car-place-filter-field').on('change', $.debounce(1000, search_cars))
   $('.car-place-filter-field').on('keyup', $.debounce(1000, search_cars))
   $('.car-brand-filter-field').on('keyup', $.debounce(100, brand_suggestion))

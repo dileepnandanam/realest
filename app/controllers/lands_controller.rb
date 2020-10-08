@@ -1,6 +1,6 @@
-class PropertiesController < ApplicationController
+class LandsController < ApplicationController
   def show
-    @property = Property.find(params[:id])
+    @property = Land.find(params[:id])
   end
 
   def interest
@@ -8,7 +8,7 @@ class PropertiesController < ApplicationController
       flash[:notice] = 'Please Sign In or Sign Up to show interest on this property'
       redirect_to root_path and return
     end
-    @property = Property.find(params[:id])
+    @property = Land.find(params[:id])
     unless @property.users.include?(current_user)
       @property.users << current_user
       PropertiesUser.where(property_id: @property.id, user_id: current_user.id).last.update seen: false
@@ -23,23 +23,23 @@ class PropertiesController < ApplicationController
     if current_user.try :admin?
       @new_properties = NotifGenerator.new_properties
       if [params[:price1], params[:price2], params[:acre1], params[:acre2], params[:cent1], params[:cent2], params[:place]].any?(&:present?)
-        @properties = Property.search(params[:state], price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+        @properties = Land.search(params[:state], price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
       else
-        @properties = Property.where(state: params[:state]).order('created_at DESC').paginate(per_page: 12, page: params[:page])
+        @properties = Land.where(state: params[:state]).order('created_at DESC').paginate(per_page: 12, page: params[:page])
       end
     else
-      @properties = Property.search('approved', price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+      @properties = Land.search('approved', price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
     end
 
     if params[:filtering]
-      render partial: 'properties/properties', locals: {properties: @properties}, layout: false
+      render partial: 'lands/properties', locals: {properties: @properties}, layout: false
     else
       render 'index'
     end
   end
 
   def set_state
-    @property = Property.find(params[:id])
+    @property = Land.find(params[:id])
     if !current_user.admin? && !@property.user == current_user
       render plain: 'unauthorized'
     end
@@ -54,37 +54,37 @@ class PropertiesController < ApplicationController
     unless current_user
       redirect_to new_user_session_path and return
     end
-    @property = Property.new
+    @property = Land.new
     render 'form'
   end
 
   def create
-    @property = Property.new(
+    @property = Land.new(
       property_params.merge(user_id: current_user.id,
                             state: current_user.admin? ? 'approved' : 'new'
       )
     )
     if @property.save
-      flash[:notice] = 'Property Listed'
-      redirect_to properties_path
+      flash[:notice] = 'Land Listed'
+      redirect_to lands_path
     else
       render 'form'
     end
   end
 
   def edit
-    @property = Property.find(params[:id])
+    @property = Land.find(params[:id])
     render 'form'
   end
 
   def update
-    @property = Property.find(params[:id])
+    @property = Land.find(params[:id])
     if !current_user.admin? && !@property.user == current_user
       render plain: 'unauthorized'
     end
     @property.update(property_params)
     if @property.valid?
-      redirect_to properties_path
+      redirect_to lands_path
     else
       render 'form'
     end
@@ -92,7 +92,7 @@ class PropertiesController < ApplicationController
 
   def suggest
     render json: {
-      suggestions: Property::PLACES.select{ |place|
+      suggestions: Land::PLACES.select{ |place|
         place.starts_with?(params[:query].camelize)
       }
     }

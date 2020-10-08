@@ -1,6 +1,6 @@
-= link_to 'Add Property', new_property_path, class: 'action-button new-property'
+= link_to 'Add Property', new_land_path, class: 'action-button new-property'
 .clearfix
-= render partial: 'properties/filter'
+= render partial: 'lands/filter'
 .properties
   = render partial: 'properties', locals: {properties: @properties}
 .clearfix

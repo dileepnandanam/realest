@@ -1,4 +1,4 @@
-class CarsController < PropertiesController
+class CarsController < ApplicationController
   def show
     @property = Car.find(params[:id])
   end
@@ -66,7 +66,7 @@ class CarsController < PropertiesController
     )
     if @property.save
       flash[:notice] = 'Car Listed'
-      redirect_to properties_path
+      redirect_to lands_path
     else
       render 'form'
     end
@@ -84,7 +84,7 @@ class CarsController < PropertiesController
     end
     @property.update(property_params)
     if @property.valid?
-      redirect_to properties_path
+      redirect_to lands_path
     else
       render 'form'
     end

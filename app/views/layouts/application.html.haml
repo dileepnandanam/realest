@@ -22,9 +22,9 @@
 
           = link_to 'Account', edit_user_registration_path(current_user), class: 'pull-right nav-item block'
           
-          = link_to 'Home', properties_path, class: 'pull-right nav-item block'
+          = link_to 'Home', lands_path, class: 'pull-right nav-item block'
         - else
-          = link_to 'Home', properties_path, class: 'pull-right nav-item block'
+          = link_to 'Home', lands_path, class: 'pull-right nav-item block'
           = link_to "Sign In", new_user_session_path, class: 'pull-right nav-item block', rel: :nofollow
         
         .clearfix
@@ -32,7 +32,7 @@
         .flash
           = flash[:notice]
       .subnanv
-        - ['properties', 'cars', 'houses', 'servents'].each do |p|
+        - ['lands', 'cars', 'houses', 'servents'].each do |p|
           .subnav-item.col-lg-3.col-sm-12.col-12.float-left{class: controller_name == p ? 'highlight' : ''}
             = link_to p, eval("#{p}_path")
           
