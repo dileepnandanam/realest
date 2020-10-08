@@ -1,0 +1,39 @@
+.property-show
+  .property-expand
+    %h1
+      - if @property.visible_caption.present?
+        = @property.visible_caption
+    %h2
+      - acre = @property.acre.to_i > 0 ? "#{@property.acre} acre" : nil
+      - cent = @property.cent.to_i > 0 ? "#{@property.cent} cent" : nil
+      = "#{acre} #{cent}"
+    %h4
+      = @property.place
+    - unless current_user.try :admin?
+      .interest-button-container
+        = link_to 'I am interested', interest_property_path(@property), class: 'action-button interest-button', method: :post
+    .photos
+      - [1,2,3].each do |i|
+        - if @property.send("img#{i}".to_sym).attachment.present?
+          = image_tag(@property.send("img#{i}".to_sym))
+    - if current_user.try :admin?
+      .interests-container
+        .interests
+          .interest
+            .property-detail
+              Posted by
+            .property-detail
+              = @property.user.name
+            .property-detail
+              = link_to @property.user.contact_number, "tel:#{@property.user.contact_number}"
+      .interests-container
+        %h2
+          = "Interested People (#{@property.users.count})"
+
+        .interests
+          - @property.users.order('properties_users.created_at DESC').each do |u|
+            .interest
+              .property-detail
+                = u.name
+              .property-detail
+                = link_to u.contact_number, "tel:#{u.contact_number}"

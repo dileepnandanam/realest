@@ -1,6 +1,6 @@
-class PropertiesController < ApplicationController
+class HousesController < ApplicationController
   def show
-    @property = Property.find(params[:id])
+    @property = House.find(params[:id])
   end
 
   def interest
@@ -8,7 +8,7 @@ class PropertiesController < ApplicationController
       flash[:notice] = 'Please Sign In or Sign Up to show interest on this property'
       redirect_to root_path and return
     end
-    @property = Property.find(params[:id])
+    @property = House.find(params[:id])
     unless @property.users.include?(current_user)
       @property.users << current_user
       PropertiesUser.where(property_id: @property.id, user_id: current_user.id).last.update seen: false
@@ -23,12 +23,12 @@ class PropertiesController < ApplicationController
     if current_user.try :admin?
       @new_properties = NotifGenerator.new_properties
       if [params[:price1], params[:price2], params[:acre1], params[:acre2], params[:cent1], params[:cent2], params[:place]].any?(&:present?)
-        @properties = Property.search(params[:state], price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+        @properties = House.search(params[:state], price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
       else
-        @properties = Property.where(state: params[:state]).order('created_at DESC').paginate(per_page: 12, page: params[:page])
+        @properties = House.where(state: params[:state]).order('created_at DESC').paginate(per_page: 12, page: params[:page])
       end
     else
-      @properties = Property.search('approved', price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+      @properties = House.search('approved', price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
     end
 
     if params[:filtering]
@@ -39,7 +39,7 @@ class PropertiesController < ApplicationController
   end
 
   def set_state
-    @property = Property.find(params[:id])
+    @property = House.find(params[:id])
     if !current_user.admin? && !@property.user == current_user
       render plain: 'unauthorized'
     end
@@ -54,12 +54,12 @@ class PropertiesController < ApplicationController
     unless current_user
       redirect_to new_user_session_path and return
     end
-    @property = Property.new
+    @property = House.new
     render 'form'
   end
 
   def create
-    @property = Property.new(
+    @property = House.new(
       property_params.merge(user_id: current_user.id,
                             state: current_user.admin? ? 'approved' : 'new'
       )
@@ -73,12 +73,12 @@ class PropertiesController < ApplicationController
   end
 
   def edit
-    @property = Property.find(params[:id])
+    @property = House.find(params[:id])
     render 'form'
   end
 
   def update
-    @property = Property.find(params[:id])
+    @property = House.find(params[:id])
     if !current_user.admin? && !@property.user == current_user
       render plain: 'unauthorized'
     end
@@ -132,18 +132,6 @@ class PropertiesController < ApplicationController
     start = params[:price1].present? ? params[:price1].to_i : 0
     ending = params[:price2].present? ? params[:price2].to_i : 99999999999999
     (start..ending)
-  end
-
-  def acre_range
-    acre1 = params[:acre1].blank? ? 0 : params[:acre1].to_i
-    acre2 = params[:acre2].blank? ? 0 : params[:acre2].to_i
-    cent1 = params[:cent1].blank? ? 0 : params[:cent1].to_i
-    cent2 = params[:cent2].blank? ? 0 : params[:cent2].to_i
-    if [acre1, acre2, cent1, cent2].any?{|n| n> 0}
-      ((acre1 * 100 + cent1)..(acre2 * 100 + cent2))
-    else
-      (0..99999999)
-    end
   end
 
   STATE_MAP = {

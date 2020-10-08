@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     get :interests, on: :collection 
   end
 
-  resources :homes do
+  resources :houses do
     put :set_state, on: :member
     post :interest, on: :member
     get :suggest, on: :collection

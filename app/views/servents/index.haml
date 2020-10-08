@@ -1,0 +1,7 @@
+
+- if current_user.try :admin?
+  = render partial: 'admin_properties'
+- else
+  = render partial: 'common_properties'
+
+

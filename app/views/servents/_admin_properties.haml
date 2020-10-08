@@ -1,0 +1,17 @@
+= link_to 'interests', interests_properties_path, class: 'action-button new-property float-left'
+= link_to 'Add Property', new_property_path, class: 'action-button new-property'
+.clearfix
+= render partial: 'properties/filter'
+.states.col-lg-12
+  .state.col-sm-3.pull-left{class: params[:state] == 'new' ? 'highlight' : ''}
+    = link_to "New(#{@new_properties})", properties_path(state: 'new')
+  .state.col-sm-3.pull-left{class: params[:state] == 'approved' ? 'highlight' : ''}
+    = link_to "Approved", properties_path(state: 'approved')
+  .state.col-sm-3.pull-left{class: params[:state] == 'sold' ? 'highlight' : ''}
+    = link_to 'Sold', properties_path(state: 'sold')
+  .state.col-sm-3.pull-left{class: params[:state] == 'archived' ? 'highlight' : ''}
+    = link_to 'Archived', properties_path(state: 'archived')
+  .clearfix
+.properties
+  = render partial: 'properties', locals: {properties: @properties}
+.clearfix

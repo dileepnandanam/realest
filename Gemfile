@@ -37,7 +37,10 @@ gem 'redis-rails'
 #  gem "binding_of_caller"
 #  gem 'better_errors', git: 'https://github.com/charliesome/better_errors.git', branch: 'master'
 #end
-
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'

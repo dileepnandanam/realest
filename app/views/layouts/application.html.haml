@@ -32,7 +32,7 @@
         .flash
           = flash[:notice]
       .subnanv
-        - ['properties', 'cars', 'homes', 'servents'].each do |p|
+        - ['properties', 'cars', 'houses', 'servents'].each do |p|
           .subnav-item.col-lg-3.col-sm-12.col-12.float-left
             = link_to p, eval("#{p}_path")
 
