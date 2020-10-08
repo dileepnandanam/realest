@@ -33,8 +33,9 @@
           = flash[:notice]
       .subnanv
         - ['properties', 'cars', 'houses', 'servents'].each do |p|
-          .subnav-item.col-lg-3.col-sm-12.col-12.float-left
+          .subnav-item.col-lg-3.col-sm-12.col-12.float-left{class: controller_name == p ? 'highlight' : ''}
             = link_to p, eval("#{p}_path")
+          
 
       = yield
       

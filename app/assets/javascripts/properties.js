@@ -9,15 +9,15 @@ $(document).on('turbolinks:load', function() {
     })
   }
 
-  suggestion = function() {
+  place_suggestion = function() {
     $.ajax({
       url: '/properties/suggest',
       data: {query: $('.place-filter-field').val()},
       success: function(data) {
-        $('.suggestions').removeClass('d-none')
-        $('.suggestions').html('')
+        $('.suggestions.places').removeClass('d-none')
+        $('.suggestions.places').html('')
         $.each(data.suggestions, function(i, value){
-          $('.suggestions').append('<div class="suggestion" >' + value + '</div>')
+          $('.suggestions.places').append('<div class="suggestion" >' + value + '</div>')
         }) 
       }
     })
@@ -35,7 +35,7 @@ $(document).on('turbolinks:load', function() {
 
   $('.filter-field').on('keyup', search)
   $('.place-filter-field').on('change', $.debounce(1000, search))
-  $('.place-filter-field').on('keyup', $.debounce(100, suggestion))
+  $('.place-filter-field').on('keyup', $.debounce(100, place_suggestion))
   $('.place-filter-field').on('keyup', $.debounce(1000, search))
 
 
