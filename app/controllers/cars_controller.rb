@@ -51,7 +51,7 @@ class CarsController < PropertiesController
     )
     if @property.save
       flash[:notice] = 'Car Listed'
-      redirect_to lands_path
+      redirect_to cars_path
     else
       render 'form'
     end
@@ -69,7 +69,7 @@ class CarsController < PropertiesController
     end
     @property.update(property_params)
     if @property.valid?
-      redirect_to lands_path
+      redirect_to cars_path
     else
       render 'form'
     end

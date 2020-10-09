@@ -1,5 +1,5 @@
 - @properties.each do |p|
-  = render partial: 'lands/property_thumb', locals: {property: p}
+  = render partial: 'servents/property_thumb', locals: {property: p}
 .clearfix
 .pagination-container
   = will_paginate @properties, renderer: WillPaginate::ActionView::BootstrapLinkRenderer

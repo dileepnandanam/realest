@@ -50,8 +50,8 @@ class HousesController < PropertiesController
       )
     )
     if @property.save
-      flash[:notice] = 'Property Listed'
-      redirect_to lands_path
+      flash[:notice] = 'House Listed'
+      redirect_to houses_path
     else
       render 'form'
     end
@@ -69,7 +69,7 @@ class HousesController < PropertiesController
     end
     @property.update(property_params)
     if @property.valid?
-      redirect_to lands_path
+      redirect_to houses_path
     else
       render 'form'
     end

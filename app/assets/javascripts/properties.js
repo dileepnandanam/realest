@@ -86,12 +86,19 @@ $(document).on('turbolinks:load', function() {
   $('.car-brand-filter-field').on('change', $.debounce(100, search_cars))
   $('.car-model-filter-field').on('change', $.debounce(100, search_cars))
   
-  
+  search_servents = function() {
+    $.ajax({
+      url: '/servents?' + $('.filter-form').serialize(),
+      dataType: 'html',
+      success: function(data) {
+        $('.properties').html(data)
+      }
+    })
+  }
 
-
-  $('.servent-filter-field').on('keyup', search_properties)
-  $('.servent-place-filter-field').on('change', $.debounce(1000, search_properties))
-  $('.servent-place-filter-field').on('keyup', $.debounce(1000, search_properties))
+  $('.servent-filter-field').on('keyup', search_servents)
+  $('.servent-place-filter-field').on('change', $.debounce(1000, search_servents))
+  $('.servent-place-filter-field').on('keyup', $.debounce(1000, search_servents))
 
   
 

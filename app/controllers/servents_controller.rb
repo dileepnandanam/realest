@@ -3,32 +3,17 @@ class ServentsController < PropertiesController
     @property = Servent.find(params[:id])
   end
 
-  def interest
-    unless current_user.present?
-      flash[:notice] = 'Please Sign In or Sign Up to show interest on this property'
-      redirect_to root_path and return
-    end
-    @property = Servent.find(params[:id])
-    unless @property.users.include?(current_user)
-      @property.users << current_user
-      PropertiesUser.where(property_id: @property.id, user_id: current_user.id).last.update seen: false
-    end
-    flash[:notice] = 'query placed, we will get back to you soon'
-    InterestMailer.with(user: current_user, property: @property).interest_placed.deliver_later
-    redirect_to root_path
-  end
-
   def index
     set_place
     if current_user.try :admin?
       @new_properties = NotifGenerator.new_properties
       if [params[:price1], params[:price2], params[:acre1], params[:acre2], params[:cent1], params[:cent2], params[:place]].any?(&:present?)
-        @properties = Servent.search(params[:state], price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+        @properties = Servent.search(params[:state], price_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
       else
         @properties = Servent.where(state: params[:state]).order('created_at DESC').paginate(per_page: 12, page: params[:page])
       end
     else
-      @properties = Servent.search('approved', price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+      @properties = Servent.search('approved', price_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
     end
 
     if params[:filtering]
@@ -65,8 +50,8 @@ class ServentsController < PropertiesController
       )
     )
     if @property.save
-      flash[:notice] = 'Property Listed'
-      redirect_to lands_path
+      flash[:notice] = 'Servent Listed'
+      redirect_to servents_path
     else
       render 'form'
     end
@@ -84,7 +69,7 @@ class ServentsController < PropertiesController
     end
     @property.update(property_params)
     if @property.valid?
-      redirect_to lands_path
+      redirect_to servents_path
     else
       render 'form'
     end
@@ -120,7 +105,7 @@ class ServentsController < PropertiesController
   end
 
   def property_params
-    params.require(:property).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place)
+    params.require(:servent).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place)
   end
 
   def price_range
