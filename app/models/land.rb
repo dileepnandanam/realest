@@ -12,7 +12,7 @@ class Land < Property
   has_one_attached :img4
 
   belongs_to :user
-  has_and_belongs_to_many :users
+  has_and_belongs_to_many :users, primery_key: :property_id, foreign_key: :user_id
 
   #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
   validates_each(:acre, :cent, :expected_price, :landmark) do |record, attr, value|
