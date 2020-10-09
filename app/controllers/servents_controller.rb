@@ -98,11 +98,6 @@ class ServentsController < ApplicationController
     }
   end
 
-
-  def interests
-    @properties_users = PropertiesUser.order('created_at desc').paginate(page: params[:page], per_page: 12).includes(:property).includes(:user)
-  end
-
   protected
 
   def set_place

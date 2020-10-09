@@ -1,21 +1,6 @@
-class CarsController < ApplicationController
+class CarsController < PropertiesController
   def show
     @property = Car.find(params[:id])
-  end
-
-  def interest
-    unless current_user.present?
-      flash[:notice] = 'Please Sign In or Sign Up to show interest on this property'
-      redirect_to root_path and return
-    end
-    @property = Car.find(params[:id])
-    unless @property.users.include?(current_user)
-      @property.users << current_user
-      PropertiesUser.where(property_id: @property.id, user_id: current_user.id).last.update seen: false
-    end
-    flash[:notice] = 'query placed, we will get back to you soon'
-    InterestMailer.with(user: current_user, property: @property).interest_placed.deliver_later
-    redirect_to root_path
   end
 
   def index
@@ -23,12 +8,12 @@ class CarsController < ApplicationController
     if current_user.try :admin?
       @new_properties = NotifGenerator.new_cars
       if [params[:price1], params[:price2], params[:place]].any?(&:present?)
-        @properties = Car.search(params[:state], price_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+        @properties = Car.search(params[:state], price_range, params[:model], params[:brand], session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
       else
         @properties = Car.where(state: params[:state]).order('created_at DESC').paginate(per_page: 12, page: params[:page])
       end
     else
-      @properties = Car.search('approved', price_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+      @properties = Car.search('approved', price_range, params[:model], params[:brand], session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
     end
 
     if params[:filtering]
@@ -112,10 +97,6 @@ class CarsController < ApplicationController
         item_name.starts_with?(params[:query].downcase)
       }
     }
-  end
-
-  def interests
-    @properties_users = PropertiesUser.order('created_at desc').paginate(page: params[:page], per_page: 12).includes(:property).includes(:user)
   end
 
   protected

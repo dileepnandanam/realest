@@ -1,21 +1,6 @@
-class HousesController < ApplicationController
+class HousesController < PropertiesController
   def show
     @property = House.find(params[:id])
-  end
-
-  def interest
-    unless current_user.present?
-      flash[:notice] = 'Please Sign In or Sign Up to show interest on this property'
-      redirect_to root_path and return
-    end
-    @property = House.find(params[:id])
-    unless @property.users.include?(current_user)
-      @property.users << current_user
-      PropertiesUser.where(property_id: @property.id, user_id: current_user.id).last.update seen: false
-    end
-    flash[:notice] = 'query placed, we will get back to you soon'
-    InterestMailer.with(user: current_user, property: @property).interest_placed.deliver_later
-    redirect_to root_path
   end
 
   def index
@@ -98,10 +83,6 @@ class HousesController < ApplicationController
     }
   end
 
-
-  def interests
-    @properties_users = PropertiesUser.order('created_at desc').paginate(page: params[:page], per_page: 12).includes(:property).includes(:user)
-  end
 
   protected
 

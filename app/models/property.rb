@@ -14,6 +14,8 @@ class Property < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :users
 
+  has_many :properties_user, foreign_key: :property_id
+
   #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
   validates_each(:acre, :cent, :expected_price, :landmark) do |record, attr, value|
     if value.blank? && record.type == nil

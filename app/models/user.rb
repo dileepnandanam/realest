@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :contact_number, presence: true
 
+  has_and_belongs_to_many :cars, primary_key: :id, foreign_key: :property_id, reverse_of: :users
 
   validates_format_of :email,:with => Devise::email_regexp
 

@@ -83,6 +83,8 @@ $(document).on('turbolinks:load', function() {
   $('.car-place-filter-field').on('keyup', $.debounce(1000, search_cars))
   $('.car-brand-filter-field').on('keyup', $.debounce(100, brand_suggestion))
   $('.car-model-filter-field').on('keyup', $.debounce(100, model_suggestion))
+  $('.car-brand-filter-field').on('change', $.debounce(100, search_cars))
+  $('.car-model-filter-field').on('change', $.debounce(100, search_cars))
   
   
 
@@ -117,6 +119,9 @@ $(document).on('turbolinks:load', function() {
   })
   $(document).on('click', '.brands .suggestion', function(){
     $('.car-brand-filter-field').val(this.textContent)
+  })
+  $(document).on('click', '.models .suggestion', function(){
+    $('.car-model-filter-field').val(this.textContent)
   })
 
 
