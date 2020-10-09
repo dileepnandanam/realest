@@ -7,13 +7,13 @@ class HousesController < PropertiesController
     set_place
     if current_user.try :admin?
       @new_properties = NotifGenerator.new_properties
-      if [params[:price1], params[:price2], params[:acre1], params[:acre2], params[:cent1], params[:cent2], params[:place]].any?(&:present?)
-        @properties = House.search(params[:state], price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+      if [params[:price1], params[:price2], params[:place]].any?(&:present?)
+        @properties = House.search(params[:state], price_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
       else
         @properties = House.where(state: params[:state]).order('created_at DESC').paginate(per_page: 12, page: params[:page])
       end
     else
-      @properties = House.search('approved', price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+      @properties = House.search('approved', price_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
     end
 
     if params[:filtering]
@@ -106,7 +106,7 @@ class HousesController < PropertiesController
   end
 
   def property_params
-    params.require(:property).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place)
+    params.require(:house).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place)
   end
 
   def price_range

@@ -1,16 +1,16 @@
-= link_to 'interests', interests_lands_path, class: 'action-button new-property float-left'
-= link_to 'Add Property', new_land_path, class: 'action-button new-property'
+= link_to 'interests', interests_houses_path, class: 'action-button new-property float-left'
+= link_to 'List house', new_house_path, class: 'action-button new-property'
 .clearfix
-= render partial: 'lands/filter'
+= render partial: 'houses/filter'
 .states.col-lg-12
   .state.col-sm-3.pull-left{class: params[:state] == 'new' ? 'highlight' : ''}
-    = link_to "New(#{@new_properties})", lands_path(state: 'new')
+    = link_to "New(#{@new_properties})", houses_path(state: 'new')
   .state.col-sm-3.pull-left{class: params[:state] == 'approved' ? 'highlight' : ''}
-    = link_to "Approved", lands_path(state: 'approved')
+    = link_to "Approved", houses_path(state: 'approved')
   .state.col-sm-3.pull-left{class: params[:state] == 'sold' ? 'highlight' : ''}
-    = link_to 'Sold', lands_path(state: 'sold')
+    = link_to 'Sold', houses_path(state: 'sold')
   .state.col-sm-3.pull-left{class: params[:state] == 'archived' ? 'highlight' : ''}
-    = link_to 'Archived', lands_path(state: 'archived')
+    = link_to 'Archived', houses_path(state: 'archived')
   .clearfix
 .properties
   = render partial: 'properties', locals: {properties: @properties}

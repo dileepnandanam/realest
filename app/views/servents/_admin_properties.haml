@@ -1,7 +1,7 @@
-= link_to 'interests', interests_lands_path, class: 'action-button new-property float-left'
-= link_to 'Add Property', new_land_path, class: 'action-button new-property'
+= link_to 'interests', interests_servents_path, class: 'action-button new-property float-left'
+= link_to 'List Servent', new_servent_path, class: 'action-button new-property'
 .clearfix
-= render partial: 'lands/filter'
+= render partial: 'servents/filter'
 .states.col-lg-12
   .state.col-sm-3.pull-left{class: params[:state] == 'new' ? 'highlight' : ''}
     = link_to "New(#{@new_properties})", lands_path(state: 'new')

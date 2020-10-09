@@ -4,9 +4,7 @@
       - if @property.visible_caption.present?
         = @property.visible_caption
     %h2
-      - acre = @property.acre.to_i > 0 ? "#{@property.acre} acre" : nil
-      - cent = @property.cent.to_i > 0 ? "#{@property.cent} cent" : nil
-      = "#{acre} #{cent}"
+      = "#{@property.model} #{@property.brand}"
     %h4
       = @property.place
     - unless current_user.try :admin?

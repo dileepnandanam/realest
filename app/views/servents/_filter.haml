@@ -1,6 +1,6 @@
 .filter-container
   .h3
-    Search properties for sale
+    Search Servents to hire
   .filter
     = form_with(url: '/index', method: 'get', class: 'filter-form') do
       .place-filter
@@ -15,21 +15,6 @@
         to
         = text_field_tag 'price2', nil, class: 'filter-field pull-right'
         .clearfix
-      .land-mass-filter
-        = label_tag 'acres'
-        = text_field_tag 'acre1', nil, class: 'filter-field', placeholder: 'acres'
-      .land-mass-filter.pull-right
-        = label_tag 'cents', nil, class: 'pull-right'
-        = text_field_tag 'cent1', nil, class: 'filter-field pull-right', placeholder: 'cents'
-      .to
-        to
-      .land-mass-filter
-        = label_tag 'acres'
-        = text_field_tag 'acre2', nil, class: 'filter-field', placeholder: 'acres'
-      
-      .land-mass-filter.pull-right
-        = label_tag 'cents', nil, class: 'pull-right'
-        = text_field_tag 'cent2', nil, class: 'filter-field pull-right', placeholder: 'cents'      
       
       = hidden_field_tag 'filtering', 'true'
       = hidden_field_tag  'state', params[:state]

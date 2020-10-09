@@ -1,9 +1,7 @@
 .property-form-container
   = simple_form_for(@property) do |f|
     = f.input :place, label: 'Place', input_html: {class: 'place-filter-field'}
-    .suggestions.d-none
-    = f.input :acre
-    = f.input :cent
+    .suggestions.places.d-none
     = f.input :expected_price
     = f.input :landmark
     = f.input :img1, label: "photo 1 (required)", required: true

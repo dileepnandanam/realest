@@ -19,6 +19,6 @@
         .property-detail
           = link_to user.contact_number, "tel:#{user.contact_number}"
         .property-detail
-          = link_to 'View', land_path(property), class: 'property-action-link'
+          = link_to 'View', house_path(property), class: 'property-action-link'
     - else
-      = render partial: 'lands/property_action', locals: {property: property}
+      = render partial: 'houses/property_action', locals: {property: property}

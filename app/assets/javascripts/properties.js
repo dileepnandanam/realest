@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
   search_properties = function() {
     $.ajax({
-      url: '/properties?' + $('.filter-form').serialize(),
+      url: '/lands?' + $('.filter-form').serialize(),
       dataType: 'html',
       success: function(data) {
         $('.properties').html(data)
@@ -93,9 +93,28 @@ $(document).on('turbolinks:load', function() {
   $('.servent-place-filter-field').on('change', $.debounce(1000, search_properties))
   $('.servent-place-filter-field').on('keyup', $.debounce(1000, search_properties))
 
-  $('.house-filter-field').on('keyup', search_properties)
-  $('.house-place-filter-field').on('change', $.debounce(1000, search_properties))
-  $('.house-place-filter-field').on('keyup', $.debounce(1000, search_properties))
+  
+
+
+
+
+  search_house = function() {
+    $.ajax({
+      url: '/houses?' + $('.filter-form').serialize(),
+      dataType: 'html',
+      success: function(data) {
+        $('.properties').html(data)
+      }
+    })
+  }
+
+
+
+
+
+  $('.house-filter-field').on('keyup', search_house)
+  $('.house-place-filter-field').on('change', $.debounce(1000, search_house))
+  $('.house-place-filter-field').on('keyup', $.debounce(1000, search_house))
 
 
 

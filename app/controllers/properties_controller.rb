@@ -7,7 +7,7 @@ class PropertiesController < ApplicationController
     end
     @property = Property.find(params[:id])
 
-    unless @property.users.include?(current_user)
+    unless PropertiesUser.where(property_id: @property.id, user_id: current_user.id).last.present?
       PropertiesUser.create(property_id: @property.id, user_id: current_user.id, seen: false)
     end
     flash[:notice] = 'query placed, we will get back to you soon'

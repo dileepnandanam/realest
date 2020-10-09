@@ -12,7 +12,8 @@ class House < Property
   has_one_attached :img4
 
   belongs_to :user
-  has_and_belongs_to_many :users
+  has_and_belongs_to_many :users, primary_key: :property_id, foreign_key: :user_id
+
 
   #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
   validates_each(:expected_price, :landmark) do |record, attr, value|
@@ -36,7 +37,7 @@ class House < Property
   validates_with PlaceValidator
 
   def self.search(state, price_range, coordinates)
-    sql = Property
+    sql = House
     sql = sql.where(state: state)
     sql = sql.where(expected_price: price_range)
     if coordinates.present?
