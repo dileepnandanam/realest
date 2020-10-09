@@ -1,0 +1,8 @@
+.subnanv
+  - ['lands', 'cars', 'houses', 'servents'].each do |p|
+    .subnav-item.col-lg-3.col-sm-3.col-6.float-left{class: controller_name == p ? 'highlight' : ''}
+      = link_to eval("#{p}_path") do
+        .sub-nav-ico.col-12
+          = image_tag(p.singularize)
+          = p
+  .clearfix

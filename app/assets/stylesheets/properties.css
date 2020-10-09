@@ -158,8 +158,14 @@
 }
 .subnav-item {
   text-align: center;
-  background-color: yellowgreen;
 }
 .highlight {
-  background-color: yellow;
+  border: 1px solid;
+}
+.sub-nav-ico img {
+  width: 100%;
+}
+.sub-nav-ico {
+  text-align: center;
+  text-decoration: none;
 }
