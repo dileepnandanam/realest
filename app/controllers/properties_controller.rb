@@ -39,6 +39,12 @@ class PropertiesController < ApplicationController
     (start..ending)
   end
 
+  def area_range
+    start = params[:area1].present? ? params[:area1].to_i : 0
+    ending = params[:area2].present? ? params[:area2].to_i : 99999999999999
+    (start..ending)
+  end
+
   def set_place
     if session[:place] == params[:place]
       return

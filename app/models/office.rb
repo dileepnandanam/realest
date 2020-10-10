@@ -30,6 +30,7 @@ class Office < Property
     sql = Office
     sql = sql.where(state: state)
     sql = sql.where(expected_price: price_range)
+    sql = sql.where(area: area_range)
     if coordinates.present?
       sql = sql.near(coordinates, 10)
     end

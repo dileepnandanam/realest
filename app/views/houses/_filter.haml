@@ -15,6 +15,13 @@
         to
         = text_field_tag 'price2', nil, class: 'filter-field pull-right house-filter-field'
         .clearfix
+      .budget-filter
+        = label_tag 'Area in square feet'
+        .clearfix
+        = text_field_tag 'area1', nil, class: 'filter-field house-filter-field'
+        to
+        = text_field_tag 'area2', nil, class: 'filter-field pull-right house-filter-field'
+        .clearfix
             
       = hidden_field_tag 'filtering', 'true'
       = hidden_field_tag  'state', [params[:state], 'approved'].find(&:present?)

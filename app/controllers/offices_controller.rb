@@ -7,13 +7,13 @@ class OfficesController < PropertiesController
     set_place
     if current_user.try :admin?
       @properties_counts = NotifGenerator.counts(controller_name)
-      if [params[:price1], params[:price2], params[:place]].any?(&:present?)
-        @properties = Office.search(params[:state], price_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+      if [params[:price1], params[:price2], params[:place], params[:area1], params[:area2]].any?(&:present?)
+        @properties = Office.search(params[:state], price_range, area_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
       else
         @properties = Office.where(state: params[:state]).order('created_at DESC').paginate(per_page: 12, page: params[:page])
       end
     else
-      @properties = Office.search('approved', price_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+      @properties = Office.search('approved', price_range, area_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
     end
 
     if params[:filtering]
