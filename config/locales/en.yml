@@ -30,4 +30,21 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      house:
+        expected_price: "Rent"
+      office:
+        expected_price: "Rent"
+      land:
+        expected_price: "Expected Price"
+      servent:
+        expected_price: "salery"
+      car:
+        expected_price: "Expected Price"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "is required"
