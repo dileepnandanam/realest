@@ -22,14 +22,14 @@ $(document).on('turbolinks:load', function() {
       }
     })
   }
-  $('.place-filter-field').on('keyup', $.debounce(100, place_suggestion))
+  $(document).on('keyup', '.place-filter-field', $.debounce(100, place_suggestion))
 
 
 
 
-  $('.property-filter-field').on('keyup', $.debounce(1000, search_properties))
-  $('.property-place-filter-field').on('change', $.debounce(1000, search_properties))
-  $('.property-place-filter-field').on('keyup', $.debounce(1000, search_properties))
+  $(document).on('keyup', '.property-filter-field', $.debounce(1000, search_properties))
+  $(document).on('change', '.property-place-filter-field', $.debounce(1000, search_properties))
+  $(document).on('keyup', '.property-place-filter-field', $.debounce(1000, search_properties))
 
   
   

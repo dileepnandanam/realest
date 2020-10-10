@@ -1,8 +1,8 @@
 .action-button {
   float: right;
-  background: yellow;
-  padding: 10px;
-  margin: 10px;
+  background: #0f0f03;
+  padding: 3px 12px;
+  margin: 5px;
   border-radius: 6px;
   text-decoration: none;
 }
@@ -165,8 +165,11 @@
   padding: 12px;
   border-radius: 6px;
 }
-.highlight {
-  background-image: linear-gradient(45deg, #6b80e1, transparent);
+.highlight.state{
+  background: yellowgreen;
+}
+.highlight.subnav-item {
+  background-image: radial-gradient(transparent, #f3bdbc);
 }
 .sub-nav-ico img {
   width: 100%;
@@ -178,4 +181,17 @@
 }
 .interests {
   padding: 30px 0px 30px 30px;
+}
+.sub-nav-ico {
+  color: black;
+  text-decoration: none;
+}
+.sub-nav-ico:hover {
+  color: red;
+  text-decoration: none !important;
+}
+.more-interests-link {
+  width: 130px;
+  margin: auto;
+  display: block;
 }

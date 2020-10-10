@@ -26,4 +26,4 @@
         = text_field_tag 'model', nil, class: 'filter-field model car-model-filter-field car-filter-field'
         .suggestions.models.d-none
       = hidden_field_tag 'filtering', 'true'
-      = hidden_field_tag  'state', params[:state]
+      = hidden_field_tag  'state', [params[:state], 'approved'].find(&:present?)

@@ -17,4 +17,4 @@
         .clearfix
       
       = hidden_field_tag 'filtering', 'true'
-      = hidden_field_tag  'state', params[:state]
+      = hidden_field_tag  'state', [params[:state], 'approved'].find(&:present?)

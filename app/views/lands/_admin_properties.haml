@@ -5,7 +5,7 @@
 .states.col-lg-12
   .state.col-sm-3.pull-left{class: params[:state] == 'new' ? 'highlight' : ''}
     = link_to "New(#{@properties_counts['new'].to_i})", lands_path(state: 'new'), remote: true, class: 'state'
-  .state.col-sm-3.pull-left{class: params[:state] == 'approved' ? 'highlight' : ''}
+  .state.col-sm-3.pull-left{class: (params[:state].blank? || params[:state] == 'approved') ? 'highlight' : ''}
     = link_to "Approved(#{@properties_counts['approved'].to_i})", lands_path(state: 'approved'), remote: true, class: 'state'
   .state.col-sm-3.pull-left{class: params[:state] == 'sold' ? 'highlight' : ''}
     = link_to "Sold(#{@properties_counts['sold'].to_i})", lands_path(state: 'sold'), remote: true, class: 'state'

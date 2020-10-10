@@ -8,9 +8,9 @@ class LandsController < PropertiesController
     if current_user.try :admin?
       @properties_counts = NotifGenerator.counts(controller_name)
       if [params[:price1], params[:price2], params[:acre1], params[:acre2], params[:cent1], params[:cent2], params[:place]].any?(&:present?)
-        @properties = Land.search(params[:state], price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
+        @properties = Land.search(state, price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
       else
-        @properties = Land.where(state: params[:state]).order('created_at DESC').paginate(per_page: 12, page: params[:page])
+        @properties = Land.where(state: state).order('created_at DESC').paginate(per_page: 12, page: params[:page])
       end
     else
       @properties = Land.search('approved', price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
@@ -76,6 +76,10 @@ class LandsController < PropertiesController
   end
 
   protected
+
+  def state
+    [params[:state], 'approved'].find(&:present?)
+  end
 
   def property_params
     params.require(:land).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place, :iframe)

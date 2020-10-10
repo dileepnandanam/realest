@@ -16,7 +16,10 @@ class PropertiesController < ApplicationController
   end
 
   def interests
-    @properties_users = PropertiesUser.joins(controller_name.singularize.to_sym).order('created_at desc').paginate(page: params[:page], per_page: 12).includes(:user)
+    @properties_users = PropertiesUser
+      .joins(:property)
+      .order('created_at desc').paginate(page: params[:page], per_page: 12).includes(:user)
+      .where(properties: {type: controller_name.singularize.camelize})
   end
 
   def suggest

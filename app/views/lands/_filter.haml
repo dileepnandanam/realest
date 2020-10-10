@@ -32,4 +32,4 @@
         = text_field_tag 'cent2', nil, class: 'filter-field property-filter-field pull-right', placeholder: 'cents'      
       
       = hidden_field_tag 'filtering', 'true'
-      = hidden_field_tag  'state', params[:state]
+      = hidden_field_tag  'state', [params[:state], 'approved'].find(&:present?)
