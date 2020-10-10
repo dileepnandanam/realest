@@ -1,8 +1,9 @@
-.subnanv
-  - ['lands', 'cars', 'houses', 'servents'].each do |p|
+.subnav
+  - ['lands', 'cars', 'houses', 'offices'].each do |p|
     .subnav-item.col-lg-3.col-sm-3.col-6.float-left{class: controller_name == p ? 'highlight' : ''}
-      = link_to eval("#{p}_path") do
+      = link_to eval("#{p}_path(state: 'approved')"), remote: true, class: 'property-category' do
         .sub-nav-ico.col-12
           = image_tag(p.singularize)
+          .clearfix
           = p
   .clearfix

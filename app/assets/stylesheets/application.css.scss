@@ -55,3 +55,19 @@ body {
   padding: 12px;
   font-weight: bold;
 }
+.video-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.video {
+  padding-top: 60%;
+  width: 90%;
+  margin: auto;
+}
+.video iframe {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}

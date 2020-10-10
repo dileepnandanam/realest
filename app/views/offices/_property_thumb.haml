@@ -3,11 +3,10 @@
     .image-holder{style: "background-image: url('#{property.img1.attachment.present? ? url_for(property.img1) : asset_url('missing.png')}')"}
       .visible-caption
         = property.visible_caption
-
+    
     .property-details
       .property-detail
-        = "#{property.area} sqr ft house at #{property.place}"
-  
+        = "#{property.area} sqr ft office space at #{property.place}"
     - if defined?(user)
       .property-details
         .property-detail
@@ -16,6 +15,6 @@
         .property-detail
           = link_to user.contact_number, "tel:#{user.contact_number}"
         .property-detail
-          = link_to 'View', house_path(property), class: 'property-action-link'
+          = link_to 'View', office_path(property), class: 'property-action-link'
     - else
-      = render partial: 'houses/property_action', locals: {property: property}
+      = render partial: 'offices/property_action', locals: {property: property}

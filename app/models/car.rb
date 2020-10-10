@@ -23,14 +23,7 @@ class Car < Property
 
   reverse_geocoded_by :lat, :lngt
   before_validation :set_coordinates
-  def set_coordinates
-    result = Geocoder.search(self.place)
-    if result.first.present?
-      coordinates = result.first.coordinates
-      self.lat = coordinates[0]
-      self.lngt = coordinates[1]
-    end
-  end
+
 
   validates_with PlaceValidator
 
@@ -42,7 +35,7 @@ class Car < Property
     sql = sql.where('lower(brand) = ?', brand.downcase) if brand.present?
 
     if coordinates.present?
-      sql = sql.near(coordinates, 20)
+      sql = sql.near(coordinates, 10)
     end
     sql
   end

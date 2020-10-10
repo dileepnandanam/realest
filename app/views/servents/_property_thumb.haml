@@ -4,12 +4,8 @@
       .visible-caption
         = property.visible_caption
     .property-details
-      - if property.acre.present? && property.acre > 0
-        .property-detail
-          = "#{property.acre} acre"
-      - if property.cent.present?
-        .property-detail
-          = "#{property.cent} cent"
+      .property-detail
+        = "Servent near #{property.place} for hire"
     
     - if defined?(user)
       .property-details

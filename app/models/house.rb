@@ -15,7 +15,7 @@ class House < Property
 
 
   #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
-  validates_each(:expected_price, :landmark) do |record, attr, value|
+  validates_each(:expected_price, :landmark, :area) do |record, attr, value|
     if value.blank?
       record.errors.add(attr, 'must be given')
     end
@@ -40,7 +40,7 @@ class House < Property
     sql = sql.where(state: state)
     sql = sql.where(expected_price: price_range)
     if coordinates.present?
-      sql = sql.near(coordinates, 20)
+      sql = sql.near(coordinates, 10)
     end
     sql
   end

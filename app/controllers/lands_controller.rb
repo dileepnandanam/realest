@@ -6,7 +6,7 @@ class LandsController < PropertiesController
   def index
     set_place
     if current_user.try :admin?
-      @new_properties = NotifGenerator.new_properties
+      @properties_counts = NotifGenerator.counts(controller_name)
       if [params[:price1], params[:price2], params[:acre1], params[:acre2], params[:cent1], params[:cent2], params[:place]].any?(&:present?)
         @properties = Land.search(params[:state], price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
       else
@@ -78,13 +78,7 @@ class LandsController < PropertiesController
   protected
 
   def property_params
-    params.require(:property).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place)
-  end
-
-  def price_range
-    start = params[:price1].present? ? params[:price1].to_i : 0
-    ending = params[:price2].present? ? params[:price2].to_i : 99999999999999
-    (start..ending)
+    params.require(:land).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place, :iframe)
   end
 
   def acre_range

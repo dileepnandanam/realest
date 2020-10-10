@@ -22,14 +22,6 @@ class Servent < Property
 
   reverse_geocoded_by :lat, :lngt
   before_validation :set_coordinates
-  def set_coordinates
-    result = Geocoder.search(self.place)
-    if result.first.present?
-      coordinates = result.first.coordinates
-      self.lat = coordinates[0]
-      self.lngt = coordinates[1]
-    end
-  end
 
   validates_with PlaceValidator
 

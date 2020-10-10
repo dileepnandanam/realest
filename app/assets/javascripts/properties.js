@@ -161,4 +161,9 @@ $(document).on('turbolinks:load', function() {
   $(document).on('ajax:success', '.more-interests-link', function(e) {
     $('.more-interests-link').replaceWith(e.detail[2].responseText)
   })
+
+
+  $(document).on('ajax:success', '.state, .property-category', function(e) {
+    $('.property-page').html(e.detail[2].responseText)
+  })
 })

@@ -6,7 +6,7 @@ class HousesController < PropertiesController
   def index
     set_place
     if current_user.try :admin?
-      @new_properties = NotifGenerator.new_properties
+      @properties_counts = NotifGenerator.counts(controller_name)
       if [params[:price1], params[:price2], params[:place]].any?(&:present?)
         @properties = House.search(params[:state], price_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
       else
@@ -79,13 +79,7 @@ class HousesController < PropertiesController
   protected
 
   def property_params
-    params.require(:house).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place)
-  end
-
-  def price_range
-    start = params[:price1].present? ? params[:price1].to_i : 0
-    ending = params[:price2].present? ? params[:price2].to_i : 99999999999999
-    (start..ending)
+    params.require(:house).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place, :iframe, :area)
   end
 
   STATE_MAP = {

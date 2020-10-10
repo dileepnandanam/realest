@@ -1,17 +1,18 @@
-= link_to 'interests', interests_houses_path, class: 'action-button new-property float-left'
+= link_to 'interests', interests_houses_path, class: 'interests float-left'
 = link_to 'List house', new_house_path, class: 'action-button new-property'
 .clearfix
-= render partial: 'houses/filter'
+
 .states.col-lg-12
   .state.col-sm-3.pull-left{class: params[:state] == 'new' ? 'highlight' : ''}
-    = link_to "New(#{@new_properties})", houses_path(state: 'new')
+    = link_to "New(#{@properties_counts['new'].to_i})", houses_path(state: 'new'), remote: true, class: 'state'
   .state.col-sm-3.pull-left{class: params[:state] == 'approved' ? 'highlight' : ''}
-    = link_to "Approved", houses_path(state: 'approved')
+    = link_to "Approved(#{@properties_counts['approved'].to_i})", houses_path(state: 'approved'), remote: true, class: 'state'
   .state.col-sm-3.pull-left{class: params[:state] == 'sold' ? 'highlight' : ''}
-    = link_to 'Sold', houses_path(state: 'sold')
+    = link_to "Sold(#{@properties_counts['sold'].to_i})", houses_path(state: 'sold'), remote: true, class: 'state'
   .state.col-sm-3.pull-left{class: params[:state] == 'archived' ? 'highlight' : ''}
-    = link_to 'Archived', houses_path(state: 'archived')
+    = link_to "Archived(#{@properties_counts['sold'].to_i})", houses_path(state: 'archived'), remote: true, class: 'state'
   .clearfix
+= render partial: 'houses/filter'
 .properties
   = render partial: 'properties', locals: {properties: @properties}
 .clearfix

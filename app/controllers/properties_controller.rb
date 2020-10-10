@@ -30,6 +30,12 @@ class PropertiesController < ApplicationController
 
   protected
 
+  def price_range
+    start = params[:price1].present? ? params[:price1].to_i : 0
+    ending = params[:price2].present? ? params[:price2].to_i : 99999999999999
+    (start..ending)
+  end
+
   def set_place
     if session[:place] == params[:place]
       return

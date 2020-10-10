@@ -1,8 +1,8 @@
 .action-button {
   float: right;
   background: yellow;
-  padding: 12px;
-  margin: 12px;
+  padding: 10px;
+  margin: 10px;
   border-radius: 6px;
   text-decoration: none;
 }
@@ -18,7 +18,7 @@
 .image-holder {
   position: relative;
   width: 100%;
-  padding-top: 60%;
+  padding-top: 100%;
   background-size: cover;
 }
 .property-thumb {
@@ -98,7 +98,7 @@
   padding: 12px;
 }
 .photos img {
-  width: 80%;
+  width: 100%;
   margin: auto;
   display: block;
   margin-bottom: 20px;
@@ -156,16 +156,26 @@
 .filter-container .h3 {
   text-align: center;
 }
+.subnav {
+  border-bottom: 3px solid lightblue;
+  padding: 3%;
+}
 .subnav-item {
   text-align: center;
+  padding: 12px;
+  border-radius: 6px;
 }
 .highlight {
-  border: 1px solid;
+  background-image: linear-gradient(45deg, #6b80e1, transparent);
 }
 .sub-nav-ico img {
   width: 100%;
+  max-width: 100px;
 }
 .sub-nav-ico {
   text-align: center;
   text-decoration: none;
+}
+.interests {
+  padding: 30px 0px 30px 30px;
 }

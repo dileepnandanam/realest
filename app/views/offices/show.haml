@@ -11,9 +11,7 @@
       = @property.place
     - unless current_user.try :admin?
       .interest-button-container
-        = link_to 'I am interested', interest_land_path(@property), class: 'action-button interest-button', method: :post
-    - if @property.iframe.present?
-      = render partial: 'common/youtube', locals: {property: @property}
+        = link_to 'I am interested', interest_office_path(@property), class: 'action-button interest-button', method: :post
     .photos
       - [1,2,3].each do |i|
         - if @property.send("img#{i}".to_sym).attachment.present?

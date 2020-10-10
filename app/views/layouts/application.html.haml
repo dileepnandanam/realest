@@ -31,10 +31,8 @@
       - if flash[:notice].present?
         .flash
           = flash[:notice]
-      = render partial: 'layouts/sub_nav'
-          
-
-      = yield
+      .property-page
+        = yield
       
       - if Rails.env.development?
         .acc-switcher
