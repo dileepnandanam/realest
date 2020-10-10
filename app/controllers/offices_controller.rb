@@ -17,7 +17,7 @@ class OfficesController < PropertiesController
     end
 
     if params[:filtering]
-      render partial: 'lands/properties', locals: {properties: @properties}, layout: false
+      render partial: 'offices/properties', locals: {properties: @properties}, layout: false
     else
       render 'index'
     end
@@ -32,8 +32,6 @@ class OfficesController < PropertiesController
     @property.update state: params.permit(:state)[:state]
     render partial: 'property_action', locals: {property: @property}, layout: false
   end
-
-
 
   def new
     unless current_user

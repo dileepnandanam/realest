@@ -26,10 +26,10 @@
               = link_to @property.user.contact_number, "tel:#{@property.user.contact_number}"
       .interests-container
         %h2
-          = "Interested People (#{@property.users.count})"
+          = "Interested People (#{@property_users.length})"
 
         .interests
-          - @property.users.order('properties_users.created_at DESC').each do |u|
+          - @property_users.order('properties_users.created_at DESC').each do |u|
             .interest
               .property-detail
                 = u.name

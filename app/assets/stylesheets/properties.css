@@ -33,17 +33,17 @@
 .property-details {
   padding: 3px 12px;
   overflow: auto;
+  text-align: center;
 }
 .property-detail {
   display: inline-block;
-  float: left;
   padding: 0px 4px;
 }
 .filter-container {
-  margin: 12px;
-  padding: 12px;
-  background-color: #e9aaaa87;
-  box-shadow: 0px 0px 5px #909195;
+  margin: 6px 0px;
+  padding: 8px;
+  background-color: #847c2c1a;
+  box-shadow: 0px 0px 100px #3c49806b;
 }
 .filter {
   width: 100%;

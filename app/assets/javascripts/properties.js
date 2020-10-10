@@ -65,7 +65,7 @@ $(document).on('turbolinks:load', function() {
   model_suggestion = function() {
     $.ajax({
       url: '/cars/suggest_model',
-      data: {query: $('.place-filter-field').val()},
+      data: {query: $('.car-model-filter-field').val()},
       success: function(data) {
         $('.suggestions.models').removeClass('d-none')
         $('.suggestions.models').html('')
@@ -78,13 +78,13 @@ $(document).on('turbolinks:load', function() {
 
   
 
-  $('.car-filter-field').on('keyup', $.debounce(100, search_cars))
-  $('.car-place-filter-field').on('change', $.debounce(1000, search_cars))
-  $('.car-place-filter-field').on('keyup', $.debounce(1000, search_cars))
-  $('.car-brand-filter-field').on('keyup', $.debounce(100, brand_suggestion))
-  $('.car-model-filter-field').on('keyup', $.debounce(100, model_suggestion))
-  $('.car-brand-filter-field').on('change', $.debounce(100, search_cars))
-  $('.car-model-filter-field').on('change', $.debounce(100, search_cars))
+  $(document).on('keyup', '.car-filter-field', $.debounce(100, search_cars))
+  $(document).on('change', '.car-place-filter-field', $.debounce(1000, search_cars))
+  $(document).on('keyup','.car-place-filter-field', $.debounce(1000, search_cars))
+  $(document).on('keyup', '.car-brand-filter-field', $.debounce(100, brand_suggestion))
+  $(document).on('keyup', '.car-model-filter-field', $.debounce(100, model_suggestion))
+  $(document).on('change', '.car-brand-filter-field', $.debounce(100, search_cars))
+  $(document).on('change', '.car-model-filter-field', $.debounce(100, search_cars))
   
   search_servents = function() {
     $.ajax({
@@ -96,9 +96,9 @@ $(document).on('turbolinks:load', function() {
     })
   }
 
-  $('.servent-filter-field').on('keyup', search_servents)
-  $('.servent-place-filter-field').on('change', $.debounce(1000, search_servents))
-  $('.servent-place-filter-field').on('keyup', $.debounce(1000, search_servents))
+  $(document).on('keyup', '.servent-filter-field', search_servents)
+  $(document).on('change', '.servent-place-filter-field', $.debounce(1000, search_servents))
+  $(document).on('keyup', '.servent-place-filter-field', $.debounce(1000, search_servents))
 
   
 
@@ -119,9 +119,30 @@ $(document).on('turbolinks:load', function() {
 
 
 
-  $('.house-filter-field').on('keyup', search_house)
-  $('.house-place-filter-field').on('change', $.debounce(1000, search_house))
-  $('.house-place-filter-field').on('keyup', $.debounce(1000, search_house))
+  $(document).on('keyup', '.house-filter-field', search_house)
+  $(document).on('change', '.house-place-filter-field', $.debounce(1000, search_house))
+  $(document).on('keyup', '.house-place-filter-field', $.debounce(1000, search_house))
+
+
+
+
+  search_house = function() {
+    $.ajax({
+      url: '/offices?' + $('.filter-form').serialize(),
+      dataType: 'html',
+      success: function(data) {
+        $('.properties').html(data)
+      }
+    })
+  }
+
+
+
+
+
+  $(document).on('keyup', '.office-filter-field', search_house)
+  $(document).on('change', '.office-place-filter-field', $.debounce(1000, search_house))
+  $(document).on('keyup', '.office-place-filter-field', $.debounce(1000, search_house))
 
 
 

@@ -1,4 +1,15 @@
 class PropertiesController < ApplicationController
+  
+  def show
+    klass = controller_name.singularize.camelize.constantize
+    @property = klass.find(params[:id])
+    @property_users = PropertiesUser
+      .joins(:user)
+      .where(properties_users:{
+        property_id: params[:id]
+      }
+    ).select('users.name, users.contact_number')
+  end
 
   def interest
     unless current_user.present?
@@ -35,13 +46,13 @@ class PropertiesController < ApplicationController
 
   def price_range
     start = params[:price1].present? ? params[:price1].to_i : 0
-    ending = params[:price2].present? ? params[:price2].to_i : 99999999999999
+    ending = params[:price2].present? ? params[:price2].to_i : 99999999999
     (start..ending)
   end
 
   def area_range
     start = params[:area1].present? ? params[:area1].to_i : 0
-    ending = params[:area2].present? ? params[:area2].to_i : 99999999999999
+    ending = params[:area2].present? ? params[:area2].to_i : 99999999
     (start..ending)
   end
 

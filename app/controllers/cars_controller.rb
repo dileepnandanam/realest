@@ -1,8 +1,5 @@
 class CarsController < PropertiesController
-  def show
-    @property = Car.find(params[:id])
-  end
-
+  
   def index
     set_place
     if current_user.try :admin?
@@ -85,8 +82,8 @@ class CarsController < PropertiesController
 
   def suggest_model
     render json: {
-      suggestions: Car.select('distinct lower(model) model').all.map(&:model).select{ |item_name|
-        item_name.starts_with?(params[:query].downcase)
+      suggestions: Car.select('distinct model').all.map(&:model).select{ |item_name|
+        item_name.starts_with?(params[:query])
       }
     }
   end

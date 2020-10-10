@@ -12,7 +12,7 @@ class Property < ApplicationRecord
   has_one_attached :img4
 
   belongs_to :user
-  has_and_belongs_to_many :users, primery_key: :property_id, foreign_key: :user_id
+  has_and_belongs_to_many :users
 
   has_many :properties_user, foreign_key: :property_id
 

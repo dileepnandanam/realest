@@ -26,7 +26,7 @@ class Office < Property
 
   validates_with PlaceValidator
 
-  def self.search(state, price_range, coordinates)
+  def self.search(state, price_range, area_range, coordinates)
     sql = Office
     sql = sql.where(state: state)
     sql = sql.where(expected_price: price_range)

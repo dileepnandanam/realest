@@ -1,4 +1,4 @@
 - @properties_users.each do |interest|
   = render partial: 'offices/property_thumb', locals: {property: interest.property, user: interest.user}
-- if @properties_users.length == 12
+- if @properties_users.next_page
   = link_to 'show more', properties_users_path(page: params[:page].present? ? params[:page].to_i + 1 : 2), remote: true, class: 'more-interests-link'

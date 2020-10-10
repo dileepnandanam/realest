@@ -17,7 +17,7 @@ class HousesController < PropertiesController
     end
 
     if params[:filtering]
-      render partial: 'lands/properties', locals: {properties: @properties}, layout: false
+      render partial: 'houses/properties', locals: {properties: @properties}, layout: false
     else
       render 'index'
     end
