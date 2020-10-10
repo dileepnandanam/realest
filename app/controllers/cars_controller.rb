@@ -75,14 +75,6 @@ class CarsController < PropertiesController
     end
   end
 
-  def suggest
-    render json: {
-      suggestions: Property::PLACES.select{ |place|
-        place.starts_with?(params[:query].camelize)
-      }
-    }
-  end
-
   def suggest_brand
     render json: {
       suggestions: Car.select('distinct lower(brand) brand').all.map(&:brand).select{ |item_name|
@@ -100,25 +92,6 @@ class CarsController < PropertiesController
   end
 
   protected
-
-  def set_place
-    if session[:place] == params[:place]
-      return
-    else
-      session[:place] = params[:place]
-    end
-
-    if params[:place].present?
-      result = Geocoder.search(params[:place].gsub('-', ' '))
-      if result.first.present?
-        session[:coordinates] = result.first.coordinates
-      else
-        session[:coordinates] = [0.0, 0.0]
-      end
-    else
-      session[:coordinates] = nil
-    end
-  end
 
   def property_params
     params.require(:car).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place, :brand, :model)

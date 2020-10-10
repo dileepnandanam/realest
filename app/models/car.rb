@@ -42,7 +42,7 @@ class Car < Property
     sql = sql.where('lower(brand) = ?', brand.downcase) if brand.present?
 
     if coordinates.present?
-      sql = sql.near(coordinates, 50)
+      sql = sql.near(coordinates, 20)
     end
     sql
   end

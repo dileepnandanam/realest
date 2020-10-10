@@ -19,4 +19,34 @@ class PropertiesController < ApplicationController
     @properties_users = PropertiesUser.joins(controller_name.singularize.to_sym).order('created_at desc').paginate(page: params[:page], per_page: 12).includes(:user)
   end
 
+  def suggest
+    render json: {
+      suggestions: GeocoderValues::MAP.keys.select{ |place|
+        place.starts_with?(params[:query].camelize)
+      }
+    }
+  end
+
+
+  protected
+
+  def set_place
+    if session[:place] == params[:place]
+      return
+    else
+      session[:place] = params[:place]
+    end
+
+    if params[:place].present?
+      result = GeocoderValues::MAP[params[:place]]
+      if result.first.present?
+        session[:coordinates] = result
+      else
+        session[:coordinates] = [0.0, 0.0]
+      end
+    else
+      session[:coordinates] = nil
+    end
+  end
+
 end

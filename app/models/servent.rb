@@ -38,7 +38,7 @@ class Servent < Property
     sql = sql.where(state: state)
     sql = sql.where(expected_price: price_range)
     if coordinates.present?
-      sql = sql.near(coordinates, 50)
+      sql = sql.near(coordinates, 10)
     end
     sql
   end
