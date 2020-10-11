@@ -16,7 +16,7 @@ class Land < Property
 
   #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
   validates_each(:acre, :cent, :expected_price, :landmark) do |record, attr, value|
-    if value.blank? && record.type == nil
+    if value.blank?
       record.errors.add(attr, 'must be given')
     end
   end

@@ -11,7 +11,7 @@ amazon:
   access_key_id: <%= ENV['AKI'] %>
   secret_access_key: <%= ENV['ACK'] %>
   region: ap-south-1
-  bucket: realestatemannarkkad
+  bucket: restmkd
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:

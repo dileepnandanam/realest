@@ -1,23 +1,24 @@
-.property-thumb.col-lg-4.col-sm-4.col-xs-6.col-12.pull-left
+.property-thumb.col-lg-4.col-sm-6.col-xs-6.col-12.pull-left
   .property
     .image-holder{style: "background-image: url('#{property.img1.attachment.present? ? url_for(property.img1) : asset_url('missing.png')}')"}
       .visible-caption
         = property.visible_caption
-    .property-details
-      .property-detail
-        = property.brand
-      .property-detail
-        = property.model
-      .property-detail
-        = "at #{property.place}"
-    - if defined?(user) && user.admin?
+    .details
       .property-details
         .property-detail
-          = user.name
-      .property-details
+          = property.brand
         .property-detail
-          = link_to user.contact_number, "tel:#{user.contact_number}"
+          = property.model
         .property-detail
-          = link_to 'View', car_path(property), class: 'property-action-link'
-    - else
-      = render partial: 'cars/property_action', locals: {property: property}
+          = "at #{property.place}"
+      - if defined?(user) && user.admin?
+        .property-details
+          .property-detail
+            = user.name
+        .property-details
+          .property-detail
+            = link_to user.contact_number, "tel:#{user.contact_number}"
+          .property-detail
+            = link_to 'View', car_path(property), class: 'property-action-link'
+      - else
+        = render partial: 'cars/property_action', locals: {property: property}

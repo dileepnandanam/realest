@@ -1,20 +1,21 @@
-.property-thumb.col-lg-4.col-sm-4.col-xs-6.col-12.pull-left
+.property-thumb.col-lg-4.col-sm-6.col-xs-6.col-12.pull-left
   .property
     .image-holder{style: "background-image: url('#{property.img1.attachment.present? ? url_for(property.img1) : asset_url('missing.png')}')"}
       .visible-caption
         = property.visible_caption
-    .property-details
-      .property-detail
-        = "Servent near #{property.place} for hire"
-    
-    - if defined?(user) && user.admin?
+    .details
       .property-details
         .property-detail
-          = user.name
-      .property-details
-        .property-detail
-          = link_to user.contact_number, "tel:#{user.contact_number}"
-        .property-detail
-          = link_to 'View', servent_path(property), class: 'property-action-link'
-    - else
-      = render partial: 'servents/property_action', locals: {property: property}
+          = "Servent near #{property.place} for hire"
+      
+      - if defined?(user) && user.admin?
+        .property-details
+          .property-detail
+            = user.name
+        .property-details
+          .property-detail
+            = link_to user.contact_number, "tel:#{user.contact_number}"
+          .property-detail
+            = link_to 'View', servent_path(property), class: 'property-action-link'
+      - else
+        = render partial: 'servents/property_action', locals: {property: property}

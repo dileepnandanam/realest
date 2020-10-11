@@ -3,6 +3,6 @@
 .clearfix
 - if @properties.count == 0
   .no-results-message.text-center
-    No Matching servents to hire
+    No servents to hire
 - if @properties.next_page
   = link_to 'show more', servents_path(params.permit!.merge({page: params[:page].present? ? params[:page].to_i + 1 : 2})), remote: true, class: 'more-interests-link'
