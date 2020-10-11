@@ -13,7 +13,7 @@
         = q
       .property-detail
         = "property at #{property.place}"
-    - if defined?(user)
+    - if defined?(user) && user.admin?
       .property-details
         .property-detail
           = user.name

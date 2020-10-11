@@ -1,6 +1,6 @@
 .subnav
-  - ['lands', 'cars', 'houses', 'offices'].each do |p|
-    .subnav-item.col-lg-3.col-sm-3.col-6.float-left{class: controller_name == p ? 'highlight' : ''}
+  - ['lands', 'houses', 'offices'].each do |p|
+    .subnav-item.col-lg-4.col-sm-4.col-4.float-left{class: controller_name == p ? 'highlight' : ''}
       = link_to eval("#{p}_path(state: 'approved')"), remote: true, class: 'property-category' do
         .sub-nav-ico.col-12
           = image_tag(p.singularize)

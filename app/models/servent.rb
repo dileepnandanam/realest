@@ -35,5 +35,11 @@ class Servent < Property
     sql
   end
 
-  PLACES = File.open('places.txt', 'r').read.split("\n")
+  def present
+    {
+      "expected salery" => expected_price,
+      "place" => place
+    }
+  end
+
 end

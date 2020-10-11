@@ -37,5 +37,12 @@ class Office < Property
     sql
   end
 
-  PLACES = File.open('places.txt', 'r').read.split("\n")
+  def present
+    {
+      "expected rent" => expected_price,
+      "place" => place,
+      "area" => "#{area.to_i} square feets",
+      "landmark" => landmark
+    }
+  end
 end

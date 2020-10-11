@@ -43,5 +43,12 @@ class Land < Property
     self.total_cents = acre.to_i * 100 + cent.to_i
   end
 
-  PLACES = File.open('places.txt', 'r').read.split("\n")
+  def present
+    {
+      "expected price" => expected_price,
+      "place" => place,
+      "area" => "#{acre.to_i} acre #{cent.to_i} cent",
+      "landmark" => landmark
+    }
+  end
 end

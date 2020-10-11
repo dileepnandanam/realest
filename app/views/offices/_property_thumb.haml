@@ -7,7 +7,7 @@
     .property-details
       .property-detail
         = "#{property.area} sqr ft office space at #{property.place}"
-    - if defined?(user)
+    - if defined?(user) && user.admin?
       .property-details
         .property-detail
           = user.name

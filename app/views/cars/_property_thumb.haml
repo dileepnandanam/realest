@@ -10,7 +10,7 @@
         = property.model
       .property-detail
         = "at #{property.place}"
-    - if defined?(user)
+    - if defined?(user) && user.admin?
       .property-details
         .property-detail
           = user.name

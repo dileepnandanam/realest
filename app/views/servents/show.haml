@@ -23,6 +23,13 @@
               = @property.user.name
             .property-detail
               = link_to @property.user.contact_number, "tel:#{@property.user.contact_number}"
+            .clearfix
+            - @property.present.each do |attr, val|
+              .property-detail
+                = attr
+              .property-detail
+                = val
+              .clearfix
       .interests-container
         %h2
           = "Interested People (#{@property_users.length})"

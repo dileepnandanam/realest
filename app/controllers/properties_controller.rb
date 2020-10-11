@@ -3,6 +3,11 @@ class PropertiesController < ApplicationController
   def show
     klass = controller_name.singularize.camelize.constantize
     @property = klass.find(params[:id])
+    
+    if @property.state != 'approved' && !current_user.try(:admin?)
+      render 'layouts/noaccess' and return
+    end
+
     @property_users = PropertiesUser
       .joins(:user)
       .where(properties_users:{
@@ -29,8 +34,10 @@ class PropertiesController < ApplicationController
   def interests
     @properties_users = PropertiesUser
       .joins(:property)
+      .group('properties.id')
+      .select('properties.*, properties.id property_id')
       .order('created_at desc').paginate(page: params[:page], per_page: 12).includes(:user)
-      .where(properties: {type: controller_name.singularize.camelize})
+      .where(properties: {type: controller_name.singularize.camelize, state: 'approved'})
   end
 
   def suggest

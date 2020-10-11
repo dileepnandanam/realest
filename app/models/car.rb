@@ -40,5 +40,11 @@ class Car < Property
     sql
   end
 
-  PLACES = File.open('places.txt', 'r').read.split("\n")
+  def present
+    {
+      "expected price" => expected_price,
+      "place" => place,
+      "brand" => "#{model} model #{brand}"
+    }
+  end
 end
