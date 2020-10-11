@@ -126,7 +126,7 @@ $(document).on('turbolinks:load', function() {
 
 
 
-  search_house = function() {
+  search_office = function() {
     $.ajax({
       url: '/offices?' + $('.filter-form').serialize(),
       dataType: 'html',
@@ -140,9 +140,9 @@ $(document).on('turbolinks:load', function() {
 
 
 
-  $(document).on('keyup', '.office-filter-field', search_house)
-  $(document).on('change', '.office-place-filter-field', $.debounce(1000, search_house))
-  $(document).on('keyup', '.office-place-filter-field', $.debounce(1000, search_house))
+  $(document).on('keyup', '.office-filter-field', search_office)
+  $(document).on('change', '.office-place-filter-field', $.debounce(1000, search_office))
+  $(document).on('keyup', '.office-place-filter-field', $.debounce(1000, search_office))
 
 
 

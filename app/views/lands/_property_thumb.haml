@@ -10,7 +10,7 @@
           - if property.acre.present? && property.acre > 0
             - q = q + "#{property.acre} acre"
           - if property.cent.present?
-            - q = q + "#{property.cent} cent"
+            - q = q + " #{property.cent} cent"
           = q
         .property-detail
           = "property at #{property.place}"

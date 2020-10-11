@@ -6,14 +6,14 @@
       .place-filter
         = label_tag 'Nearby Place'
         .clearfix
-        = text_field_tag 'place', session[:place], class: 'place-filter-field house-place-filter-field'
+        = text_field_tag 'place', session[:place], class: 'place-filter-field office-place-filter-field'
         .suggestions.places.d-none
       .budget-filter
         = label_tag 'Budget'
         .clearfix
-        = text_field_tag 'price1', nil, class: 'filter-field house-filter-field'
+        = text_field_tag 'price1', nil, class: 'filter-field office-filter-field'
         to
-        = text_field_tag 'price2', nil, class: 'filter-field pull-right house-filter-field'
+        = text_field_tag 'price2', nil, class: 'filter-field pull-right office-filter-field'
         .clearfix
       .budget-filter
         = label_tag 'Area in square feets'
