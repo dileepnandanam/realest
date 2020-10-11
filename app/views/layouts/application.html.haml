@@ -21,6 +21,8 @@
           = link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'pull-right nav-item block'
 
           = link_to 'Account', edit_user_registration_path(current_user), class: 'pull-right nav-item block'
+
+          = link_to 'My Properties', mine_properties_path, class: 'pull-right nav-item block'
           
           = link_to 'Home', lands_path, class: 'pull-right nav-item block'
         - else

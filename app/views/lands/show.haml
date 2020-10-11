@@ -7,9 +7,8 @@
     %h2
       - acre = @property.acre.to_i > 0 ? "#{@property.acre} acre" : nil
       - cent = @property.cent.to_i > 0 ? "#{@property.cent} cent" : nil
-      = "#{acre} #{cent}"
-    %h4
-      = @property.place
+      = "#{acre} #{cent} at #{@property.place}"
+
     - unless current_user.try :admin?
       .interest-button-container
         = link_to 'I am interested', interest_land_path(@property), class: 'action-button interest-button', method: :post

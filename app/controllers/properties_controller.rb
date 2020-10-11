@@ -1,5 +1,8 @@
 class PropertiesController < ApplicationController
-  
+  def mine
+    @properties = Property.where(user_id: current_user.id)
+  end
+
   def show
     klass = controller_name.singularize.camelize.constantize
     @property = klass.find(params[:id])

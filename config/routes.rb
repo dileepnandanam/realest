@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :users do
     get :switch, on: :member
   end
+  resources :properties do
+    get :mine, on: :collection
+  end
 
   resources :lands do
     put :set_state, on: :member

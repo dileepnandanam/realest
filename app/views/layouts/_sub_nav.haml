@@ -4,6 +4,7 @@
       = link_to eval("#{p}_path(state: 'approved')"), remote: true, class: 'property-category' do
         .sub-nav-ico.col-12
           = image_tag(p.singularize)
-          .clearfix
+        .clearfix
+        .sub-nav-text
           = p
   .clearfix

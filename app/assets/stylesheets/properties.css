@@ -1,9 +1,10 @@
 .action-button {
   float: right;
-  background: #0f0f03;
+  background: #b0b1c5;
   padding: 3px 12px;
   margin: 5px;
   border-radius: 6px;
+  color: black;
   text-decoration: none;
 }
 .action-button:hover {
@@ -48,8 +49,6 @@
 .filter-container {
   margin: 6px 0px;
   padding: 8px;
-  background-color: #847c2c1a;
-  box-shadow: 0px 0px 100px #3c49806b;
 }
 .filter {
   width: 100%;
@@ -166,26 +165,34 @@
   text-align: center;
 }
 .subnav {
-  border-bottom: 3px solid lightblue;
   padding: 3%;
 }
 .subnav-item {
   text-align: center;
   padding: 12px;
   border-radius: 6px;
+  padding-right: 8px !important;
+  padding-left: 8px !important;
 }
 .highlight.state{
   background: yellowgreen;
 }
 .highlight.subnav-item {
-  background-image: radial-gradient(transparent, #f3bdbc);
+  background-image: linear-gradient(180deg, #b4c7e7, transparent);
+}
+.subnav-item:hover {
+  background-image: radial-gradient(#d7daed82, transparent);
 }
 .sub-nav-ico img {
   width: 100%;
   max-width: 100px;
+  border-radius: 50%;
 }
 .sub-nav-ico {
   text-align: center;
+  text-decoration: none;
+}
+.property-category:hover {
   text-decoration: none;
 }
 .interests {
@@ -214,4 +221,8 @@
 .sub-nav-ico {
   padding-left: 0px !important;
   padding-right: 0px !important;
+}
+.no-results-message {
+  padding: 20px;
+  color: white;
 }

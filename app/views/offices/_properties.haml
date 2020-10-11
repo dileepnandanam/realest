@@ -1,5 +1,8 @@
 - @properties.each do |p|
   = render partial: 'offices/property_thumb', locals: {property: p}
+- if @properties.count == 0
+  .no-results-message.text-center
+    No Matching office spaces Found
 .clearfix
-.pagination-container
-  = will_paginate @properties, renderer: WillPaginate::ActionView::BootstrapLinkRenderer
+- if @properties.next_page
+  = link_to 'show more', offices_path(params.permit!.merge({page: params[:page].present? ? params[:page].to_i + 1 : 2})), remote: true, class: 'more-interests-link'

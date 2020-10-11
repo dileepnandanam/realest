@@ -13,7 +13,7 @@ class LandsController < PropertiesController
       @properties = Land.search('approved', price_range, acre_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
     end
 
-    if params[:filtering]
+    if params[:filtering] || params[:page].present?
       render partial: 'lands/properties', locals: {properties: @properties}, layout: false
     else
       render 'index'
