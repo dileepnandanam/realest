@@ -1,3 +1,4 @@
+= render partial: 'layouts/sub_nav'
 - @properties_users.each do |interest|
   = render partial: 'servents/property_thumb', locals: {property: interest.property, user: interest.user}
 - if @properties_users.next_page

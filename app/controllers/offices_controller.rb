@@ -1,7 +1,4 @@
 class OfficesController < PropertiesController
-  def show
-    @property = Office.find(params[:id])
-  end
 
   def index
     set_place

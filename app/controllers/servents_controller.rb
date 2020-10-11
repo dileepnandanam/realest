@@ -1,7 +1,4 @@
 class ServentsController < PropertiesController
-  def show
-    @property = Servent.find(params[:id])
-  end
 
   def index
     set_place

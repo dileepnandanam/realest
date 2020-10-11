@@ -28,7 +28,7 @@ class Land < Property
   validates_with PlaceValidator
 
   def self.search(state, price_range, acre_range, coordinates)
-    sql = Property
+    sql = Land
     sql = sql.where(state: state)
     sql = sql.where(expected_price: price_range)
     sql = sql.where(total_cents: acre_range)
@@ -40,9 +40,7 @@ class Land < Property
 
   before_save :calculate_total_cents
   def calculate_total_cents
-    if type == nil
-      self.total_cents = acre * 100 + cent
-    end
+    self.total_cents = acre.to_i * 100 + cent.to_i
   end
 
   PLACES = File.open('places.txt', 'r').read.split("\n")

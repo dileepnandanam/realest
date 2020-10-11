@@ -1,7 +1,4 @@
 class LandsController < PropertiesController
-  def show
-    @property = Land.find(params[:id])
-  end
 
   def index
     set_place

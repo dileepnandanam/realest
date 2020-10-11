@@ -1,7 +1,4 @@
 class HousesController < PropertiesController
-  def show
-    @property = House.find(params[:id])
-  end
 
   def index
     set_place
