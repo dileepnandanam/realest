@@ -1,7 +1,7 @@
 class Properties::PropertyAssetsController < ApplicationController
   def new
     @property = Property.find_by_id(params[:property_id])
-    if !current_user.admin? && propertu.user != current_user
+    if !current_user.admin? && @property.user != current_user
       render 'layouts/noaccess' and return
     end
     @property_asset = PropertyAsset.new
