@@ -15,7 +15,7 @@
         = image_tag(@property.img1)
       = render partial: 'properties/property_assets/property_assets', locals: {property_assets: @property.property_assets}
     
-    - if current_user.try(:admin?) || curent_user == property.user
+    - if current_user.try(:admin?) || current_user == property.user
       .new-property-asset-form-container
       = link_to 'Add image or youtube video', new_property_property_asset_path(@property), remote: true, class: 'new-property-asset-link'
     
