@@ -1,4 +1,4 @@
-= render partial: 'layouts/sub_nav'
+= render partial: 'layouts/sub_nav', locals: {remote: true}
 .properties
   - @properties.each do |p|
     = render partial: "#{p.type.underscore.pluralize}/property_thumb", locals: {property: p}

@@ -3,6 +3,11 @@ class PropertiesController < ApplicationController
 
   end
 
+  def search
+    @properties = Property.search_query(params[:q]).paginate(per_page: 12, page: params[:page])
+    render 'properties', layout: false
+  end
+
   def mine
     @properties = Property.where(user_id: current_user.id)
   end

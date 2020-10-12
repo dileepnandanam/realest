@@ -93,13 +93,6 @@ input[type='submit'] {
 .response-content {
   margin-bottom: 12px;
 }
-.search {
-  padding: 8px;
-  margin: 12px;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 300px;
-}
 .search-gender {
   padding: 8px 12px;
   border-radius: 10px;

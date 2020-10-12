@@ -1,0 +1,24 @@
+.home
+  .banner
+    .logo
+      SAFKO REALTORS
+    .search
+      = text_field_tag 'search', nil, class: 'search', placeholder: 'search'
+  .properties
+  = render partial: 'layouts/sub_nav', locals: {remote: false}
+  .footer
+    .contact_us
+      %h3.text-center
+        SAFKO REALTORS
+      %p.text-center
+        RK Building
+      %p.text-center
+        Kunnathurmedu
+      %p.text-center
+        PALAKKAD
+      %p.text-center
+        = link_to "+91 95 94 94 33 55", "tel:+919594943355"
+      %p.text-center
+        = link_to "safkopkd@gmail.com", "mailto:safkopkd@gmail.com"
+
+          

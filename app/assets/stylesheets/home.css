@@ -1,14 +1,56 @@
-.property-page {
-  background-image: url(https://www.architectureartdesigns.com/wp-content/uploads/2016/02/2-66.jpg);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+.home {
+  width: 100%;
+  overflow: auto;
+}
+.banner {
+  width: 100%;
+  background-image: url('banner.jpg');
+  padding-top: 40%;
   background-size: cover;
+  position: relative;
 }
-.property-page .filter-container {
-  background: #110f0bd4;
-  color: white;
+.logo {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  font-weight: bold;
 }
-.property-page .subnav {
-  background: #300707e8;
-  background-color: #ffffffdb;
+@media screen and (min-width: 601px) {
+  .logo {
+    font-size: 5vw;
+  }
+}
+@media screen and (max-width: 600px) {
+  .logo {
+    font-size: 30px;
+  }
+}
+.search {
+  padding: 8px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 324px;
+  margin: auto;
+}
+.footer {
+  width: 100%;
+}
+.contact_us {
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+}
+.search input:focus {
+  outline: none;
+}
+.home .properties {
+  width: 100%;
+}
+.footer {
+  width: 100%;
+  background-image: linear-gradient(180deg, black, #201111c4);
+  color: yellow;
+  padding: 12px;
+  line-height: 18px;
+  font-weight: 200;
 }
