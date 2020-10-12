@@ -6,7 +6,7 @@
     .details
       .property-details
         .property-detail
-          = "Servent near #{property.place} for hire"
+          = property.summary
       
       - if defined?(user) && user.admin?
         .property-details

@@ -6,11 +6,7 @@
     .details
       .property-details
         .property-detail
-          = property.brand
-        .property-detail
-          = property.model
-        .property-detail
-          = "at #{property.place}"
+          = property.summary
       - if defined?(user) && user.admin?
         .property-details
           .property-detail

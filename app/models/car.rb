@@ -46,6 +46,6 @@ class Car < Property
   end
 
   def summary
-    "#{model} #{brand}"
+    "#{model} #{brand} at #{place}"
   end
 end

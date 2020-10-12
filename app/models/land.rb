@@ -51,6 +51,11 @@ class Land < Property
   def summary
     acre1 = acre.to_i > 0 ? "#{acre} acre" : nil
     cent1 = cent.to_i > 0 ? "#{cent} cent" : nil
-    "#{acre1} #{cent1} at #{place}"
+    [acre1, cent1, "land at #{place}"].select(&:present?).join(' ')
   end
+
+  def set_index
+    self.index = summary.downcase + 'ploat place near kerala' + tags
+  end
+
 end
