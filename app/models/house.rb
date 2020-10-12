@@ -56,5 +56,11 @@ class House < Property
     "#{area} square feet house at #{place}"
   end
 
-  PLACES = File.open('places.txt', 'r').read.split("\n")
+  def set_suggestion
+    self.suggestion = "house at #{place}"
+  end
+
+  def set_index
+    self.index = summary.downcase + 'house home appartment flat kerala' + tags.to_s
+  end
 end

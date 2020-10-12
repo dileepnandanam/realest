@@ -1,4 +1,8 @@
 class PropertiesController < ApplicationController
+  def index
+
+  end
+
   def mine
     @properties = Property.where(user_id: current_user.id)
   end

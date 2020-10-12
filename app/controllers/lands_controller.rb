@@ -79,7 +79,7 @@ class LandsController < PropertiesController
   end
 
   def property_params
-    params.require(:land).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place, :iframe)
+    params.require(:land).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place, :iframe, :tags)
   end
 
   def acre_range

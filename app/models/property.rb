@@ -54,6 +54,7 @@ class Property < ApplicationRecord
   end
 
   before_save :set_index
+  before_save :set_suggestion
 
   def set_index
     self.index = summary.downcase

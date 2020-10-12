@@ -54,8 +54,12 @@ class Land < Property
     [acre1, cent1, "land at #{place}"].select(&:present?).join(' ')
   end
 
+  def set_suggestion
+    self.suggestion = "land at #{place}"
+  end
+
   def set_index
-    self.index = summary.downcase + 'ploat place near kerala' + tags
+    self.index = summary.downcase + 'ploat place near kerala' + tags.to_s
   end
 
 end

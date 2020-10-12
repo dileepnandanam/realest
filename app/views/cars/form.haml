@@ -11,5 +11,6 @@
     = f.input :img1, label: "Photo (required)", required: true
     - if current_user.admin?
       = f.input :visible_caption
+      = f.input :tags
     = f.submit 'Submit'
   = link_to 'cancel', cars_path

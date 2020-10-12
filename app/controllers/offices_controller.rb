@@ -74,7 +74,7 @@ class OfficesController < PropertiesController
   protected
 
   def property_params
-    params.require(:office).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place, :iframe, :area)
+    params.require(:office).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place, :iframe, :area, :tags)
   end
 
   STATE_MAP = {

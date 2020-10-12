@@ -45,4 +45,12 @@ class Office < Property
   def summary
     "#{area} sqr ft office space at #{place}"
   end
+
+  def set_suggestion
+    self.suggestion = "office at #{place}"
+  end
+
+  def set_index
+    self.index = summary.downcase + 'workspace kerala' + tags.to_s
+  end
 end

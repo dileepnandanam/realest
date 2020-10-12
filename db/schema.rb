@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_12_141802) do
+ActiveRecord::Schema.define(version: 2020_10_12_170455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2020_10_12_141802) do
     t.text "iframe"
     t.integer "area"
     t.text "index"
+    t.text "tags"
+    t.string "suggestion"
   end
 
   create_table "properties_users", force: :cascade do |t|

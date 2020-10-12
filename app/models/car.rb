@@ -45,7 +45,17 @@ class Car < Property
     }
   end
 
+
+
   def summary
     "#{model} #{brand} at #{place}"
+  end
+
+  def set_suggestion
+    self.suggestion = "car near #{place}"
+  end
+
+  def set_index
+    self.index = summary.downcase + 'car near kerala' + tags.to_s
   end
 end
