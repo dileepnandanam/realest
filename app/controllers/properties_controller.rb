@@ -20,12 +20,12 @@ class PropertiesController < ApplicationController
   end
 
   def interest
+    @property = Property.find(params[:id])
     unless current_user.present?
       flash[:notice] = 'Please Sign In or Sign Up to show interest on this property'
-      redirect_to root_path and return
+      session[:after_sign_path] = property_show_page_path(@property)
+      redirect_to new_user_session_path and return
     end
-    @property = Property.find(params[:id])
-
     unless PropertiesUser.where(property_id: @property.id, user_id: current_user.id).last.present?
       PropertiesUser.create(property_id: @property.id, user_id: current_user.id, seen: false)
     end
@@ -83,6 +83,10 @@ class PropertiesController < ApplicationController
     else
       session[:coordinates] = nil
     end
+  end
+
+  def property_show_page_path(property)
+    eval("#{property.type.underscore.singularize}_path(property)")
   end
 
 end

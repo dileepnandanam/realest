@@ -21,4 +21,17 @@ class ApplicationController < ActionController::Base
       render plain: 'unauthorized' and return
     end
   end
+
+
+  def after_sign_in_path_for(resource)
+    after_sign_path = session[:after_sign_path]
+    session[:after_sign_path] = nil
+    after_sign_path || root_path
+  end
+
+  def after_sign_up_path_for(resource)
+    after_sign_path = session[:after_sign_path]
+    session[:after_sign_path] = nil
+    after_sign_path || root_path
+  end
 end
