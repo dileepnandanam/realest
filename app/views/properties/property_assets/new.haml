@@ -1,0 +1,4 @@
+= simple_form_for([@property.becomes(Property), @property_asset], html: {remote: true, class: 'new-property-asset-form'}) do |f|
+  = f.input :image
+  = f.input :iframe, label: 'Youtube embed code'
+  = f.submit 'Add'

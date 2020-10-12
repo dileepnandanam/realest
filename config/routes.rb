@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   resources :properties do
     get :mine, on: :collection
+    resources :property_assets, controller: 'properties/property_assets'
   end
 
   resources :lands do

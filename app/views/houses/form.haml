@@ -6,9 +6,7 @@
     = f.input :area, label: 'Area in square feets'
     = f.input :landmark
     = f.input :iframe, label: 'share youtube embed code (optional)'
-    = f.input :img1, label: "photo 1 (required)", required: true
-    = f.input :img2, label: "photo 2 (optional)"
-    = f.input :img3, label: "photo 3 (optional)" 
+    = f.input :img1, label: "photo (required)", required: true
     - if current_user.admin?
       = f.input :visible_caption
     = f.submit 'Submit'

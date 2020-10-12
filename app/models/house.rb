@@ -7,9 +7,6 @@ class PlaceValidator < ActiveModel::Validator
 end
 class House < Property
   has_one_attached :img1
-  has_one_attached :img2
-  has_one_attached :img3
-  has_one_attached :img4
 
   belongs_to :user
 
@@ -53,6 +50,10 @@ class House < Property
       "area" => "#{area} square feets",
       "landmark" => landmark
     }
+  end
+
+  def summary
+    "#{area} square feet house at #{place}"
   end
 
   PLACES = File.open('places.txt', 'r').read.split("\n")

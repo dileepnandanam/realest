@@ -108,7 +108,6 @@
 }
 .property-show {
   width: 100%;
-  padding: 12px;
 }
 .photos img {
   width: 100%;
@@ -235,4 +234,26 @@
 }
 .states {
   background-color: cyan;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.state {
+  padding: 12px;
+}
+.property-assets {
+  width: 100%;
+}
+.property-assets img {
+  width: 100%;
+  margin: auto;
+  margin-top: 20px;
+  display: block;
+}
+.new-property-asset-form {
+  padding: 12px;
+  border: 1px solid;
+  margin-top: 12px;
+}
+.posted-by {
+  font-weight: bold;
 }

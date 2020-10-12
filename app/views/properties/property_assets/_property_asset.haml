@@ -1,0 +1,4 @@
+- if property_asset.iframe.present?
+  = render partial: 'common/youtube', locals: {property: property_asset}
+- if property_asset.image.attachment.present?
+  = image_tag(property_asset.image)

@@ -6,11 +6,6 @@ class PlaceValidator < ActiveModel::Validator
   end
 end
 class Servent < Property
-  has_one_attached :img1
-  has_one_attached :img2
-  has_one_attached :img3
-  has_one_attached :img4
-
 
   #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
   validates_each(:expected_price) do |record, attr, value|

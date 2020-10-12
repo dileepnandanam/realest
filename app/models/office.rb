@@ -6,10 +6,6 @@ class PlaceValidator < ActiveModel::Validator
   end
 end
 class Office < Property
-  has_one_attached :img1
-  has_one_attached :img2
-  has_one_attached :img3
-  has_one_attached :img4
 
 
   #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
@@ -44,5 +40,9 @@ class Office < Property
       "area" => "#{area.to_i} square feets",
       "landmark" => landmark
     }
+  end
+
+  def summary
+    "#{area} sqr ft office space at #{place}"
   end
 end

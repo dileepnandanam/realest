@@ -7,9 +7,6 @@ class PlaceValidator < ActiveModel::Validator
 end
 class Car < Property
   has_one_attached :img1
-  has_one_attached :img2
-  has_one_attached :img3
-  has_one_attached :img4
 
   belongs_to :user
 
@@ -46,5 +43,9 @@ class Car < Property
       "place" => place,
       "brand" => "#{model} model #{brand}"
     }
+  end
+
+  def summary
+    "#{model} #{brand}"
   end
 end

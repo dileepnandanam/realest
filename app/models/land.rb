@@ -6,10 +6,6 @@ class PlaceValidator < ActiveModel::Validator
   end
 end
 class Land < Property
-  has_one_attached :img1
-  has_one_attached :img2
-  has_one_attached :img3
-  has_one_attached :img4
 
   belongs_to :user
   has_and_belongs_to_many :users, primery_key: :property_id, foreign_key: :user_id
@@ -50,5 +46,11 @@ class Land < Property
       "area" => "#{acre.to_i} acre #{cent.to_i} cent",
       "landmark" => landmark
     }
+  end
+
+  def summary
+    acre1 = acre.to_i > 0 ? "#{acre} acre" : nil
+    cent1 = cent.to_i > 0 ? "#{cent} cent" : nil
+    "#{acre1} #{cent1} at #{place}"
   end
 end

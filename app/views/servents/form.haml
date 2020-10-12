@@ -3,9 +3,7 @@
     = f.input :place, label: 'Place', input_html: {class: 'place-filter-field'}
     .suggestions.places.d-none
     = f.input :expected_price, label: 'Expected Salery'
-    = f.input :img1, label: "Photo 1 (required)", required: true
-    = f.input :img2, label: "Photo 2 (optional)"
-    = f.input :img3, label: "Photo 3 (optional)" 
+    = f.input :img1, label: "Photo (required)", required: true
     - if current_user.admin?
       = f.input :visible_caption
     = f.submit 'Submit'

@@ -7,9 +7,7 @@ class PlaceValidator < ActiveModel::Validator
 end
 class Property < ApplicationRecord
   has_one_attached :img1
-  has_one_attached :img2
-  has_one_attached :img3
-  has_one_attached :img4
+  has_many :property_assets
 
   belongs_to :user
   has_and_belongs_to_many :users

@@ -187,4 +187,14 @@ $(document).on('turbolinks:load', function() {
   $(document).on('ajax:success', '.state, .property-category', function(e) {
     $('.property-page').html(e.detail[2].responseText)
   })
+
+
+
+  $(document).on('ajax:success', '.new-property-asset-link', function(e) {
+    $('.new-property-asset-form-container').html(e.detail[2].responseText)
+  })
+  $(document).on('ajax:success', '.new-property-asset-form', function(e) {
+    $('.property-assets').append(e.detail[2].responseText)
+    $('.new-property-asset-form').remove()
+  })
 })
