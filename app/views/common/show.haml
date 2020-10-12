@@ -43,7 +43,7 @@
         %h2
           = "Interested People (#{@property_users.length})"
 
-        .interests
+        .user-interests
           - @property_users.order('properties_users.created_at DESC').each do |u|
             .interest
               .property-detail
