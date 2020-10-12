@@ -1,0 +1,12 @@
+.property-page {
+  background-image: url(https://www.architectureartdesigns.com/wp-content/uploads/2016/02/2-66.jpg);
+  background-attachment: fixed;
+}
+.property-page .filter-container {
+  background: #110f0bd4;
+  color: white;
+}
+.property-page .subnav {
+  background: #300707e8;
+  background-color: #ffffffdb;
+}
