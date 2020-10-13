@@ -1,4 +1,6 @@
 class PropertiesController < ApplicationController
+  after_action :send_mail, only: [:create]
+
   def index
 
   end
@@ -107,4 +109,9 @@ class PropertiesController < ApplicationController
     eval("#{property.type.underscore.singularize}_path(property)")
   end
 
+  def send_mail
+    if @property.valid?
+      PropertyMailer.with(user: current_user, property: @property).new_property.deliver_later
+    end
+  end
 end

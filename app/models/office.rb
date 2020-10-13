@@ -50,7 +50,7 @@ class Office < Property
     self.suggestion = "office at #{place}"
   end
 
-  def set_index
-    self.index = summary.downcase + 'workspace kerala' + tags.to_s
+  def common_tags
+    ' kerala office workplace workspace space company officeroom '
   end
 end

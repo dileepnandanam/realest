@@ -57,9 +57,8 @@ class Property < ApplicationRecord
   before_save :set_suggestion
 
   def set_index
-    self.index = summary.downcase
+    self.index = summary.downcase + common_tags + tags.to_s + visible_caption.to_s
   end
-
 
   def self.search_query(query)
     terms = query.split(/[\., ;'"?]/)

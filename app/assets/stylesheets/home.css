@@ -54,3 +54,13 @@
   line-height: 18px;
   font-weight: 200;
 }
+.footer a {
+  color: yellow;
+}
+.caption {
+  color: #eedfdf;
+  text-shadow: 0 0 14px black, 0 0 14px black;
+}
+input.search {
+  border: 1px solid blue;
+}

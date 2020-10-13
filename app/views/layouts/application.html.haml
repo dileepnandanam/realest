@@ -18,16 +18,16 @@
     .page
       .nav
         - if current_user          
-          = link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'pull-right nav-item block'
+          = link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'pull-right nav-item block col-lg-3 col-sm-6 col-6'
 
-          = link_to 'Account', edit_user_registration_path(current_user), class: 'pull-right nav-item block'
+          = link_to 'Account', edit_user_registration_path(current_user), class: 'pull-right nav-item block col-lg-3 col-sm-6 col-6'
 
-          = link_to 'My Properties', mine_properties_path, class: 'pull-right nav-item block'
+          = link_to 'My Properties', mine_properties_path, class: 'pull-right nav-item block col-lg-3 col-sm-6 col-6'
           
-          = link_to 'Home', '/', class: 'pull-right nav-item block'
+          = link_to 'Home', '/', class: 'pull-right nav-item block col-lg-3 col-sm-6 col-6'
         - else
-          = link_to 'Home', '/', class: 'pull-right nav-item block'
-          = link_to "Sign In", new_user_session_path, class: 'pull-right nav-item block', rel: :nofollow
+          = link_to 'Home', '/', class: 'pull-right nav-item block col-lg-3 col-sm-6 col-6'
+          = link_to "Sign In", new_user_session_path, class: 'pull-right nav-item block col-lg-3 col-sm-6 col-6', rel: :nofollow
         
         .clearfix
       - if flash[:notice].present?

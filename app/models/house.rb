@@ -60,7 +60,7 @@ class House < Property
     self.suggestion = "house at #{place}"
   end
 
-  def set_index
-    self.index = summary.downcase + 'house home appartment flat kerala' + tags.to_s
+  def common_tags
+    ' kerala house home veed small big stay appartmrnt apartment appartment flat '
   end
 end

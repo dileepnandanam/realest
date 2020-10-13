@@ -55,7 +55,7 @@ class Car < Property
     self.suggestion = "car near #{place}"
   end
 
-  def set_index
-    self.index = summary.downcase + 'car near kerala' + tags.to_s
+  def common_tags
+    'kerala car vehicle vehicil used'
   end
 end

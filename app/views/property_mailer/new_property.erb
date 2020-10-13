@@ -1,0 +1,1 @@
+<%= link_to "new property posted by #{@property.user.name}", eval("#{@property.type.underscore}_url(@property)") %>

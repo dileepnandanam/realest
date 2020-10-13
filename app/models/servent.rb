@@ -45,8 +45,8 @@ class Servent < Property
     self.suggestion = "servent near #{place}"
   end
 
-  def set_index
-    self.index = summary.downcase + 'servent near kerala' + tags.to_s
+  def common_tags
+    ' kerala servent home keeper house '
   end
 
 end

@@ -58,8 +58,8 @@ class Land < Property
     self.suggestion = "land at #{place}"
   end
 
-  def set_index
-    self.index = summary.downcase + 'ploat place near kerala' + tags.to_s
+  def common_tags
+    ' kerala land plot ploat property properties sale own '
   end
 
 end
