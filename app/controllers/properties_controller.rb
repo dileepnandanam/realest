@@ -8,6 +8,15 @@ class PropertiesController < ApplicationController
     render 'properties', layout: false
   end
 
+  def suggestions
+    query = params[:q]
+    sql = Property.search_query(query)
+    sql = sql.select('distinct suggestion suggestion')
+    render json: {
+      suggestions: sql.all.map(&:suggestion)
+    }
+  end
+
   def mine
     @properties = Property.where(user_id: current_user.id)
   end

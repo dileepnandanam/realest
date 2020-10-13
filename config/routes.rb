@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     get :switch, on: :member
   end
   resources :properties do
+    get :search, on: :collection
     get :mine, on: :collection
+    get :suggestions, on: :collection
     resources :property_assets, controller: 'properties/property_assets'
   end
 

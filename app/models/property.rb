@@ -64,8 +64,12 @@ class Property < ApplicationRecord
   def self.search_query(query)
     terms = query.split(/[\., ;'"?]/)
     terms = terms.select{|t| !STOP_WORDS.include?(t)}.map(&:downcase)
+    if terms.length == 0
+      return Property.where('0=1')
+    end
     select_query = terms.map{|t| "(COALESCE(index LIKE '%#{t}%', FALSE))::int"}.join('+')
-    ApplicationRecord.connection.execute("select matches.id from (select #{select_query} match_count, id from properties where properties.state = 'approved') matches where matches.match_count = #{terms.length}").map{|ar| Property.find(ar['id'])}
+    result_ids = ApplicationRecord.connection.execute("select matches.id from (select #{select_query} match_count, id from properties where properties.state = 'approved') matches where matches.match_count = #{terms.length}").map{|ar| ar['id']}
+    Property.where(id: result_ids)
   end
 
   STOP_WORDS = ['near', 'away', 'ourselves', 'hers', 'between', 'yourself', 'but', 'again', 'there', 'about', 'once', 'during', 'out', 'very', 'having', 'with', 'they', 'own', 'an', 'be', 'some', 'for', 'do', 'its', 'yours', 'such', 'into', 'of', 'most', 'itself', 'other', 'off', 'is', 'am', 'or', 'who', 'as', 'from', 'him', 'each', 'the', 'themselves', 'until', 'below', 'are', 'we', 'these', 'your', 'his', 'through', 'don', 'nor', 'me', 'were', 'her', 'more', 'himself', 'this', 'down', 'should', 'our', 'their', 'while', 'above', 'both', 'up', 'to', 'ours', 'had', 'she', 'all', 'no', 'when', 'at', 'any', 'before', 'them', 'same', 'and', 'been', 'have', 'in', 'will', 'on', 'does', 'yourselves', 'then', 'that', 'because', 'what', 'over', 'why', 'so', 'can', 'did', 'not', 'now', 'under', 'he', 'you', 'herself', 'has', 'just', 'where', 'too', 'only', 'myself', 'which', 'those', 'i', 'after', 'few', 'whom', 't', 'being', 'if', 'theirs', 'my', 'against', 'a', 'by', 'doing', 'it', 'how', 'further', 'was', 'here', 'than']
