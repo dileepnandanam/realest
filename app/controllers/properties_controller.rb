@@ -36,7 +36,7 @@ class PropertiesController < ApplicationController
       .where(properties_users:{
         property_id: params[:id]
       }
-    ).select('users.name, users.contact_number')
+    ).select('users.name, users.contact_number, properties_users.seen, properties_users.id')
   end
 
   def interest
@@ -56,6 +56,7 @@ class PropertiesController < ApplicationController
 
   def interests
     @properties_users = PropertiesUser
+      .where(properties_users: {seen: false})
       .joins(:property)
       .group('properties.id')
       .select('properties.*, properties.id property_id')

@@ -45,8 +45,11 @@
 
         .user-interests
           - @property_users.order('properties_users.created_at DESC').each do |u|
-            .interest
+            .interest{class: u.seen? ? 'seen' : 'unseen'}
               .property-detail
                 = u.name
               .property-detail
                 = link_to u.contact_number, "tel:#{u.contact_number}"
+              .property-detail
+                = link_to 'seen', seen_property_properties_user_path(@property, u), remote: true, method: :put, class: 'seen-link'
+                = link_to 'unseen', unseen_property_properties_user_path(@property, u), remote: true, method: :put, class: 'unseen-link'

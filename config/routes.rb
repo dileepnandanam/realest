@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     get :mine, on: :collection
     get :suggestions, on: :collection
     resources :property_assets, controller: 'properties/property_assets'
+    resources :properties_users, controller: 'properties/properties_users' do
+      put :seen, on: :member
+      put :unseen, on: :member
+    end
   end
 
   resources :lands do
@@ -47,6 +51,4 @@ Rails.application.routes.draw do
     get :suggest, on: :collection
     get :interests, on: :collection 
   end
-
-  resources :properties_users
 end

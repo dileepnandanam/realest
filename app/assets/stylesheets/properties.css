@@ -270,3 +270,14 @@
   background: #300707e8;
   background-color: #ffffffdb;
 }
+.seen {
+  border: 1px solid black;
+  background-image: linear-gradient(blue, black);
+  color: white;
+}
+.seen .seen-link {
+  display: none;
+}
+.unseen .unseen-link {
+  display: none;
+}

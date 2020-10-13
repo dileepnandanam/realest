@@ -7,6 +7,9 @@
       .property-details
         .property-detail
           = property.summary
+        .clearfix
+          = "Rs #{property.expected_price}"
+        .clearfix
       - if defined?(user) && user.admin?
         .property-details
           .property-detail

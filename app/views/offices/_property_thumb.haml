@@ -6,7 +6,10 @@
     .details  
       .property-details
         .property-detail
-          = "#{property.area} sqr ft office space at #{property.place}"
+          = property.summary
+        .clearfix
+          = "Rs #{property.expected_price}"
+        .clearfix
       - if defined?(user) && user.admin?
         .property-details
           .property-detail

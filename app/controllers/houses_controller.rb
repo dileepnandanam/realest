@@ -4,6 +4,7 @@ class HousesController < PropertiesController
     set_place
     if current_user.try :admin?
       @properties_counts = NotifGenerator.counts(controller_name)
+      @interests_count = NotifGenerator.interest_counts(controller_name)
       if [params[:price1], params[:price2], params[:place], params[:area1], params[:area2]].any?(&:present?)
         @properties = House.search(params[:state], price_range, area_range, session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
       else

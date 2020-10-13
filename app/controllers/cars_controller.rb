@@ -4,6 +4,7 @@ class CarsController < PropertiesController
     set_place
     if current_user.try :admin?
       @properties_counts = NotifGenerator.counts(controller_name)
+      @interests_count = NotifGenerator.interest_counts(controller_name)
       if [params[:price1], params[:price2], params[:place]].any?(&:present?)
         @properties = Car.search(params[:state], price_range, params[:model], params[:brand], session[:coordinates]).order('created_at ASC').paginate(per_page: 12, page: params[:page])
       else

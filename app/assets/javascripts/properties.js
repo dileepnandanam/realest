@@ -197,4 +197,13 @@ $(document).on('turbolinks:load', function() {
     $('.property-assets').append(e.detail[2].responseText)
     $('.new-property-asset-form').remove()
   })
+
+  $(document).on('ajax:success', '.seen-link', function(e) {
+    $(this).closest('.interest').addClass('seen')
+    $(this).closest('.interest').removeClass('unseen')
+  })
+  $(document).on('ajax:success', '.unseen-link', function(e) {
+    $(this).closest('.interest').removeClass('seen')
+    $(this).closest('.interest').addClass('unseen')
+  })
 })
