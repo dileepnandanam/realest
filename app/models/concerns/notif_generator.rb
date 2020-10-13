@@ -9,7 +9,8 @@ class NotifGenerator
 
   def self.interest_counts(controller_name)
     controller_name.singularize.camelize.constantize
-      .joins('inner join properties_users on properties_users.property_id = properties.id and properties_users.seen = FALSE')
-      .count
+      .where(state: 'approved')
+      .joins('inner join properties_users on properties_users.property_id = properties.id')
+      .count('distinct properties_users.id')
   end
 end

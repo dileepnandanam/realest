@@ -58,6 +58,7 @@
   color: yellow;
 }
 .caption {
+  padding: 0px 12px;
   color: #eedfdf;
   text-shadow: 0 0 14px #000000b8, 0 0 14px #000000b5;
 }

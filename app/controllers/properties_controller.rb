@@ -56,7 +56,6 @@ class PropertiesController < ApplicationController
 
   def interests
     @properties_users = PropertiesUser
-      .where(properties_users: {seen: false})
       .joins(:property)
       .group('properties.id')
       .select('properties.*, properties.id property_id')
