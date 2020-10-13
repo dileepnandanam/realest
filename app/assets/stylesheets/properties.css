@@ -213,6 +213,7 @@
 }
 .more-interests-link {
   width: 150px;
+  margin-top: 12px;
   margin: auto;
   display: block;
   padding: 12px;
@@ -220,7 +221,6 @@
   background-image: linear-gradient(45deg, #8d5656, #171a6afc);
   margin-bottom: 9px;
   overflow: auto;
-  border-radius: 11px;
   color: white;
 }
 .sub-nav-ico {
