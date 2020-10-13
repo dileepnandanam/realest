@@ -7,7 +7,6 @@
     = f.input :model
     .suggestions.models.d-none
     = f.input :expected_price
-    = f.input :iframe, label: 'Share youtube embed code (optional)'
     = f.input :img1, label: "Photo (required)", required: true
     - if current_user.admin?
       = f.input :visible_caption

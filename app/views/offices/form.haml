@@ -5,7 +5,6 @@
     = f.input :expected_price
     = f.input :landmark
     = f.input :area, label: 'Area in square feets'
-    = f.input :iframe, label: 'Share youtube embed code (optional)'
     = f.input :img1, label: "Photo (required)", required: true
     - if current_user.admin?
       = f.input :visible_caption
