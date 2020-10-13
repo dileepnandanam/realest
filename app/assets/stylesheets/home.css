@@ -59,7 +59,7 @@
 }
 .caption {
   color: #eedfdf;
-  text-shadow: 0 0 14px black, 0 0 14px black;
+  text-shadow: 0 0 14px #000000b8, 0 0 14px #000000b5;
 }
 input.search {
   border: 1px solid blue;

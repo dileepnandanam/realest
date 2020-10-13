@@ -58,10 +58,11 @@ class Property < ApplicationRecord
 
   def set_index
     self.index = summary.downcase + common_tags + tags.to_s + visible_caption.to_s
+    self.index = self.index.split(/[\., ;'"?]/).map(&:singularize).join(' ')
   end
 
   def self.search_query(query)
-    terms = query.split(/[\., ;'"?]/)
+    terms = query.split(/[\., ;'"?]/).map(&:singularize)
     terms = terms.select{|t| !STOP_WORDS.include?(t)}.map(&:downcase)
     if terms.length == 0
       return Property.where('0=1')
