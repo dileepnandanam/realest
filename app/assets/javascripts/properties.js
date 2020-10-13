@@ -22,7 +22,7 @@ $(document).on('turbolinks:load', function() {
       }
     })
   }
-  $(document).on('keyup', '.place-filter-field', $.debounce(100, place_suggestion))
+  $(document).on('keyup', '.place-filter-field', $.debounce(500, place_suggestion))
 
 
 
