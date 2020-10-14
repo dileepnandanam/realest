@@ -68,7 +68,7 @@ class Property < ApplicationRecord
       return Property.where('0=1')
     end
     select_query = terms.map{|t| "(COALESCE(index LIKE '%#{t}%', FALSE))::int"}.join('+')
-    result_ids = ApplicationRecord.connection.execute("select matches.id from (select #{select_query} match_count, id from properties where properties.state = 'approved') matches where matches.match_count = #{terms.length}").map{|ar| ar['id']}
+    result_ids = ApplicationRecord.connection.execute("select matches.id from (select #{select_query} match_count, id from properties where properties.state = 'approved') matches where matches.match_count::float > 0 ORDER BY matches.match_count DESC").map{|ar| ar['id']}
     Property.where(id: result_ids)
   end
 

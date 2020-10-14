@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
   after_action :send_mail, only: [:create]
 
   def index
-
+    @message = Message.new
   end
 
   def search

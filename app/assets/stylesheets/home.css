@@ -39,6 +39,10 @@
   width: 100%;
   max-width: 300px;
   margin: auto;
+  font-size: 22px;
+}
+.contact_us h3 {
+  font-weight: normal;
 }
 .search input:focus {
   outline: none;
@@ -60,8 +64,13 @@
 .caption {
   padding: 0px 12px;
   color: #eedfdf;
-  text-shadow: 0 0 14px #000000b8, 0 0 14px #000000b5;
+  text-shadow: 0 0 6px #00000091, 0 0 35px #0000008a;
 }
 input.search {
   border: 1px solid blue;
+}
+.contact_us.form {
+  border: 1px solid;
+  padding: 12px;
+  box-shadow: 0 0 5px;
 }

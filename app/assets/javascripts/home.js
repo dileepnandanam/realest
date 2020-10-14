@@ -39,4 +39,11 @@ homeInit = function() {
     $('.search').val(this.textContent)
     search()
   })
+
+  $(document).on('ajax:success', '.contact-form', function(e) {
+    $('.contact_us.form').html(e.detail[2].responseText)
+  })
+  $(document).on('ajax:error', '.contact-form', function(e) {
+    $('.contact_us.form').html(e.detail[2].responseText)
+  })
 }

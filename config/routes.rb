@@ -54,4 +54,6 @@ Rails.application.routes.draw do
     get :suggest, on: :collection
     get :interests, on: :collection 
   end
+
+  resources :messages
 end
