@@ -167,7 +167,7 @@ filterInit = function() {
 
 
 
-  $('body').click(function(e){
+  $(document).on('click', 'body', function(e){
     if(e.target != $('.suggestions'))
       $('.suggestions').addClass('d-none')
   })
