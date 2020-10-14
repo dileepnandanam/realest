@@ -1,4 +1,12 @@
+var home_initiated = null
 $(document).on('turbolinks:load', function() {
+  if(home_initiated == null) {
+    homeInit()
+    home_initiated = 1
+  }
+})
+
+homeInit = function() {
   search = function() {
     $.ajax({
       url: '/properties/search',
@@ -24,11 +32,11 @@ $(document).on('turbolinks:load', function() {
       }
     })
   }
-  $('input.search').on('keyup', $.debounce(2000, search))
-  $('input.search').on('keyup', $.debounce(1000, suggestion))
+  $(document).on('keyup', 'input.search', $.debounce(2000, search))
+  $(document).on('keyup', 'input.search', $.debounce(1000, suggestion))
 
   $(document).on('click', '.general .suggestion', function(){
     $('.search').val(this.textContent)
     search()
   })
-})
+}
