@@ -1,4 +1,12 @@
+var filter_initiated = null
 $(document).on('turbolinks:load', function() {
+  if(filter_initiated == null) {
+    filterInit()
+    filter_initiated = 1
+  }
+})
+
+filterInit = function() {
   search_properties = function() {
     $.ajax({
       url: '/lands?' + $('.filter-form').serialize(),
@@ -209,4 +217,4 @@ $(document).on('turbolinks:load', function() {
     $(this).closest('.interest').removeClass('seen')
     $(this).closest('.interest').addClass('unseen')
   })
-})
+}
