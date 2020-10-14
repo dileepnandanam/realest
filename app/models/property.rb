@@ -26,7 +26,7 @@ class Property < ApplicationRecord
   before_validation :set_coordinates
   def set_coordinates
     result = GeocoderValues::MAP[self.place]
-    if result.first.present?
+    if result.present?
       coordinates = result
       self.lat = coordinates[0]
       self.lngt = coordinates[1]

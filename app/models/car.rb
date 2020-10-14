@@ -1,10 +1,3 @@
-class PlaceValidator < ActiveModel::Validator
-  def validate(record)
-    if record.lat.blank?
-      record.errors[:place] << 'unrecognized'
-    end
-  end
-end
 class Car < Property
   has_one_attached :img1
 
@@ -21,8 +14,6 @@ class Car < Property
   reverse_geocoded_by :lat, :lngt
   before_validation :set_coordinates
 
-
-  validates_with PlaceValidator
 
   def self.search(state, price_range, model, brand, coordinates)
     sql = Car

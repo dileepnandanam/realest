@@ -1,10 +1,3 @@
-class PlaceValidator < ActiveModel::Validator
-  def validate(record)
-    if record.lat.blank?
-      record.errors[:place] << 'unrecognized'
-    end
-  end
-end
 class Servent < Property
 
   #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
@@ -18,7 +11,6 @@ class Servent < Property
   reverse_geocoded_by :lat, :lngt
   before_validation :set_coordinates
 
-  validates_with PlaceValidator
 
   def self.search(state, price_range, coordinates)
     sql = Servent

@@ -1,10 +1,3 @@
-class PlaceValidator < ActiveModel::Validator
-  def validate(record)
-    if record.lat.blank?
-      record.errors[:place] << 'unrecognized'
-    end
-  end
-end
 class Office < Property
 
 
@@ -19,9 +12,6 @@ class Office < Property
   reverse_geocoded_by :lat, :lngt
   before_validation :set_coordinates
   
-
-  validates_with PlaceValidator
-
   def self.search(state, price_range, area_range, coordinates)
     sql = Office
     sql = sql.where(state: state)

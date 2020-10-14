@@ -1,10 +1,3 @@
-class PlaceValidator < ActiveModel::Validator
-  def validate(record)
-    if record.lat.blank?
-      record.errors[:place] << 'unrecognized'
-    end
-  end
-end
 class House < Property
   has_one_attached :img1
 
@@ -29,8 +22,6 @@ class House < Property
       self.lngt = coordinates[1]
     end
   end
-
-  validates_with PlaceValidator
 
   def self.search(state, price_range, area_range, coordinates)
     sql = House

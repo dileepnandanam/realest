@@ -94,7 +94,7 @@ class PropertiesController < ApplicationController
     end
 
     if params[:place].present?
-      result = GeocoderValues::MAP[params[:place]]
+      result = GeocoderValues::MAP[params[:place].rstrip.camelize]
       if result.first.present?
         session[:coordinates] = result
       else

@@ -14,7 +14,8 @@ $(document).on('turbolinks:load', function() {
       url: '/lands/suggest',
       data: {query: $('.place-filter-field').val()},
       success: function(data) {
-        $('.suggestions.places').removeClass('d-none')
+        if(data.suggestions.length > 0)
+          $('.suggestions.places').removeClass('d-none')
         $('.suggestions.places').html('')
         $.each(data.suggestions, function(i, value){
           $('.suggestions.places').append('<div class="suggestion" >' + value + '</div>')
@@ -53,7 +54,8 @@ $(document).on('turbolinks:load', function() {
       url: '/cars/suggest_brand',
       data: {query: $('.car-brand-filter-field').val()},
       success: function(data) {
-        $('.suggestions.brands').removeClass('d-none')
+        if(data.suggestions.length > 0)
+          $('.suggestions.brands').removeClass('d-none')
         $('.suggestions.brands').html('')
         $.each(data.suggestions, function(i, value){
           $('.suggestions.brands').append('<div class="suggestion" >' + value + '</div>')
@@ -67,7 +69,8 @@ $(document).on('turbolinks:load', function() {
       url: '/cars/suggest_model',
       data: {query: $('.car-model-filter-field').val()},
       success: function(data) {
-        $('.suggestions.models').removeClass('d-none')
+        if(data.suggestions.length > 0)  
+          $('.suggestions.models').removeClass('d-none')
         $('.suggestions.models').html('')
         $.each(data.suggestions, function(i, value){
           $('.suggestions.models').append('<div class="suggestion" >' + value + '</div>')
