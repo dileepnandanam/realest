@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     get :search, on: :collection
     get :mine, on: :collection
     get :suggestions, on: :collection
-    resources :property_assets, controller: 'properties/property_assets'
+    resources :property_assets, controller: 'properties/property_assets' do
+      delete :delete_image, on: :member
+      delete :delete_video, on: :member
+    end
     resources :properties_users, controller: 'properties/properties_users' do
       put :seen, on: :member
       put :unseen, on: :member

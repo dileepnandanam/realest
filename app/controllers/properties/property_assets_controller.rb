@@ -31,6 +31,24 @@ class Properties::PropertyAssetsController < ApplicationController
     @property.property_assets.find_by_id(params[:id]).delete
   end
 
+  def delete_image
+    @property = Property.find_by_id(params[:property_id])
+    if !current_user.admin? && @property.user != current_user
+      render 'layouts/noaccess' and return
+    end
+    @property.property_assets.find_by_id(params[:id]).image.purge
+    redirect_back fallback_location: root_path
+  end
+
+  def delete_video
+    @property = Property.find_by_id(params[:property_id])
+    if !current_user.admin? && @property.user != current_user
+      render 'layouts/noaccess' and return
+    end
+    @property.property_assets.find_by_id(params[:id]).update iframe: nil
+    redirect_back fallback_location: root_path
+  end
+
   protected
 
   def property_asset_params

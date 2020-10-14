@@ -1,4 +1,9 @@
 - if property_asset.iframe.present?
   = render partial: 'common/youtube', locals: {property: property_asset}
+  - if current_user.try(:admin?) || @property.user == currnt_user
+    .clearfix
+    = link_to 'delete video', delete_video_property_property_asset_path(property_asset.property, property_asset), method: :delete
 - if property_asset.image.attachment.present?
   = image_tag(property_asset.image)
+  - if current_user.try(:admin?) || @property.user == currnt_user
+    = link_to 'delete image', delete_image_property_property_asset_path(property_asset.property, property_asset), method: :delete
