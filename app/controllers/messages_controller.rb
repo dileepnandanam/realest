@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
 
   def index
     @messages = Message.order('created_at DESC')
+    @messages.update_all seen: true
   end
 
   def new
