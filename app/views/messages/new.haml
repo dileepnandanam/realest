@@ -1,6 +1,7 @@
 %h3
   Message Us
 = simple_form_for(@message, html: {class: 'contact-form', remote: true}) do |f|
+  = f.input :name
   = f.input :contact, label: 'e-mail or phone number'
   = f.input :content, label: 'message'
   = f.submit 'Send'

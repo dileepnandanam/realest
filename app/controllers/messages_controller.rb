@@ -19,6 +19,6 @@ class MessagesController < ApplicationController
   protected
 
   def message_params
-    params.require(:message).permit(:contact, :content)
+    params.require(:message).permit(:contact, :content, :name)
   end
 end
