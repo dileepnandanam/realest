@@ -50,7 +50,7 @@ class Land < Property
   end
 
   def common_tags
-    ' kerala land plot ploat property properties sale own '
+    ' kerala land plot ploat property sale  buy  lease properties sale own '
   end
 
 end

@@ -41,6 +41,6 @@ class Office < Property
   end
 
   def common_tags
-    ' kerala office workplace workspace space company officeroom '
+    ' kerala office workplace workspace space rend company officeroom room'
   end
 end

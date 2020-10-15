@@ -52,6 +52,6 @@ class House < Property
   end
 
   def common_tags
-    ' kerala house home veed small big stay appartmrnt apartment appartment flat '
+    ' kerala house home veed rent lease stay appartmrnt apartment appartment flat room'
   end
 end
