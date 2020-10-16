@@ -4,10 +4,10 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
     %meta{ :name=>"google-site-verification", :content=> "XhJr0yXwxe3yq30iK76UGiyKm8gaAcP7keiYhVeJnV4" }
-    %meta{ :name=>"Description", :content=> "sel land, buy land, rent house or office in kerala"}
+    %meta{ :name=>"Description", :content=> "#{yield :description}"}
     
     %title
-      sel, buy, rent
+      = yield :title
     
     = csrf_meta_tags
     = csp_meta_tag
@@ -19,11 +19,11 @@
       .nav
         
         - if current_user && current_user.admin?     
-          = link_to "log Out", destroy_user_session_path, method: :delete, class: 'pull-right nav-item block col-lg-3 col-sm-4 col-4 text-center'
+          = link_to "log Out", destroy_user_session_path, method: :delete, class: 'pull-right nav-item block col-lg-4 col-sm-4 col-4 text-center'
 
-          = link_to 'Account', edit_user_registration_path(current_user), class: 'pull-right nav-item block col-lg-3 col-sm-4 col-4 text-center'
+          = link_to 'Account', edit_user_registration_path(current_user), class: 'pull-right nav-item block col-lg-4 col-sm-4 col-4 text-center'
 
-          = link_to 'Home', '/', class: 'pull-right nav-item block col-lg-3 col-sm-4 col-4 text-center'
+          = link_to 'Home', '/', class: 'pull-right nav-item block col-lg-4 col-sm-4 col-4 text-center'
 
           = link_to 'My Properties', mine_properties_path, class: 'pull-right nav-item block col-lg-6 col-sm-6 col-6 text-center'
 
@@ -31,13 +31,13 @@
           
         - elsif current_user
           
-          = link_to "log Out", destroy_user_session_path, method: :delete, class: 'pull-right nav-item block col-lg-3 col-sm-4 col-4 text-center'
+          = link_to "log Out", destroy_user_session_path, method: :delete, class: 'pull-right nav-item block col-lg-6 col-sm-6 col-6 text-center'
 
-          = link_to 'Account', edit_user_registration_path(current_user), class: 'pull-right nav-item block col-lg-3 col-sm-4 col-4 text-center'
+          = link_to 'Account', edit_user_registration_path(current_user), class: 'pull-right nav-item block col-lg-6 col-sm-6 col-6 text-center'
 
-          = link_to 'Home', '/', class: 'pull-right nav-item block col-lg-3 col-sm-4 col-4 text-center'
+          = link_to 'Home', '/', class: 'pull-right nav-item block col-lg-6 col-sm-6 col-6 text-center'
 
-          = link_to 'My Properties', mine_properties_path, class: 'pull-right nav-item block col-lg-3 col-sm-12 col-12 text-center'
+          = link_to 'My Properties', mine_properties_path, class: 'pull-right nav-item block col-lg-6 col-sm-6 col-6 text-center'
         - else
           = link_to 'Home', '/', class: 'pull-right nav-item block col-lg-3 col-sm-6 col-6 text-center'
           = link_to "log In", new_user_session_path, class: 'pull-right nav-item block col-lg-3 col-sm-6 col-6 text-center', rel: :nofollow

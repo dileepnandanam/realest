@@ -109,3 +109,14 @@ abbr {
   margin: auto;
   margin-bottom: 12px;
 }
+.footer-2 {
+  padding-top: 23px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.contact_us_form {
+  line-height: 27px;
+}
+.center {
+  margin: auto;
+}

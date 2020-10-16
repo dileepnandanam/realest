@@ -264,6 +264,7 @@
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: auto;
 }
 .property-page .filter-container {
   background: #110f0bd4;

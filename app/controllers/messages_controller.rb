@@ -16,6 +16,7 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
+    render 'new', layout: false
   end
 
   protected

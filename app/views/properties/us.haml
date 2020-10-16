@@ -1,0 +1,22 @@
+.logo-holder.col-lg-6.col-sm-9.col-12
+  = render partial: 'properties/logo'
+
+.us-container
+  .us
+    .map-container
+      = render partial: 'properties/map'
+    .links.col-lg-6.col-sm-9.col-12
+      .footer-2.col-lg-6.col-sm-12.col-12.center
+        .contact_us
+          %p.text-center
+            %i.fa.fa-phone
+            = link_to "+91 75 94 94 33 55", "tel:+919594943355"
+          %p.text-center
+            %i.fa.fa-envelope-open-o
+            = link_to "safkopkd@gmail.com", "mailto:safkopkd@gmail.com"
+    .clearfix
+    .message-form-container.contact_us_form.col-lg-6.col-sm-9.col-12
+      = link_to new_message_path, remote: true, class: 'message-us-form-link' do
+        .message-us
+          Message Us
+    .clearfix

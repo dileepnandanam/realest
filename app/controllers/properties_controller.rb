@@ -23,6 +23,10 @@ class PropertiesController < ApplicationController
     @properties = Property.where(user_id: current_user.id)
   end
 
+  def us
+
+  end
+
   def show
     klass = controller_name.singularize.camelize.constantize
     @property = klass.find(params[:id])
