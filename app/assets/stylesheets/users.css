@@ -53,7 +53,9 @@ textarea {
   box-shadow: 1px 2px 2px #dddfe1, 1px 1px 1px #dddfe1;
 }
 .nav-item {
-  padding: 4px 12px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
 }
 .nav-item:hover {
   color: yellow;

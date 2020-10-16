@@ -2,3 +2,6 @@
 .properties
   - @properties.each do |p|
     = render partial: "#{p.type.underscore.pluralize}/property_thumb", locals: {property: p}
+- if @properties.count == 0
+  %p.text-center.white.wide
+    Nothing listed

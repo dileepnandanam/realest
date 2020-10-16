@@ -17,7 +17,20 @@
     = audio_tag 'inflicted.mp3', class: 'response-notif'
     .page
       .nav
-        - if current_user          
+        
+        - if current_user && current_user.admin?     
+          = link_to "log Out", destroy_user_session_path, method: :delete, class: 'pull-right nav-item block col-lg-3 col-sm-4 col-4 text-center'
+
+          = link_to 'Account', edit_user_registration_path(current_user), class: 'pull-right nav-item block col-lg-3 col-sm-4 col-4 text-center'
+
+          = link_to 'Home', '/', class: 'pull-right nav-item block col-lg-3 col-sm-4 col-4 text-center'
+
+          = link_to 'My Properties', mine_properties_path, class: 'pull-right nav-item block col-lg-6 col-sm-6 col-6 text-center'
+
+          = link_to "messages(#{Message.where(seen: false).count})", messages_path, class: 'pull-right nav-item block col-lg-6 col-sm-6 col-6 text-center'
+          
+        - elsif current_user
+          
           = link_to "log Out", destroy_user_session_path, method: :delete, class: 'pull-right nav-item block col-lg-3 col-sm-4 col-4 text-center'
 
           = link_to 'Account', edit_user_registration_path(current_user), class: 'pull-right nav-item block col-lg-3 col-sm-4 col-4 text-center'
@@ -25,9 +38,6 @@
           = link_to 'Home', '/', class: 'pull-right nav-item block col-lg-3 col-sm-4 col-4 text-center'
 
           = link_to 'My Properties', mine_properties_path, class: 'pull-right nav-item block col-lg-3 col-sm-12 col-12 text-center'
-          
-          - if current_user.admin?
-            = link_to "messages(#{Message.where(seen: false).count})", messages_path, class: 'pull-right nav-item block col-lg-3 col-sm-12 col-12 text-center'
         - else
           = link_to 'Home', '/', class: 'pull-right nav-item block col-lg-3 col-sm-6 col-6 text-center'
           = link_to "log In", new_user_session_path, class: 'pull-right nav-item block col-lg-3 col-sm-6 col-6 text-center', rel: :nofollow

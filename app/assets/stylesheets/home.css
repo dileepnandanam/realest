@@ -71,9 +71,10 @@ input.search {
   border: 1px solid blue;
 }
 .contact_us.form {
-  border: 1px solid;
+  border: 1px solid #ffff002e;
   padding: 12px;
   box-shadow: 0 0 5px;
+  margin-bottom: 12px;
 }
 .logo {
   position: absolute;
@@ -93,4 +94,10 @@ input.search {
   display: inline-block;
   padding: 0px 3px;  
   color: black;
+}
+.contact_us input {
+  height: 35px;
+}
+.contact_us textarea {
+  height: ;
 }

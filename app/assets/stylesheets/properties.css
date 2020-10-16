@@ -292,3 +292,13 @@
   border: 1px solid;
   border-radius: 8px;
 }
+.message.seen {
+  background: blue;
+}
+.white {
+  color: white;
+  background-color: #0000008a;
+}
+.wide {
+  width: 100%;
+}

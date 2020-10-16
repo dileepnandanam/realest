@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  after_action :mark_seen, only: [:index]
+
   def create
     @message = Message.create message_params
     if @message.valid?
@@ -10,7 +12,6 @@ class MessagesController < ApplicationController
 
   def index
     @messages = Message.order('created_at DESC')
-    @messages.update_all seen: true
   end
 
   def new
@@ -21,5 +22,9 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:contact, :content, :name)
+  end
+
+  def mark_seen
+    @messages.update_all seen: true
   end
 end

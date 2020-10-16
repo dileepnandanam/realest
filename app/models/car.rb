@@ -47,6 +47,6 @@ class Car < Property
   end
 
   def common_tags
-    'kerala car vehicle vehicil used'
+    'kerala car vehicle vehicil'
   end
 end

@@ -1,5 +1,5 @@
 - @messages.each do |m|
-  .message
+  .message{class: m.seen? ? 'seen' : 'unseen'}
     %h3
       = m.name
     %p

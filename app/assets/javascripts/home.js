@@ -46,4 +46,8 @@ homeInit = function() {
   $(document).on('ajax:error', '.contact-form', function(e) {
     $('.contact_us.form').html(e.detail[2].responseText)
   })
+
+  $(document).on('ajax:success', '.home .property-category', function(e) {
+    $('.property-page').html(e.detail[2].responseText)
+  })
 }
