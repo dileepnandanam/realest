@@ -71,10 +71,11 @@ input.search {
   border: 1px solid blue;
 }
 .contact_us.form {
-  border: 1px solid #ffff002e;
+  
   padding: 12px;
-  box-shadow: 0 0 5px;
   margin-bottom: 12px;
+  margin-bottom: 12px;
+  max-width: 300px;
 }
 .logo {
   position: absolute;
@@ -100,4 +101,7 @@ input.search {
 }
 .contact_us textarea {
   height: ;
+}
+abbr {
+  display: none;
 }

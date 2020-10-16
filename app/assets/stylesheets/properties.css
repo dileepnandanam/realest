@@ -180,7 +180,7 @@
   padding-left: 8px !important;
 }
 .highlight.state{
-  background: yellowgreen;
+  background: #292691a8;
 }
 .highlight.subnav-item {
   background-image: linear-gradient(180deg, #b4c7e7, transparent);
@@ -232,7 +232,7 @@
   color: white;
 }
 .states {
-  background-color: cyan;
+  background-color: #000000db;
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
