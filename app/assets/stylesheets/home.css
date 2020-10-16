@@ -100,8 +100,12 @@ input.search {
   height: 35px;
 }
 .contact_us textarea {
-  height: ;
+  height: 120px;
 }
 abbr {
   display: none;
+}
+.mapouter {
+  margin: auto;
+  margin-bottom: 12px;
 }
