@@ -68,11 +68,17 @@ class PropertiesController < ApplicationController
   end
 
   def suggest
-    render json: {
-      suggestions: GeocoderValues::MAP.keys.select{ |place|
-        place.starts_with?(params[:query].camelize)
+    if params[:query].blank?
+      render json: {
+        suggestions: []
       }
-    }
+    else
+      render json: {
+        suggestions: GeocoderValues::PLACES.select{ |place|
+          place.starts_with?(params[:query].camelize)
+        }
+      }
+    end
   end
 
 
@@ -98,7 +104,7 @@ class PropertiesController < ApplicationController
     end
 
     if params[:place].present?
-      result = GeocoderValues::MAP[params[:place].rstrip.camelize]
+      result = GeocoderValues::ALL_PLACES[params[:place].rstrip.camelize]
       if result.present?
         session[:coordinates] = result
       else

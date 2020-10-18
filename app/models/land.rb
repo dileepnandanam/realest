@@ -20,7 +20,7 @@ class Land < Property
     sql = sql.where(expected_price: price_range)
     sql = sql.where(total_cents: acre_range)
     if coordinates.present?
-      sql = sql.near(coordinates, 10)
+      sql = sql.near(coordinates, 15)
     end
     sql
   end
