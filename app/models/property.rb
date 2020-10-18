@@ -25,7 +25,7 @@ class Property < ApplicationRecord
   reverse_geocoded_by :lat, :lngt
   before_validation :set_coordinates
   def set_coordinates
-    result = GeocoderValues::MAP[self.place]
+    result = GeocoderValues::ALL_PLACES[self.place]
     if result.present?
       coordinates = result
       self.lat = coordinates[0]
