@@ -14,5 +14,5 @@
   .clearfix
 = render partial: "#{@klass_underscore.pluralize}/filter"
 .properties
-  = render partial: 'properties', locals: {properties: @properties}
+  = render partial: 'common/properties', locals: {properties: @properties}
 .clearfix

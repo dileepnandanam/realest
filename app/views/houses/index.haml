@@ -1,7 +1,0 @@
-= render partial: 'layouts/sub_nav', locals: {remote: true}
-- if current_user.try :admin?
-  = render partial: 'common/admin_properties'
-- else
-  = render partial: 'common/common_properties'
-
-
