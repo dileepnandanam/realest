@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get :mine, on: :collection
     get :suggestions, on: :collection
     get :suggest, on: :collection
+    put :set_state, on: :member
     resources :property_assets, controller: 'properties/property_assets' do
       delete :delete_image, on: :member
       delete :delete_video, on: :member
