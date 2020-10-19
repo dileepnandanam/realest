@@ -1,0 +1,2 @@
+class RentalHousesController < PropertiesController
+end

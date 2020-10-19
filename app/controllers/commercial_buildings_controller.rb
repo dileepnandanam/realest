@@ -1,0 +1,2 @@
+class CommercialBuildingsController < PropertiesController
+end

@@ -1,0 +1,2 @@
+class RecidentialPloatsController < PropertiesController
+end

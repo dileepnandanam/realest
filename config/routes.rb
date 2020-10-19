@@ -22,18 +22,24 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :lands do
+  resources :commercial_lands do
     put :set_state, on: :member
     post :interest, on: :member
     get :suggest, on: :collection
     get :interests, on: :collection 
   end
 
-  resources :cars do
+  resources :recidential_ploats do
     put :set_state, on: :member
     post :interest, on: :member
-    get :suggest_brand, on: :collection
-    get :suggest_model, on: :collection
+    get :suggest, on: :collection
+    get :interests, on: :collection 
+  end
+
+  resources :commercial_buildings do
+    put :set_state, on: :member
+    post :interest, on: :member
+    get :suggest, on: :collection
     get :interests, on: :collection 
   end
 
@@ -44,14 +50,28 @@ Rails.application.routes.draw do
     get :interests, on: :collection 
   end
 
-  resources :offices do
+  resources :villas do
     put :set_state, on: :member
     post :interest, on: :member
     get :suggest, on: :collection
     get :interests, on: :collection 
   end
 
-  resources :servents do
+  resources :rental_houses do
+    put :set_state, on: :member
+    post :interest, on: :member
+    get :suggest, on: :collection
+    get :interests, on: :collection 
+  end
+
+  resources :rental_offices do
+    put :set_state, on: :member
+    post :interest, on: :member
+    get :suggest, on: :collection
+    get :interests, on: :collection 
+  end
+
+  resources :rental_shopes do
     put :set_state, on: :member
     post :interest, on: :member
     get :suggest, on: :collection
