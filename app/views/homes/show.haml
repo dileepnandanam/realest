@@ -1,0 +1,24 @@
+.home
+  .banner{style: "background-image: url(#{asset_url('banner-blured.jpg')})"}
+    = render partial: 'properties/logo'
+    .caption.text-center
+      Lands, Houses and Office spaces
+    .search
+      = text_field_tag 'search', nil, class: 'search', placeholder: 'search land, house, office..'
+      .suggestions.general.d-none
+  .properties
+  = render partial: 'layouts/sub_nav', locals: {remote: true}
+  .footer
+    .footer-1.col-lg-6.col-sm-12.col-12.float-left
+      .contact_us.form.contact-us-form.contact_us_form
+        = render template: 'messages/new'
+    .footer-2.col-lg-6.col-sm-12.col-12.float-left.section-2
+      .contact_us
+        = render partial: 'properties/map'
+        %p.text-center
+          %i.fa.fa-phone
+          = link_to "+91 75 94 94 33 55", "tel:+919594943355"
+        %p.text-center
+          %i.fa.fa-envelope-open-o
+          = link_to "safkopkd@gmail.com", "mailto:safkopkd@gmail.com"
+    .clearfix

@@ -21,6 +21,16 @@ class Property < ApplicationRecord
     end
   end
 
+  def self.search(params)
+    sql = self
+    sql = sql.where(state: params[:state]) if params[:state].present?
+    sql = sql.where(expected_price: params[:price_range]) if params[:price_range].present?
+    sql = sql.where(area: params[:area_range]) if params[:area_range].present?
+    sql = sql.where(total_cents: params[:acre_range]) if params[:acre_range].present?
+    sql = sql.near(params[:coordinates], 15) if params[:coordinates].present?
+    sql
+  end
+
 
   reverse_geocoded_by :lat, :lngt
   before_validation :set_coordinates
@@ -35,16 +45,6 @@ class Property < ApplicationRecord
 
   validates_with PlaceValidator
 
-  def self.search(state, price_range, acre_range, coordinates)
-    sql = Property
-    sql = sql.where(state: state)
-    sql = sql.where(expected_price: price_range)
-    sql = sql.where(total_cents: acre_range)
-    if coordinates.present?
-      sql = sql.near(coordinates, 50)
-    end
-    sql
-  end
 
   before_save :calculate_total_cents
   def calculate_total_cents

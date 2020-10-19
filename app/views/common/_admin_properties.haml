@@ -1,4 +1,4 @@
-= link_to "interests(#{@interests_count})", ("interests_#{@klass_underscore.pluralize}_path"), class: 'interests float-left'
+= link_to "interests(#{@interests_count})", eval("interests_#{@klass_underscore.pluralize}_path"), class: 'interests float-left'
 = link_to t("new.#{@klass_underscore}"), eval("new_#{@klass_underscore}_path"), class: 'action-button new-property'
 .clearfix
 
@@ -10,7 +10,7 @@
   .state.col-sm-3.pull-left{class: params[:state] == 'sold' ? 'highlight' : ''}
     = link_to "Sold(#{@properties_counts['sold'].to_i})", eval("#{@klass_underscore.pluralize}_path(state: 'sold')"), remote: true, class: 'state'
   .state.col-sm-3.pull-left{class: params[:state] == 'archived' ? 'highlight' : ''}
-    = link_to "Archived(#{@properties_counts['sold'].to_i})", eval("#{@klass_underscore.pluralize}_path(state: 'archived')"), remote: true, class: 'state'
+    = link_to "Archived(#{@properties_counts['archived'].to_i})", eval("#{@klass_underscore.pluralize}_path(state: 'archived')"), remote: true, class: 'state'
   .clearfix
 = render partial: "#{@klass_underscore.pluralize}/filter"
 .properties

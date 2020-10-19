@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "properties#index"
+  root to: "homes#show"
   get 'us', to: 'properties#us'
   resources :users do
     get :switch, on: :member
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get :search, on: :collection
     get :mine, on: :collection
     get :suggestions, on: :collection
+    get :suggest, on: :collection
     resources :property_assets, controller: 'properties/property_assets' do
       delete :delete_image, on: :member
       delete :delete_video, on: :member

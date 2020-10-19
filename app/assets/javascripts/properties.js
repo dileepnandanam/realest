@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function() {
 filterInit = function() {
   search_properties = function() {
     $.ajax({
-      url: '/lands?' + $('.filter-form').serialize(),
+      url: $('.filter-form').data('url') + '?' + $('.filter-form').serialize(),
       dataType: 'html',
       success: function(data) {
         $('.properties').html(data)
@@ -19,7 +19,7 @@ filterInit = function() {
 
   place_suggestion = function() {
     $.ajax({
-      url: '/lands/suggest',
+      url: '/properties/suggest',
       data: {query: $('.place-filter-field').val()},
       success: function(data) {
         if(data.suggestions.length > 0)
@@ -139,7 +139,7 @@ filterInit = function() {
 
   search_office = function() {
     $.ajax({
-      url: '/offices?' + $('.filter-form').serialize(),
+      url: $('.filter-form').data('url') + '?' + $('.filter-form').serialize(),
       dataType: 'html',
       success: function(data) {
         $('.properties').html(data)

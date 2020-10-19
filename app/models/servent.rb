@@ -11,17 +11,6 @@ class Servent < Property
   reverse_geocoded_by :lat, :lngt
   before_validation :set_coordinates
 
-
-  def self.search(state, price_range, coordinates)
-    sql = Servent
-    sql = sql.where(state: state)
-    sql = sql.where(expected_price: price_range)
-    if coordinates.present?
-      sql = sql.near(coordinates, 10)
-    end
-    sql
-  end
-
   def summary
     "#{servent} for hire at #{place}"
   end

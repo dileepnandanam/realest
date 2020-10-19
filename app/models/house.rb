@@ -23,17 +23,6 @@ class House < Property
     end
   end
 
-  def self.search(state, price_range, area_range, coordinates)
-    sql = House
-    sql = sql.where(state: state)
-    sql = sql.where(expected_price: price_range)
-    sql = sql.where(area: area_range)
-    if coordinates.present?
-      sql = sql.near(coordinates, 10)
-    end
-    sql
-  end
-
   def present
     {
       "expected rent" => expected_price,

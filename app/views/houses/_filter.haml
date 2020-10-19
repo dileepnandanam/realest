@@ -2,7 +2,7 @@
   .h3
     Search Houses for rent
   .filter
-    = form_with(url: '/index', method: 'get', class: 'filter-form') do
+    = form_with(url: '/index', method: 'get', class: 'filter-form', data: {url: houses_path}) do
       .place-filter
         = label_tag 'Nearby Place'
         .clearfix

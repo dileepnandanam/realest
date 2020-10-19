@@ -14,17 +14,6 @@ class Land < Property
   reverse_geocoded_by :lat, :lngt
   before_validation :set_coordinates
 
-  def self.search(state, price_range, acre_range, coordinates)
-    sql = Land
-    sql = sql.where(state: state)
-    sql = sql.where(expected_price: price_range)
-    sql = sql.where(total_cents: acre_range)
-    if coordinates.present?
-      sql = sql.near(coordinates, 15)
-    end
-    sql
-  end
-
   before_save :calculate_total_cents
   def calculate_total_cents
     self.total_cents = acre.to_i * 100 + cent.to_i

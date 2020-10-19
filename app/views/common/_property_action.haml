@@ -1,0 +1,18 @@
+.property-action.property-details
+  - if current_user && current_user.admin?
+    .property-detail
+      - if property.state == 'new'
+        = link_to 'approve', eval("set_state_#{@klass_underscore}_path(property, state: 'approved')"), method: :put, remote: true, class: 'property-action-link'
+        = link_to 'ignore', eval("set_state_#{@klass_underscore}_path(property, state: 'archived')"), method: :put, remote: true, class: 'property-action-link'
+      - if property.state == 'approved'
+        = link_to 'sold', eval("set_state_#{@klass_underscore}_path(property, state: 'sold')"), method: :put, remote: true, class: 'property-action-link'
+        = link_to 'disapprove', eval("set_state_#{@klass_underscore}_path(property, state: 'new')"), method: :put, remote: true, class: 'property-action-link'
+      - if property.state == 'sold'
+        = link_to 'archive', eval("set_state_#{@klass_underscore}_path(property, state: 'archived')"), method: :put, remote: true, class: 'property-action-link'
+        = link_to 'renew', eval("set_state_#{@klass_underscore}_path(property, state: 'approved')"), method: :put, remote: true, class: 'property-action-link'
+      - if property.state == 'archived'
+        = link_to 'sold', eval("set_state_#{@klass_underscore}_path(property, state: 'sold')"), method: :put, remote: true, class: 'property-action-link'
+  - if current_user && current_user.admin? || current_user == property.user
+    .property-detail
+      = link_to 'edit', ("edit_#{@klass_underscore}_path(property)")
+  = link_to 'View', eval("#{@klass_underscore}_path(property)"), class: 'property-action-link'

@@ -14,20 +14,6 @@ class Car < Property
   reverse_geocoded_by :lat, :lngt
   before_validation :set_coordinates
 
-
-  def self.search(state, price_range, model, brand, coordinates)
-    sql = Car
-    sql = sql.where(state: state)
-    sql = sql.where(expected_price: price_range)
-    sql = sql.where('model::INT >= ?', model.to_i) if model.present?
-    sql = sql.where('lower(brand) = ?', brand.downcase) if brand.present?
-
-    if coordinates.present?
-      sql = sql.near(coordinates, 10)
-    end
-    sql
-  end
-
   def present
     {
       "expected price" => expected_price,

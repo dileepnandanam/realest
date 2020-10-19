@@ -11,17 +11,7 @@ class Office < Property
 
   reverse_geocoded_by :lat, :lngt
   before_validation :set_coordinates
-  
-  def self.search(state, price_range, area_range, coordinates)
-    sql = Office
-    sql = sql.where(state: state)
-    sql = sql.where(expected_price: price_range)
-    sql = sql.where(area: area_range)
-    if coordinates.present?
-      sql = sql.near(coordinates, 10)
-    end
-    sql
-  end
+
 
   def present
     {
