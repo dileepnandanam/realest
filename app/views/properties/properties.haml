@@ -2,6 +2,6 @@
   %p.text-center
     No Results found
 - @properties.each do |property|
-  = render partial: "#{property.type.underscore.pluralize}/property_thumb", locals: {property: property}
+  = render partial: "common/property_thumb", locals: {property: property}
 - if @properties.next_page
   = link_to 'show more', search_properties_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), q: params[:q]), remote: true, class: 'more-interests-link'

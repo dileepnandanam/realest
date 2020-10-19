@@ -1,8 +1,4 @@
 class House < Property
-  has_one_attached :img1
-
-  belongs_to :user
-
 
   #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
   validates_each(:expected_price, :landmark, :area) do |record, attr, value|
@@ -11,33 +7,12 @@ class House < Property
     end
   end
 
-
-  reverse_geocoded_by :lat, :lngt
-  before_validation :set_coordinates
-  def set_coordinates
-    result = Geocoder.search(self.place)
-    if result.first.present?
-      coordinates = result.first.coordinates
-      self.lat = coordinates[0]
-      self.lngt = coordinates[1]
-    end
-  end
-
-  def present
-    {
-      "expected rent" => expected_price,
-      "place" => place,
-      "area" => "#{area} square feets",
-      "landmark" => landmark
-    }
-  end
-
   def summary
     "#{area} square feet house at #{place}"
   end
 
   def set_suggestion
-    self.suggestion = "house at #{place}"
+    self.suggestion = "house for sale at #{place}"
   end
 
   def common_tags

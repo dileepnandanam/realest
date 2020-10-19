@@ -12,6 +12,8 @@ class Property < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :users
 
+  has_and_belongs_to_many :users, primery_key: :property_id, foreign_key: :user_id
+
   has_many :properties_user, foreign_key: :property_id
 
   #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
@@ -45,13 +47,6 @@ class Property < ApplicationRecord
 
   validates_with PlaceValidator
 
-
-  before_save :calculate_total_cents
-  def calculate_total_cents
-    if type == nil
-      self.total_cents = acre * 100 + cent
-    end
-  end
 
   before_save :set_index
   before_save :set_suggestion

@@ -30,19 +30,51 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  property_name:
+    commercial_land: Land
+    residential_ploat: Ploat
+    commercial_building: Building
+    house: House
+    villa: Villa
+    rental_house: House
+    rental_office: Office
+    rental_shop: Shop
   new:
-    house: Sell House 
+    commercial_land: Sell Land
+    residential_ploat: Sell Ploat
+    commercial_building: Sell Building
+    house: Sell House
+    villa: Sell Villa
+    rental_house: Rent House
+    rental_office: Rent Office
+    rental_shop: Rent Shop
+  no_entries:
+    commercial_land: No Lands Found
+    residential_ploat: No Ploats Found
+    commercial_building: No Buildings Found
+    house: No Houses Found
+    villa: No Villas Found
+    rental_house: No Houses Found
+    rental_office: No Offices Found
+    rental_shop: No Shops Found
+
   activerecord:
     attributes:
       house:
-        expected_price: "Rent"
-      office:
-        expected_price: "Rent"
-      land:
         expected_price: "Expected Price"
-      servent:
-        expected_price: "salery"
-      car:
+      rental_office:
+        expected_price: "Expected Rent"
+      commercial_land:
+        expected_price: "Expected Price"
+      commercial_building:
+        expected_price: "Expected Price"
+      villa:
+        expected_price: "Expected Price"
+      rental_shop:
+        expected_price: "Expected Rent"
+      rental_house:
+        expected_price: "Expected Rent"
+      commercial_ploat:
         expected_price: "Expected Price"
     errors:
       models:

@@ -60,6 +60,7 @@ class PropertiesController < ApplicationController
         property_id: params[:id]
       }
     ).select('users.name, users.contact_number, properties_users.seen, properties_users.id')
+    render 'common/show'
   end
 
   def interest
@@ -108,7 +109,7 @@ class PropertiesController < ApplicationController
     end
 
     @property.update state: params.permit(:state)[:state]
-    render partial: 'property_action', locals: {property: @property}, layout: false
+    render partial: 'common/property_action', locals: {property: @property}, layout: false
   end
 
 
@@ -128,8 +129,8 @@ class PropertiesController < ApplicationController
       )
     )
     if @property.save
-      flash[:notice] = 'House Listed'
-      redirect_to houses_path
+      flash[:notice] = I18n.t("property_name.#{@klass_underscore}") + ' Listed, We will get back to you soon'
+      redirect_to send("#{@klass_underscore.pluralize}_path".to_sym)
     else
       render 'form'
     end

@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     get :interests, on: :collection 
   end
 
-  resources :recidential_ploats do
+  resources :residential_ploats do
     put :set_state, on: :member
     post :interest, on: :member
     get :suggest, on: :collection
@@ -71,7 +71,7 @@ Rails.application.routes.draw do
     get :interests, on: :collection 
   end
 
-  resources :rental_shopes do
+  resources :rental_shops do
     put :set_state, on: :member
     post :interest, on: :member
     get :suggest, on: :collection
