@@ -135,9 +135,6 @@
 .states {
   background-color: #ffffffaa;
 }
-.highlight a {
-  color: red !important;
-}
 .interests-container {
 }
 .interest {
@@ -186,8 +183,8 @@
 .highlight.state {
   background: #292691a8;
 }
-.highlight.subnav-item {
-  background-image: linear-gradient(180deg, #b4c7e7, transparent);
+.highlight.subnav-item img{
+  border: 4px solid blue;
 }
 .subnav-item:hover {
   background-image: radial-gradient(#d7daed82, transparent);
@@ -306,4 +303,16 @@
 }
 .wide {
   width: 100%;
+}
+.property-category {
+  display: block;
+  padding: 8px;
+  margin-top: 4px;
+  background: lightblue;
+}
+.highlight-cat {
+  color: red !important;
+}
+.breakdown {
+  display: none;
 }

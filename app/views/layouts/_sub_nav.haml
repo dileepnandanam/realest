@@ -1,11 +1,15 @@
 .subnav
   - sub_cat = {'land' => ['commercial_land', 'residential_ploat'], 'building' => ['commercial_building', 'house', 'villa'], 'rental' => ['rental_house', 'rental_office', 'rental_shop']}
   - sub_cat.each do |k, v|
-    .subnav-item.col-lg-4.col-sm-4.col-4.float-left{class: controller_name == p ? 'highlight' : ''}
-      .sub-nav-ico.col-12
+    .subnav-item.col-lg-4.col-sm-4.col-4.float-left{class: v.map(&:pluralize).include?(controller_name) ? 'highlight' : ''}
+      .text-center
+        = k.pluralize
+      .sub-nav-ico.col-12{data: { target: k}}
         = image_tag("#{k}.jpg")
       .clearfix
+  .clearfix
+  - sub_cat.each do |k, v|
+    .breakdown{class: k }
       - v.each do |sc|
-        = link_to t("property_name.#{sc}"), eval("#{sc.pluralize}_path")
-        .clearfix
+        = link_to sc.pluralize.humanize.camelize, eval("#{sc.pluralize}_path"), remote: remote, class: 'property-category text-center'
   .clearfix

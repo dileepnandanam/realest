@@ -72,6 +72,11 @@ filterInit = function() {
     $('.property-page').html(e.detail[2].responseText)
   })
 
+  $(document).on('click', '.sub-nav-ico', function() {
+    $('.breakdown').hide()
+    $('.' + $(this).data('target')).fadeIn('fast')
+  })
+
 
 
   $(document).on('ajax:success', '.new-property-asset-link', function(e) {

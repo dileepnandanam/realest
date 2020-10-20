@@ -7,6 +7,15 @@ class House < Property
     end
   end
 
+  def present
+    {
+      "expected price" => expected_price,
+      "place" => place,
+      "area" => "#{area} square feet",
+      "landmark" => landmark
+    }
+  end
+
   def summary
     "#{area} square feet house at #{place}"
   end
