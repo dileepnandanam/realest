@@ -1,2 +1,0 @@
-class HousesController < PropertiesController
-end

@@ -1,0 +1,2 @@
+class ResidentialHousesController < PropertiesController
+end

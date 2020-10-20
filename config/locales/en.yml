@@ -34,7 +34,7 @@ en:
     commercial_land: Land
     residential_ploat: Ploat
     commercial_building: Building
-    house: House
+    residential_house: House
     villa: Villa
     rental_house: House
     rental_office: Office
@@ -43,7 +43,7 @@ en:
     commercial_land: Sell Land
     residential_ploat: Sell Ploat
     commercial_building: Sell Building
-    house: Sell House
+    residential_house: Sell House
     villa: Sell Villa
     rental_house: Rent House
     rental_office: Rent Office
@@ -52,7 +52,7 @@ en:
     commercial_land: No Lands Found
     residential_ploat: No Ploats Found
     commercial_building: No Buildings Found
-    house: No Houses Found
+    residential_house: No Houses Found
     villa: No Villas Found
     rental_house: No Houses Found
     rental_office: No Offices Found
