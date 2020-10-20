@@ -308,7 +308,8 @@
   display: block;
   padding: 8px;
   margin-top: 4px;
-  background: lightblue;
+  background: #422e82a6;
+  color: #16260d;
 }
 .highlight-cat {
   color: red !important;
