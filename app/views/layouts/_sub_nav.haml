@@ -1,11 +1,11 @@
-- if false
-  .subnav
-    - ['lands', 'houses', 'offices'].each do |p|
-      .subnav-item.col-lg-4.col-sm-4.col-4.float-left{class: controller_name == p ? 'highlight' : ''}
-        = link_to eval("#{p}_path(state: 'approved')"), remote: remote, class: 'property-category' do
-          .sub-nav-ico.col-12
-            = image_tag("#{p.singularize}.jpg")
-          .clearfix
-          .sub-nav-text
-            = p
-    .clearfix
+.subnav
+  - sub_cat = {'land' => ['commercial_land', 'residential_ploat'], 'building' => ['commercial_building', 'house', 'villa'], 'rental' => ['rental_house', 'rental_office', 'rental_shop']}
+  - sub_cat.each do |k, v|
+    .subnav-item.col-lg-4.col-sm-4.col-4.float-left{class: controller_name == p ? 'highlight' : ''}
+      .sub-nav-ico.col-12
+        = image_tag("#{k}.jpg")
+      .clearfix
+      - v.each do |sc|
+        = link_to t("property_name.#{sc}"), eval("#{sc.pluralize}_path")
+        .clearfix
+  .clearfix
