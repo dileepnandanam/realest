@@ -21,10 +21,11 @@
 }
 .message-us {
   padding: 12px;
-  border: 4px solid white;
+  border: 1px solid white;
   color: white;
   margin-top: 24px;
   margin-bottom: 24px;
+  border-radius: 10px;
 }
 .message-us:hover {
   text-decoration: none !important;
@@ -50,8 +51,28 @@
   width: 100%;
 }
 .us i {
-  margin-right: 12px;
+  margin-right: 4px;
+  border: 1px solid;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  color: #030927;
+  background: #ed4747;
 }
 .home-link {
   margin: auto;
+}
+.us .header {
+  padding: 12px;
+  color: white;
+}
+.contact_us a {
+  border: 1px solid;
+  padding: 15px;
+  border-radius: 30px;
+  background: linear-gradient(45deg, black, #96914d4d);
+}
+.contact_us a:hover {
+  text-decoration: none !important;
 }

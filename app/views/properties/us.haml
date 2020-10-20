@@ -1,8 +1,11 @@
-.logo-holder.col-lg-6.col-sm-9.col-12
-  = render partial: 'properties/logo'
-
 .us-container
   .us
+    %h2.text-center.header
+      SAFKO REALTORS
+    .links.col-lg-6.col-sm-9.col-12
+      .footer-2.col-lg-6.col-sm-12.col-12.center
+        .contact_us.text-center
+          = image_tag('qr.png')
     .links.col-lg-6.col-sm-9.col-12
       .footer-2.col-lg-6.col-sm-12.col-12.center
         .contact_us
@@ -10,18 +13,22 @@
             = link_to "tel:+919594943355" do
               %i.fa.fa-phone
               = "+91 75 94 94 33 55"
+            .clearfix
           %p.text-center
             = link_to "https://wa.me/919594943355" do
               %i.fa.fa-whatsapp
               = "+91 75 94 94 33 55"
+            .clearfix
           %p.text-center
             = link_to  "mailto:safkopkd@gmail.com" do
               %i.fa.fa-envelope-open-o
               = "safkopkd@gmail.com"
+            .clearfix
           %p.text-center
-            = link_to "https://www.facebook.com/safko.safko" do
+            = link_to "https://www.facebook.com/safko.safko.14" do
               %i.fa.fa-facebook
               = "safko"
+            .clearfix
 
 
 

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "homes#show"
   get 'us', to: 'properties#us'
+  get 'contact', to: 'properties#contact'
   resources :users do
     get :switch, on: :member
   end

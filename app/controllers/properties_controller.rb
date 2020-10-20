@@ -154,6 +154,10 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def contact
+    render 'contact', layout: false
+  end
+
 
   protected
 
