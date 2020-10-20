@@ -148,7 +148,7 @@ class PropertiesController < ApplicationController
     end
     @property.update(property_params)
     if @property.valid?
-      redirect_to houses_path
+      redirect_to send("#{@klass_underscore}_path".to_sym, @property)
     else
       render 'form'
     end
