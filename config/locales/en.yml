@@ -32,16 +32,25 @@
 en:
   property_name:
     commercial_land: Land
-    residential_ploat: Ploat
+    residential_plot: plot
     commercial_building: Building
     residential_house: House
     villa: Villa
     rental_house: House
     rental_office: Office
     rental_shop: Shop
+    nav:
+      commercial_lands: Comercial Lands
+      residential_plots: Residential Plots
+      commercial_buildings: Commercial Buildings
+      residential_houses: Houses
+      villas: Villas
+      rental_houses: Houses
+      rental_offices: Offices
+      rental_shops: Shops
   new:
     commercial_land: Sell Land
-    residential_ploat: Sell Ploat
+    residential_plot: Sell plot
     commercial_building: Sell Building
     residential_house: Sell House
     villa: Sell Villa
@@ -50,7 +59,7 @@ en:
     rental_shop: Rent Shop
   no_entries:
     commercial_land: No Lands Found
-    residential_ploat: No Ploats Found
+    residential_plot: No plots Found
     commercial_building: No Buildings Found
     residential_house: No Houses Found
     villa: No Villas Found
@@ -74,7 +83,7 @@ en:
         expected_price: "Expected Rent"
       rental_house:
         expected_price: "Expected Rent"
-      commercial_ploat:
+      commercial_plot:
         expected_price: "Expected Price"
     errors:
       models:

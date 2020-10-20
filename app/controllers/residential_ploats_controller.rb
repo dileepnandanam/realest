@@ -1,2 +1,0 @@
-class ResidentialPloatsController < PropertiesController
-end

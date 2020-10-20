@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     get :interests, on: :collection 
   end
 
-  resources :residential_ploats do
+  resources :residential_plots do
     put :set_state, on: :member
     post :interest, on: :member
     get :suggest, on: :collection

@@ -1,5 +1,5 @@
 .subnav
-  - sub_cat = {'land' => ['commercial_land', 'residential_ploat'], 'building' => ['commercial_building', 'residential_house', 'villa'], 'rental' => ['rental_house', 'rental_office', 'rental_shop']}
+  - sub_cat = {'land' => ['commercial_land', 'residential_plot'], 'building' => ['commercial_building', 'residential_house', 'villa'], 'rental' => ['rental_house', 'rental_office', 'rental_shop']}
   - sub_cat.each do |k, v|
     .subnav-item.col-lg-4.col-sm-4.col-4.float-left{class: v.map(&:pluralize).include?(controller_name) ? 'highlight' : ''}
       .text-center
@@ -11,5 +11,5 @@
   - sub_cat.each do |k, v|
     .breakdown{class: k }
       - v.each do |sc|
-        = link_to sc.pluralize.humanize.camelize, eval("#{sc.pluralize}_path"), remote: remote, class: 'property-category text-center'
+        = link_to t("property_name.nav.#{sc.pluralize}"), eval("#{sc.pluralize}_path"), remote: remote, class: 'property-category text-center'
   .clearfix
