@@ -66,7 +66,7 @@
   padding: 12px;
   color: white;
 }
-.contact_us a {
+.us .contact_us a {
   border: 1px solid #f2ed1385;
   box-shadow: 0px 0px 7px black, 0px 0px 2px black;
   padding: 15px;
@@ -74,5 +74,11 @@
   background: linear-gradient(45deg, black, #96914d4d);
 }
 .contact_us a:hover {
+  box-shadow: 0px 0px 7px #9f8c27, 0px 0px 2px black;
+}
+.contact_us a:hover {
+  text-decoration: none !important;
+}
+.message-us-form-link:hover {
   text-decoration: none !important;
 }
