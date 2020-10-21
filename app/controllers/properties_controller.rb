@@ -25,7 +25,7 @@ class PropertiesController < ApplicationController
   end
 
   def search
-    @properties = Property.search_query(params[:q]).paginate(per_page: 12, page: params[:page])
+    @properties = Property.search_query(params[:q]).paginate(per_page: 1, page: params[:page])
     render 'properties', layout: false
   end
 
