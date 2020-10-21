@@ -8,6 +8,6 @@ class RentalOffice < House
   end
 
   def common_tags
-    ' kerala office '
+    ' kerala office rent'
   end
 end

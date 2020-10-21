@@ -1,6 +1,6 @@
 class CommercialBuilding < House
   def summary
-    "#{area} square feet house at #{place}"
+    "#{area} square feet building at #{place}"
   end
 
   def set_suggestion
@@ -8,6 +8,6 @@ class CommercialBuilding < House
   end
 
   def common_tags
-    ' kerala building '
+    ' kerala building bilding shoping complex mall for sale sell '
   end
 end

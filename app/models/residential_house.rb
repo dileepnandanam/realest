@@ -8,6 +8,6 @@ class ResidentialHouse < House
   end
 
   def common_tags
-    ' kerala house sale '
+    ' kerala house sale sell'
   end
 end

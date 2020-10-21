@@ -4,6 +4,6 @@ class CommercialLand < Land
   end
 
   def common_tags
-    'land for sale'
+    'land for sale place farm '
   end
 end
