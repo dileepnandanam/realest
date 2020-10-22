@@ -23,7 +23,7 @@ class Office < House
   end
 
   def summary
-    "#{area} sqr ft office space at #{place}"
+    "#{area} square feet office space at #{place}"
   end
 
   def set_suggestion
