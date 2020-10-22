@@ -1,3 +1,7 @@
+- content_for :title do
+  = @property.summary
+- content_for :description do
+  = [@property.visible_caption, @property.tags, @property.summary].find(&:present?)
 = render partial: 'layouts/sub_nav', locals: {remote: true}
 .property-show
   .property-expand
