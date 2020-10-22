@@ -308,8 +308,10 @@
   display: block;
   padding: 8px;
   margin-top: 4px;
-  background: #422e82a6;
+  background: #422e8229;
   color: #16260d;
+  border: 1px solid blue;
+  border-radius: 10px;
 }
 .highlight-cat {
   color: red !important;
