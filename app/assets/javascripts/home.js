@@ -50,4 +50,10 @@ homeInit = function() {
   $(document).on('ajax:success', '.home .property-category', function(e) {
     $('.property-page').html(e.detail[2].responseText)
   })
+
+
+  $(document).on('click', '.subnav-item', function(e) {
+    $('.subnav-item').removeClass('highlight')
+    $(this).addClass('highlight')
+  })
 }
