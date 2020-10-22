@@ -125,3 +125,6 @@ abbr {
 input[type='submit'] {
   padding: 5px 12px !important;
 }
+.no-results-message {
+  margin-top: 12px;
+}
