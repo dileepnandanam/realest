@@ -39,7 +39,7 @@
 
           = link_to 'My Properties', mine_properties_path, class: 'pull-right nav-item block col-lg-6 col-sm-6 col-6 text-center'
         - else
-          = link_to 'Home', '/', class: 'pull-right nav-item block col-lg-3 col-sm-6 col-6 text-center'
+          = link_to 'Home', '/', class: 'pull-right nav-item block col-lg-3 col-sm-6 col-6 text-center', rel: :nofollow
           = link_to "log In", new_user_session_path, class: 'pull-right nav-item block col-lg-3 col-sm-6 col-6 text-center', rel: :nofollow
         
         .clearfix
