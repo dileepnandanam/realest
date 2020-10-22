@@ -10,7 +10,7 @@ $(document).on('turbolinks:load', function() {
   iterate = function(sections, i) {
     if(i == sections.length)
       return
-    $(sections[i]).show(100)
+    $(sections[i]).fadeIn(350)
     setTimeout(function(){iterate(sections, i+1)}, 100)
   }
   iterate(sections, 0)
