@@ -1,6 +1,6 @@
 class CommercialBuilding < House
   def summary
-    "#{area} square feet building at #{place}"
+    "#{area} square feet building for sale at #{place}"
   end
 
   def set_suggestion

@@ -1,6 +1,6 @@
 class RentalShop < House
   def summary
-    "#{area} square feet shop at #{place}"
+    "#{area} square feet shop for rent at #{place}"
   end
 
   def set_suggestion
@@ -8,6 +8,6 @@ class RentalShop < House
   end
 
   def common_tags
-    ' kerala shop rent '
+    ' kerala shop rent rental rented '
   end
 end

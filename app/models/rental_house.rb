@@ -1,6 +1,6 @@
 class RentalHouse < House
   def summary
-    "#{area} square feet house at #{place}"
+    "#{area} square feet house for rent at #{place}"
   end
 
   def set_suggestion

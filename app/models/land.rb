@@ -31,7 +31,7 @@ class Land < Property
   def summary
     acre1 = acre.to_i > 0 ? "#{acre} acre" : nil
     cent1 = cent.to_i > 0 ? "#{cent} cent" : nil
-    [acre1, cent1, "land at #{place}"].select(&:present?).join(' ')
+    [acre1, cent1, "land for sale at #{place}"].select(&:present?).join(' ')
   end
 
   def set_suggestion

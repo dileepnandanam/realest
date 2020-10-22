@@ -1,6 +1,6 @@
 class RentalOffice < House
   def summary
-    "#{area} square feet office at #{place}"
+    "#{area} square feet office for rent at #{place}"
   end
 
   def set_suggestion
@@ -8,6 +8,6 @@ class RentalOffice < House
   end
 
   def common_tags
-    ' kerala office rent'
+    ' kerala office rent rental rented '
   end
 end

@@ -1,6 +1,6 @@
 class ResidentialHouse < House
   def summary
-    "#{area} square feet house at #{place}"
+    "#{area} square feet house for sale at #{place}"
   end
 
   def set_suggestion
@@ -8,6 +8,6 @@ class ResidentialHouse < House
   end
 
   def common_tags
-    ' kerala house sale sell'
+    ' kerala house sale sell '
   end
 end
