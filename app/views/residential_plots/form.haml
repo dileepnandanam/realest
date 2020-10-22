@@ -1,4 +1,6 @@
 .property-form-container
+  %h2
+    = "#{action_name.camelize} #{@klass_underscore.split('_').last.camelize}"
   = simple_form_for(@property) do |f|
     = f.input :place, label: 'Place', input_html: {class: 'property-place-filter-field place-filter-field'}
     .suggestions.places.d-none
