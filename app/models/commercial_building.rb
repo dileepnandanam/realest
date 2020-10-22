@@ -8,6 +8,6 @@ class CommercialBuilding < House
   end
 
   def common_tags
-    ' kerala building bilding shoping complex mall for sale sell '
+    ' kerala building bilding complex mall for sale sell '
   end
 end
