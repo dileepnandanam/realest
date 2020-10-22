@@ -13,10 +13,12 @@
   background-image: linear-gradient(45deg, #090916, #160707b5);
   overflow: auto;
   padding-bottom: 12px;
+  min-height: 100vh;
 }
 .us-container {
   width: 100%;
   overflow: auto;
+  min-height: 100vh;
 }
 .message-us {
   padding: 12px;
@@ -81,4 +83,7 @@
 }
 .message-us-form-link:hover {
   text-decoration: none !important;
+}
+.section {
+  display: none;
 }

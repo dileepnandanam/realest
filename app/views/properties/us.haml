@@ -1,32 +1,32 @@
 .us-container
   .us
-    %h2.text-center.header
+    %h2.text-center.header.section
       SAFKO REALTORS
-    .text-center.white.default-text
+    .text-center.white.default-text.section
       Buy, Sell Or Rent Your Property
-    .links.col-lg-6.col-sm-9.col-12
+    .links.col-lg-6.col-sm-9.col-12.section
       .footer-2.col-lg-6.col-sm-12.col-12.center
         .contact_us.text-center
           = image_tag('qr.png')
     .links.col-lg-6.col-sm-9.col-12
       .footer-2.col-lg-6.col-sm-12.col-12.center
         .contact_us
-          %p.text-center
+          %p.text-center.section
             = link_to "tel:+919594943355" do
               %i.fa.fa-phone
               = "+91 75 94 94 33 55"
             .clearfix
-          %p.text-center
+          %p.text-center.section
             = link_to "https://wa.me/917594943355" do
               %i.fa.fa-whatsapp
               = "+91 75 94 94 33 55"
             .clearfix
-          %p.text-center
+          %p.text-center.section
             = link_to  "mailto:safkopkd@gmail.com" do
               %i.fa.fa-envelope-open-o
               = "safkopkd@gmail.com"
             .clearfix
-          %p.text-center
+          %p.text-center.section
             = link_to "https://www.facebook.com/safko.safko.14" do
               %i.fa.fa-facebook
               = "safko"
@@ -35,16 +35,16 @@
 
 
     
-    .message-form-container.contact_us_form.col-lg-6.col-sm-9.col-12
+    .message-form-container.contact_us_form.col-lg-6.col-sm-9.col-12.section
       = link_to new_message_path, remote: true, class: 'message-us-form-link' do
         .message-us.text-center
           Message Us
-    .home-link.col-lg-6.col-sm-9.col-12
+    .home-link.col-lg-6.col-sm-9.col-12.section
       = link_to root_path, class: 'message-us-form-link' do
         .message-us.text-center
           Our Home Page
     .clearfix
-    .map-container
+    .map-container.section
       = render partial: 'properties/map'
     .clearfix
 :css
