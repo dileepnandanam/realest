@@ -319,3 +319,10 @@
 .breakdown {
   display: none;
 }
+a.notification {
+  padding: 12px;
+  background: #1d4fdc;
+  display: block;
+  color: white;
+  margin: 1px;
+}

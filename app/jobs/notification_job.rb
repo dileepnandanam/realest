@@ -1,8 +1,8 @@
 class NotificationJob < ApplicationJob
-  def perform(message, user_id)
+  def perform(message, path, user_id)
     ApplicationCable::NotificationsChannel.broadcast_to(
       User.find(user_id),
-      message
+      "<a class='notification' href=#{path}>#{message}</a>"
     )
   end
 end

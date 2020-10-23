@@ -70,12 +70,15 @@ class PropertiesController < ApplicationController
       session[:after_sign_path] = property_show_page_path(@property)
       redirect_to new_user_session_path and return
     end
-    unless PropertiesUser.where(property_id: @property.id, user_id: current_user.id).last.present?
+    existing_interest =  PropertiesUser.where(property_id: @property.id, user_id: current_user.id).last
+    if existing_interest.blank?
       PropertiesUser.create(property_id: @property.id, user_id: current_user.id, seen: false)
+    else
+      existing_interest.update(seen: false)
     end
     flash[:notice] = 'query placed, we will get back to you soon'
     InterestMailer.with(user: current_user, property: @property).interest_placed.deliver_later
-    User.where(admin: true).each {|u| NotificationJob.perform_later("interest on " + I18n.t('property_name.' + @klass_underscore), u.id)}
+    User.where(admin: true).each {|u| NotificationJob.perform_later('new interest', property_path(@property), u.id)}
     redirect_to root_path
   end
 
@@ -252,6 +255,7 @@ class PropertiesController < ApplicationController
   def send_mail
     if @property.valid?
       PropertyMailer.with(user: current_user, property: @property).new_property.deliver_later
+      User.where(admin: true).each {|u| NotificationJob.perform_later('new property', property_path(@property), u.id)}
     end
   end
 end
