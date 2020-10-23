@@ -1,7 +1,7 @@
 .subnav
   - sub_cat = {'land' => ['commercial_land', 'residential_plot'], 'building' => ['commercial_building', 'residential_house', 'villa'], 'rental' => ['rental_house', 'rental_office', 'rental_shop']}
   .text-center
-    Search Categories
+    all Categories
   - sub_cat.each do |k, v|
     .subnav-item.col-lg-4.col-sm-4.col-4.float-left{class: v.map(&:pluralize).include?(controller_name) ? 'highlight' : ''}
       
