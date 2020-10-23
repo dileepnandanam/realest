@@ -75,6 +75,7 @@ class PropertiesController < ApplicationController
     end
     flash[:notice] = 'query placed, we will get back to you soon'
     InterestMailer.with(user: current_user, property: @property).interest_placed.deliver_later
+    User.where(admin: true).each {|u| NotificationJob.perform_later("interest on " + I18n.t('property_name.' + @klass_underscore), u.id)}
     redirect_to root_path
   end
 

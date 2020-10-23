@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function() {
   audio = new Audio($('.response-notif').attr('src'));
   
   if(create_notification_subscribed == null) {
-    App.cable.subscriptions.create("ApplicationCable::CreateNotificationsChannel", {
+    App.cable.subscriptions.create("ApplicationCable::NotificationChannel", {
       received(data) {
         audio.play()
         $('.response-tab').css('background', 'red')
