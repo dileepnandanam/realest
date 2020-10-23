@@ -31,7 +31,7 @@ class PropertiesController < ApplicationController
 
   def suggestions
     query = params[:q]
-    sql = Property.search_query(query)
+    sql = Property.search_suggestion(query)
     sql = sql.select('distinct COALESCE(CASE WHEN visible_caption = \'\' THEN NULL ELSE visible_caption END, suggestion) suggestion')
     render json: {
       suggestions: sql.all.map(&:suggestion)
