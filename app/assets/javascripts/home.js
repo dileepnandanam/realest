@@ -56,4 +56,9 @@ homeInit = function() {
     $('.subnav-item').removeClass('highlight')
     $(this).addClass('highlight')
   })
+
+  $('<img/>').attr('src', 'https://restmkd.s3.ap-south-1.amazonaws.com/banner-hd.jpg').on('load', function() {
+   $(this).remove(); // prevent memory leaks as @benweet suggested
+   $('.banner').css('background-image', 'url(https://restmkd.s3.ap-south-1.amazonaws.com/banner-hd.jpg)');
+});
 }
