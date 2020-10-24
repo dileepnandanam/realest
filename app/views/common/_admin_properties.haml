@@ -3,7 +3,7 @@
 .clearfix
 
 .states.col-lg-12
-  .state.col-sm-3.pull-left{class: params[:state] == 'new' ? 'highlight' : ''}
+  .state.col-sm-3.pull-left{class: ['new', nil].include?(params[:state]) ? 'highlight' : ''}
     = link_to "New(#{@properties_counts['new'].to_i})", eval("#{@klass_underscore.pluralize}_path(state: 'new')"), remote: true, class: 'state'
   .state.col-sm-3.pull-left{class: params[:state] == 'approved' ? 'highlight' : ''}
     = link_to "Approved(#{@properties_counts['approved'].to_i})", eval("#{@klass_underscore.pluralize}_path(state: 'approved')"), remote: true, class: 'state'

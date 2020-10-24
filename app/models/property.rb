@@ -7,6 +7,12 @@ class PlaceValidator < ActiveModel::Validator
 end
 class Property < ApplicationRecord
   has_one_attached :img1
+  validate :img1_attached?
+
+  def img1_attached?
+    errors.add(:img1, 'Upload Image.') unless img1.attached?
+  end
+
   has_many :property_assets
 
   belongs_to :user
@@ -63,8 +69,8 @@ class Property < ApplicationRecord
       return Property.where('0=1')
     end
     select_query = terms.map{|t| "(COALESCE(index LIKE '%#{t}%', FALSE))::int"}.join('+')
-    result_ids = ApplicationRecord.connection.execute("select matches.id from (select #{select_query} match_count, id from properties where properties.state = 'approved') matches where matches.match_count::float > #{terms.length/2.0} ORDER BY matches.match_count DESC").map{|ar| ar['id']}
-    Property.where(id: result_ids)
+
+    Property.find_by_sql("select distinct COALESCE(CASE WHEN matches.visible_caption = \'\' THEN NULL ELSE matches.visible_caption END, matches.suggestion) suggestion from (select #{select_query} match_count, visible_caption, suggestion, id from properties where properties.state = 'approved') matches where matches.match_count::float > #{terms.length/2.0}")
   end
 
   def self.search_query(query)
@@ -74,7 +80,7 @@ class Property < ApplicationRecord
       return Property.where('0=1')
     end
     select_query = terms.map{|t| "(COALESCE(index LIKE '%#{t}%', FALSE))::int"}.join('+')
-    Property.find_by_sql("select matches.id, matches.type, matches.visible_caption, matches.state, matches.area, matches.expected_price, matches.acre, matches.cent, matches.place, matches.match_count from (select #{select_query} match_count, id, type, visible_caption, state, area, acre, cent, expected_price, place from properties where properties.state = 'approved') matches where matches.match_count::float > #{terms.length/2.0} ORDER BY matches.match_count DESC")
+    Property.find_by_sql("select matches.* from (select #{select_query} match_count, * from properties where properties.state = 'approved') matches where matches.match_count::float > #{terms.length/2.0} ORDER BY matches.match_count DESC")
   end
 
   STOP_WORDS = ['near', 'away', 'ourselves', 'hers', 'between', 'yourself', 'but', 'again', 'there', 'about', 'once', 'during', 'out', 'very', 'having', 'with', 'they', 'own', 'an', 'be', 'some', 'for', 'do', 'its', 'yours', 'such', 'into', 'of', 'most', 'itself', 'other', 'off', 'is', 'am', 'or', 'who', 'as', 'from', 'him', 'each', 'the', 'themselves', 'until', 'below', 'are', 'we', 'these', 'your', 'his', 'through', 'don', 'nor', 'me', 'were', 'her', 'more', 'himself', 'this', 'down', 'should', 'our', 'their', 'while', 'above', 'both', 'up', 'to', 'ours', 'had', 'she', 'all', 'no', 'when', 'at', 'any', 'before', 'them', 'same', 'and', 'been', 'have', 'in', 'will', 'on', 'does', 'yourselves', 'then', 'that', 'because', 'what', 'over', 'why', 'so', 'can', 'did', 'not', 'now', 'under', 'he', 'you', 'herself', 'has', 'just', 'where', 'too', 'only', 'myself', 'which', 'those', 'i', 'after', 'few', 'whom', 't', 'being', 'if', 'theirs', 'my', 'against', 'a', 'by', 'doing', 'it', 'how', 'further', 'was', 'here', 'than']
