@@ -8,7 +8,10 @@
     = f.input :landmark
     = f.input :area, label: 'Area in square feets'
     = f.input :img1, label: "Photo (required)", required: true
+    %h3
+      Admin section
     - if current_user.admin?
+      = f.input :district, collection: [["Thiruvananthapuram", "Thiruvananthapuram"], ["Kollam", "Kollam"], ["Alappuzha", "Alappuzha"], ["Pathanamthitta", "Pathanamthitta"], ["Kottayam", "Kottayam"], ["Idukki", "Idukki"], ["Ernakulam", "Ernakulam"], ["Thrissur", "Thrissur"], ["Palakkad", "Palakkad"], ["Malappuram", "Malappuram"], ["Kozhikode", "Kozhikode"], ["Wayanadu", "Wayanadu"], ["Kannur", "Kannur"], ["Kasaragod", "Kasaragod"]]
       = f.input :visible_caption
       = f.input :tags
     = f.submit 'Submit'

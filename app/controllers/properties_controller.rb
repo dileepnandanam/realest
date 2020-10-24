@@ -170,7 +170,7 @@ class PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(@klass_underscore.to_sym).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place, :iframe, :area, :tags)
+    params.require(@klass_underscore.to_sym).permit(:lat, :lngt, :img1, :img2, :img3, :img4, :img5, :expected_price, :acre, :cent, :landmark, :visible_caption, :place, :district, :iframe, :area, :tags)
   end
 
   def price_range

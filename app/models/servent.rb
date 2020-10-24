@@ -1,6 +1,5 @@
 class Servent < Property
 
-  #validates :img1, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
   validates_each(:expected_price) do |record, attr, value|
     if value.blank?
       record.errors.add(attr, 'must be given')

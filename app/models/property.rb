@@ -58,7 +58,7 @@ class Property < ApplicationRecord
   before_save :set_suggestion
 
   def set_index
-    self.index = summary.downcase + common_tags + tags.to_s + visible_caption.to_s
+    self.index = summary.downcase + common_tags + tags.to_s + visible_caption.to_s + district.to_s.downcase
     self.index = self.index.split(/[\., ;'"?]/).map(&:singularize).join(' ')
   end
 
