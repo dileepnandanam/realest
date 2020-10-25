@@ -1,10 +1,23 @@
 var home_initiated = null
 $(document).on('turbolinks:load', function() {
+
+  load_bg('https://images.ctfassets.net/u0haasspfa6q/2sMNoIuT9uGQjKd7UQ2SMQ/1bb98e383745b240920678ea2daa32e5/sell_landscape_photography_online?w=640', '.banner')
+  load_bg('https://www.architectureartdesigns.com/wp-content/uploads/2016/02/2-66.jpg', '.property-page')
+  
   if(home_initiated == null) {
     homeInit()
     home_initiated = 1
   }
 })
+
+load_bg = function(img, sel) {
+  $('<img/>').attr('src', img).on('load', function() {
+    $(this).remove(); // prevent memory leaks as @benweet suggested
+    $(sel).css('background-image', 'url(\'' + img + '\')');
+  });
+}
+
+
 
 homeInit = function() {
   search = function() {
@@ -56,9 +69,5 @@ homeInit = function() {
     $('.subnav-item').removeClass('highlight')
     $(this).addClass('highlight')
   })
-
-  $('<img/>').attr('src', 'https://images.ctfassets.net/u0haasspfa6q/2sMNoIuT9uGQjKd7UQ2SMQ/1bb98e383745b240920678ea2daa32e5/sell_landscape_photography_online?w=640').on('load', function() {
-   $(this).remove(); // prevent memory leaks as @benweet suggested
-   $('.banner').css('background-image', 'https://images.ctfassets.net/u0haasspfa6q/2sMNoIuT9uGQjKd7UQ2SMQ/1bb98e383745b240920678ea2daa32e5/sell_landscape_photography_online?w=640)');
-});
+  
 }

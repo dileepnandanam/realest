@@ -4,8 +4,7 @@
 }
 .banner {
   width: 100%;
-  background-image: url('https://images.ctfassets.net/u0haasspfa6q/2sMNoIuT9uGQjKd7UQ2SMQ/1bb98e383745b240920678ea2daa32e5/sell_landscape_photography_online?w=640');
-  padding-top: 30%;
+  padding-top: 27%;
   background-size: cover;
   position: relative;
   background-position: center;
@@ -18,12 +17,15 @@
 }
 @media screen and (min-width: 601px) {
   .logo {
-    font-size: 5vw;
+    font-size: 4vw;
   }
 }
 @media screen and (max-width: 600px) {
   .logo {
-    font-size: 30px;
+    font-size: 20px;
+  }
+  .banner {
+    padding-top: 40%;
   }
 }
 .search {
@@ -32,6 +34,7 @@
   width: 100%;
   max-width: 324px;
   margin: auto;
+  margin-bottom: 5px;
 }
 .footer {
   width: 100%;
@@ -67,6 +70,7 @@
   color: #ffffff;
   line-height: 29px;
   background: #27221a69;
+  overflow: auto;
 }
 input.search {
   border: 1px solid blue;
