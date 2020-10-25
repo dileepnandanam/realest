@@ -24,4 +24,4 @@ production:
   password: root@2008
   pool: 5
   timeout: 5000
-  database: connect_test
+  database: realestate_prod
