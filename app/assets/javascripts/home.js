@@ -57,8 +57,8 @@ homeInit = function() {
     $(this).addClass('highlight')
   })
 
-  $('<img/>').attr('src', 'https://restmkd.s3.ap-south-1.amazonaws.com/banner-hd.jpg').on('load', function() {
+  $('<img/>').attr('src', 'https://images.ctfassets.net/u0haasspfa6q/2sMNoIuT9uGQjKd7UQ2SMQ/1bb98e383745b240920678ea2daa32e5/sell_landscape_photography_online?w=640').on('load', function() {
    $(this).remove(); // prevent memory leaks as @benweet suggested
-   $('.banner').css('background-image', 'url(https://restmkd.s3.ap-south-1.amazonaws.com/banner-hd.jpg)');
+   $('.banner').css('background-image', 'https://images.ctfassets.net/u0haasspfa6q/2sMNoIuT9uGQjKd7UQ2SMQ/1bb98e383745b240920678ea2daa32e5/sell_landscape_photography_online?w=640)');
 });
 }
