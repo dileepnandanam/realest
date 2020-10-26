@@ -314,6 +314,7 @@
 }
 .breakdown {
   display: none;
+  padding: 3%;
 }
 a.notification {
   padding: 12px;
