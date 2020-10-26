@@ -1,6 +1,6 @@
 - @properties.each do |p|
   = render partial: 'common/property_thumb', locals: {property: p}
-- if @properties.count == 0
+- if @properties.count == 0 && false
   .no-results-message.text-center
     = t("no_entries.#{@klass_underscore}")
 .clearfix

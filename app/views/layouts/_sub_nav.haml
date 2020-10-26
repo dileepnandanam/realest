@@ -15,4 +15,7 @@
     .breakdown{class: k }
       - v.each do |sc|
         = link_to t("property_name.nav.#{sc.pluralize}"), eval("#{sc.pluralize}_path"), remote: remote, class: 'property-category text-center'
+  - if sub_cat.values.flatten.include?(controller_name.singularize)
+    %h2.text-center.current-property
+      = t("property_name.nav.#{controller_name}")
   .clearfix
