@@ -10,6 +10,8 @@
         = @property.visible_caption
     %h2
       = @property.summary
+    %h3.text-center
+      = "Rs #{@property.expected_price}"
     - unless current_user.try :admin?
       .interest-button-container
         = link_to 'I am interested', eval("interest_#{controller_name.singularize}_path(@property)"), class: 'action-button interest-button', method: :post
