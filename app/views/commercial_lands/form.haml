@@ -9,9 +9,9 @@
     = f.input :expected_price
     = f.input :landmark
     = f.input :img1, label: "photo (required)", required: true
-    %h3
-      Admin section
     - if current_user.admin?
+      %h3
+        Admin section
       = f.input :district, collection: [["Thiruvananthapuram", "Thiruvananthapuram"], ["Kollam", "Kollam"], ["Alappuzha", "Alappuzha"], ["Pathanamthitta", "Pathanamthitta"], ["Kottayam", "Kottayam"], ["Idukki", "Idukki"], ["Ernakulam", "Ernakulam"], ["Thrissur", "Thrissur"], ["Palakkad", "Palakkad"], ["Malappuram", "Malappuram"], ["Kozhikode", "Kozhikode"], ["Wayanadu", "Wayanadu"], ["Kannur", "Kannur"], ["Kasaragod", "Kasaragod"]]
       = f.input :visible_caption
       = f.input :tags
